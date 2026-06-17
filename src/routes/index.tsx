@@ -227,7 +227,9 @@ function Index() {
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-gradient-to-br from-sky-50 via-white to-blue-50 text-slate-800">
+      <Hero />
       {/* Decorative animated blobs */}
+
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-sky-200/40 blur-3xl animate-blob" />
         <div className="absolute top-40 -right-32 h-96 w-96 rounded-full bg-blue-200/40 blur-3xl animate-blob animation-delay-2000" />
