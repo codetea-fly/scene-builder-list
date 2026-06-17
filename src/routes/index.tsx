@@ -144,15 +144,11 @@ function Hero() {
     document.getElementById("demand-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
-    <section className="relative isolate overflow-hidden border-b border-sky-100 bg-gradient-to-b from-sky-50 via-white to-blue-50">
+    <section className="relative isolate flex min-h-screen flex-col overflow-hidden border-b border-sky-100 bg-gradient-to-b from-sky-50 via-white to-blue-50">
       <HeroPointCloud />
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 py-24 text-center sm:py-32">
-        <div className="inline-flex animate-fade-in items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
-          <Boxes className="h-3.5 w-3.5" />
-          3DGS · 高斯点云重建驱动
-        </div>
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
         <h1
-          className="mt-6 animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
+          className="animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
           style={{ animationDelay: "80ms", animationFillMode: "backwards" }}
         >
           数字孪生
@@ -162,10 +158,10 @@ function Hero() {
           公共服务平台
         </h1>
         <p
-          className="mt-5 max-w-2xl animate-fade-in text-base text-slate-600 sm:text-lg"
+          className="mt-5 animate-fade-in text-base text-slate-600 sm:text-lg"
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}
         >
-          基于三维高斯点云重建技术，构建真实可交互的城市与产业孪生体，让每一个场景被看见、被理解、被复用。
+          场景创新，从这里开始
         </p>
 
         <form
@@ -190,17 +186,18 @@ function Hero() {
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </form>
-
-        <div
-          className="mt-10 flex animate-fade-in flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-500"
-          style={{ animationDelay: "320ms", animationFillMode: "backwards" }}
-        >
-          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" /> 实时点云接入</span>
-          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" /> 全国 31 省覆盖</span>
-          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse" /> 千级孪生场景</span>
-        </div>
       </div>
+
+      {/* Scroll indicator */}
+      <button
+        onClick={scrollToList}
+        aria-label="向下滚动"
+        className="group relative mx-auto mb-8 flex h-12 w-8 items-center justify-center rounded-full border-2 border-sky-400/60 text-sky-500 transition-colors hover:border-sky-500"
+      >
+        <span className="absolute top-2 h-2 w-1 animate-bounce rounded-full bg-sky-500" />
+      </button>
     </section>
+
   );
 }
 
