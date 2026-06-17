@@ -302,7 +302,7 @@ function Index() {
         </section>
 
         {/* Table */}
-        <section className="overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-xl shadow-sky-100/50 backdrop-blur animate-fade-in">
+        <section id="demand-list" className="overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-xl shadow-sky-100/50 backdrop-blur animate-fade-in scroll-mt-8">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
