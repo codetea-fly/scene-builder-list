@@ -170,3 +170,35 @@
   animation-delay: 4s;
 }
 
+@keyframes gs-drift {
+  0%   { transform: translate3d(0,0,0) scale(1); opacity: var(--gs-o, 0.55); }
+  50%  { transform: translate3d(var(--gs-x,10px), var(--gs-y,-12px), 0) scale(1.4); opacity: 1; }
+  100% { transform: translate3d(0,0,0) scale(1); opacity: var(--gs-o, 0.55); }
+}
+@keyframes gs-sweep {
+  0%   { transform: translateX(-120%) skewX(-12deg); }
+  100% { transform: translateX(220%) skewX(-12deg); }
+}
+@keyframes gs-orbit {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes gs-grid {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.75; }
+}
+
+@utility animate-gs-drift {
+  animation: gs-drift 6s ease-in-out infinite;
+}
+@utility animate-gs-sweep {
+  animation: gs-sweep 5s linear infinite;
+}
+@utility animate-gs-orbit {
+  animation: gs-orbit 40s linear infinite;
+}
+@utility animate-gs-grid {
+  animation: gs-grid 5s ease-in-out infinite;
+}
+
+
