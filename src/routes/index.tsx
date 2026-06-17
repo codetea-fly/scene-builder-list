@@ -134,7 +134,7 @@ function HeroPointCloud() {
       <div className="absolute inset-y-0 left-0 w-1/3 animate-gs-sweep bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
       {/* Soft top vignette to keep text legible */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/10 to-white/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/20" />
     </div>
   );
 }
