@@ -93,11 +93,12 @@ function HeroPointCloud() {
   return (
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {/* Perspective grid floor */}
-      <div className="absolute inset-x-0 bottom-0 h-2/3 [perspective:900px]">
+      <div className="absolute inset-x-0 bottom-0 h-[80%] [perspective:800px]">
         <div
-          className="absolute inset-0 origin-bottom animate-gs-grid [transform:rotateX(62deg)] bg-[linear-gradient(to_right,rgba(56,189,248,0.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.35)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:linear-gradient(to_top,black,transparent_85%)]"
+          className="absolute inset-0 origin-bottom animate-gs-grid [transform:rotateX(68deg)_scale(1.4)] bg-[linear-gradient(to_right,rgba(14,165,233,0.7)_1.5px,transparent_1.5px),linear-gradient(to_bottom,rgba(37,99,235,0.7)_1.5px,transparent_1.5px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_top,black_30%,transparent_95%)]"
         />
       </div>
+
 
       {/* Orbiting ring */}
       <div className="absolute left-1/2 top-1/2 h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 animate-gs-orbit rounded-full border border-sky-200/40 [mask-image:radial-gradient(circle,black_55%,transparent_72%)]">
@@ -133,7 +134,7 @@ function HeroPointCloud() {
       <div className="absolute inset-y-0 left-0 w-1/3 animate-gs-sweep bg-gradient-to-r from-transparent via-white/40 to-transparent" />
 
       {/* Soft top vignette to keep text legible */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/10 to-white/60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-transparent to-white/20" />
     </div>
   );
 }
@@ -144,15 +145,11 @@ function Hero() {
     document.getElementById("demand-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
   return (
-    <section className="relative isolate overflow-hidden border-b border-sky-100 bg-gradient-to-b from-sky-50 via-white to-blue-50">
+    <section className="relative isolate flex min-h-screen flex-col overflow-hidden border-b border-sky-100 bg-gradient-to-b from-sky-50 via-white to-blue-50">
       <HeroPointCloud />
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 py-24 text-center sm:py-32">
-        <div className="inline-flex animate-fade-in items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
-          <Boxes className="h-3.5 w-3.5" />
-          3DGS · 高斯点云重建驱动
-        </div>
+      <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
         <h1
-          className="mt-6 animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
+          className="animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
           style={{ animationDelay: "80ms", animationFillMode: "backwards" }}
         >
           数字孪生
@@ -162,10 +159,10 @@ function Hero() {
           公共服务平台
         </h1>
         <p
-          className="mt-5 max-w-2xl animate-fade-in text-base text-slate-600 sm:text-lg"
+          className="mt-5 animate-fade-in text-base text-slate-600 sm:text-lg"
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}
         >
-          基于三维高斯点云重建技术，构建真实可交互的城市与产业孪生体，让每一个场景被看见、被理解、被复用。
+          场景创新，从这里开始
         </p>
 
         <form
@@ -190,17 +187,18 @@ function Hero() {
             <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
           </button>
         </form>
-
-        <div
-          className="mt-10 flex animate-fade-in flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-500"
-          style={{ animationDelay: "320ms", animationFillMode: "backwards" }}
-        >
-          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" /> 实时点云接入</span>
-          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" /> 全国 31 省覆盖</span>
-          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse" /> 千级孪生场景</span>
-        </div>
       </div>
+
+      {/* Scroll indicator */}
+      <button
+        onClick={scrollToList}
+        aria-label="向下滚动"
+        className="group relative mx-auto mb-8 flex h-12 w-8 items-center justify-center rounded-full border-2 border-sky-400/60 text-sky-500 transition-colors hover:border-sky-500"
+      >
+        <span className="absolute top-2 h-2 w-1 animate-bounce rounded-full bg-sky-500" />
+      </button>
     </section>
+
   );
 }
 
