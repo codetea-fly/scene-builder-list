@@ -1,18 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { Search, MapPin, Briefcase, Calendar, Wallet, Building2, Sparkles, TrendingUp, ClipboardList, CheckCircle2 } from "lucide-react";
+import { Search, MapPin, Briefcase, Calendar, Wallet, Building2, Sparkles, TrendingUp, ClipboardList, CheckCircle2, ArrowRight, Boxes } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "全国场景建设需求汇总清单" },
-      { name: "description", content: "汇集全国各地区、各领域场景建设需求，实时查看需求方、预算、截止日期与进展状态。" },
-      { property: "og:title", content: "全国场景建设需求汇总清单" },
-      { property: "og:description", content: "汇集全国各地区、各领域场景建设需求，实时查看需求方、预算、截止日期与进展状态。" },
+      { title: "数字孪生场景创新公共服务平台" },
+      { name: "description", content: "数字孪生场景创新公共服务平台 —— 基于 3DGS 点云重建，汇聚全国场景建设需求，加速供需对接。" },
+      { property: "og:title", content: "数字孪生场景创新公共服务平台" },
+      { property: "og:description", content: "基于 3DGS 点云重建技术，汇聚全国场景建设需求，加速创新落地。" },
     ],
   }),
   component: Index,
 });
+
 
 type Status = "征集中" | "评审中" | "已立项" | "已完成" | "已截止";
 
