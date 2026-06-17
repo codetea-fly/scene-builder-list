@@ -69,6 +69,142 @@ const STATUS_DOT: Record<Status, string> = {
 
 const STATUSES: ("全部" | Status)[] = ["全部", "征集中", "评审中", "已立项", "已完成", "已截止"];
 
+// Pre-generated deterministic "Gaussian splat" point cloud — soft elliptical splats
+// that drift to evoke 3DGS point-cloud reconstruction.
+const SPLATS = Array.from({ length: 90 }, (_, i) => {
+  const seed = (n: number) => {
+    const x = Math.sin(i * 999.13 + n) * 43758.5453;
+    return x - Math.floor(x);
+  };
+  const left = seed(1) * 100;
+  const top = seed(2) * 100;
+  const size = 6 + seed(3) * 28;
+  const dx = (seed(4) - 0.5) * 40;
+  const dy = (seed(5) - 0.5) * 40;
+  const delay = seed(6) * 6;
+  const dur = 4 + seed(7) * 6;
+  const hue = 195 + Math.floor(seed(8) * 45); // sky → blue → indigo
+  const opacity = 0.25 + seed(9) * 0.5;
+  const rot = Math.floor(seed(10) * 180);
+  return { left, top, size, dx, dy, delay, dur, hue, opacity, rot };
+});
+
+function HeroPointCloud() {
+  return (
+    <div className="pointer-events-none absolute inset-0 overflow-hidden">
+      {/* Perspective grid floor */}
+      <div className="absolute inset-x-0 bottom-0 h-2/3 [perspective:900px]">
+        <div
+          className="absolute inset-0 origin-bottom animate-gs-grid [transform:rotateX(62deg)] bg-[linear-gradient(to_right,rgba(56,189,248,0.35)_1px,transparent_1px),linear-gradient(to_bottom,rgba(59,130,246,0.35)_1px,transparent_1px)] bg-[size:56px_56px] [mask-image:linear-gradient(to_top,black,transparent_85%)]"
+        />
+      </div>
+
+      {/* Orbiting ring */}
+      <div className="absolute left-1/2 top-1/2 h-[680px] w-[680px] -translate-x-1/2 -translate-y-1/2 animate-gs-orbit rounded-full border border-sky-200/40 [mask-image:radial-gradient(circle,black_55%,transparent_72%)]">
+        <div className="absolute left-1/2 top-0 h-2 w-2 -translate-x-1/2 rounded-full bg-sky-400 shadow-[0_0_18px_4px_rgba(56,189,248,0.7)]" />
+        <div className="absolute right-0 top-1/2 h-1.5 w-1.5 -translate-y-1/2 rounded-full bg-blue-400 shadow-[0_0_14px_3px_rgba(59,130,246,0.6)]" />
+      </div>
+
+      {/* Gaussian splats */}
+      <div className="absolute inset-0">
+        {SPLATS.map((s, i) => (
+          <span
+            key={i}
+            className="absolute rounded-full animate-gs-drift"
+            style={{
+              left: `${s.left}%`,
+              top: `${s.top}%`,
+              width: s.size,
+              height: s.size * 0.62,
+              background: `radial-gradient(ellipse at center, hsla(${s.hue},90%,65%,0.95) 0%, hsla(${s.hue},90%,60%,0.4) 45%, hsla(${s.hue},90%,55%,0) 75%)`,
+              filter: "blur(0.3px)",
+              transform: `rotate(${s.rot}deg)`,
+              ["--gs-x" as string]: `${s.dx}px`,
+              ["--gs-y" as string]: `${s.dy}px`,
+              ["--gs-o" as string]: `${s.opacity}`,
+              animationDelay: `${s.delay}s`,
+              animationDuration: `${s.dur}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Scan sweep */}
+      <div className="absolute inset-y-0 left-0 w-1/3 animate-gs-sweep bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+
+      {/* Soft top vignette to keep text legible */}
+      <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/10 to-white/60" />
+    </div>
+  );
+}
+
+function Hero() {
+  const [q, setQ] = useState("");
+  const scrollToList = () => {
+    document.getElementById("demand-list")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  return (
+    <section className="relative isolate overflow-hidden border-b border-sky-100 bg-gradient-to-b from-sky-50 via-white to-blue-50">
+      <HeroPointCloud />
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center px-6 py-24 text-center sm:py-32">
+        <div className="inline-flex animate-fade-in items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
+          <Boxes className="h-3.5 w-3.5" />
+          3DGS · 高斯点云重建驱动
+        </div>
+        <h1
+          className="mt-6 animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
+          style={{ animationDelay: "80ms", animationFillMode: "backwards" }}
+        >
+          数字孪生
+          <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
+            场景创新
+          </span>
+          公共服务平台
+        </h1>
+        <p
+          className="mt-5 max-w-2xl animate-fade-in text-base text-slate-600 sm:text-lg"
+          style={{ animationDelay: "160ms", animationFillMode: "backwards" }}
+        >
+          基于三维高斯点云重建技术，构建真实可交互的城市与产业孪生体，让每一个场景被看见、被理解、被复用。
+        </p>
+
+        <form
+          onSubmit={(e) => { e.preventDefault(); scrollToList(); }}
+          className="mt-10 flex w-full max-w-2xl animate-fade-in flex-col gap-3 sm:flex-row"
+          style={{ animationDelay: "240ms", animationFillMode: "backwards" }}
+        >
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-sky-400" />
+            <input
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+              placeholder="搜索场景需求、行业领域或所属地区…"
+              className="h-14 w-full rounded-2xl border border-sky-200 bg-white/90 pl-12 pr-4 text-base shadow-lg shadow-sky-200/40 outline-none backdrop-blur transition-all placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100"
+            />
+          </div>
+          <button
+            type="submit"
+            className="group inline-flex h-14 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 px-8 text-base font-semibold text-white shadow-lg shadow-sky-300/50 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-sky-400/50 active:translate-y-0"
+          >
+            点击探索
+            <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
+          </button>
+        </form>
+
+        <div
+          className="mt-10 flex animate-fade-in flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-slate-500"
+          style={{ animationDelay: "320ms", animationFillMode: "backwards" }}
+        >
+          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sky-500 animate-pulse" /> 实时点云接入</span>
+          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" /> 全国 31 省覆盖</span>
+          <span className="inline-flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-indigo-500 animate-pulse" /> 千级孪生场景</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 function Index() {
   const [query, setQuery] = useState("");
   const [status, setStatus] = useState<"全部" | Status>("全部");
