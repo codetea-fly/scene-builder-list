@@ -122,6 +122,9 @@ export function NavBar() {
               onMouseLeave={leave}
             >
               <button
+                type="button"
+                onClick={() => setOpen((prev) => (prev === m.label ? null : m.label))}
+                onFocus={() => enter(m.label)}
                 className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
                   open === m.label
                     ? "bg-sky-50 text-sky-700"
