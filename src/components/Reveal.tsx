@@ -23,17 +23,21 @@ interface RevealProps {
   threshold?: number;
 }
 
-const initial: Record<Variant, string> = {
-  "fade-up": "opacity-0 translate-y-8",
-  "fade-down": "opacity-0 -translate-y-8",
-  fade: "opacity-0",
-  scale: "opacity-0 scale-95",
-  "fade-left": "opacity-0 -translate-x-8",
-  "fade-right": "opacity-0 translate-x-8",
-  "slide-left": "-translate-x-[140%]",
-  "slide-right": "translate-x-[140%]",
-  "slide-up": "translate-y-[140%]",
-  "slide-down": "-translate-y-[140%]",
+interface VariantSpec {
+  hidden: { transform: string; opacity: number };
+}
+
+const variants: Record<Variant, VariantSpec> = {
+  "fade-up": { hidden: { transform: "translate3d(0, 32px, 0)", opacity: 0 } },
+  "fade-down": { hidden: { transform: "translate3d(0, -32px, 0)", opacity: 0 } },
+  fade: { hidden: { transform: "none", opacity: 0 } },
+  scale: { hidden: { transform: "scale(0.95)", opacity: 0 } },
+  "fade-left": { hidden: { transform: "translate3d(-32px, 0, 0)", opacity: 0 } },
+  "fade-right": { hidden: { transform: "translate3d(32px, 0, 0)", opacity: 0 } },
+  "slide-left": { hidden: { transform: "translate3d(-140%, 0, 0)", opacity: 1 } },
+  "slide-right": { hidden: { transform: "translate3d(140%, 0, 0)", opacity: 1 } },
+  "slide-up": { hidden: { transform: "translate3d(0, 140%, 0)", opacity: 1 } },
+  "slide-down": { hidden: { transform: "translate3d(0, -140%, 0)", opacity: 1 } },
 };
 
 export function Reveal({
@@ -67,21 +71,20 @@ export function Reveal({
     return () => io.disconnect();
   }, [once, threshold]);
 
+  const spec = variants[variant];
   const style: CSSProperties = {
     transitionDuration: `${duration}ms`,
     transitionDelay: `${delay}ms`,
     transitionProperty: "opacity, transform",
     transitionTimingFunction: "cubic-bezier(0.22, 1, 0.36, 1)",
     willChange: "opacity, transform",
+    transform: visible ? "translate3d(0,0,0)" : spec.hidden.transform,
+    opacity: visible ? 1 : spec.hidden.opacity,
   };
 
   const Comp = Tag as any;
   return (
-    <Comp
-      ref={ref as any}
-      style={style}
-      className={`${visible ? "opacity-100 translate-x-0 translate-y-0 scale-100" : initial[variant]} ${className}`}
-    >
+    <Comp ref={ref as any} style={style} className={className}>
       {children}
     </Comp>
   );
