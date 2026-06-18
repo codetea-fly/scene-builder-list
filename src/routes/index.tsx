@@ -129,12 +129,12 @@ const HOT_SCENES = [
 ];
 
 const OVERVIEW = [
-  { label: "通用能力组件", value: "1,280+", icon: Boxes, color: "from-sky-500 to-blue-500" },
-  { label: "通用能力平台", value: "320+", icon: Layers, color: "from-cyan-500 to-sky-500" },
-  { label: "三维模型库", value: "8,640+", icon: Database, color: "from-blue-500 to-indigo-500" },
-  { label: "高质量数据集", value: "560+", icon: ClipboardList, color: "from-indigo-500 to-sky-500" },
-  { label: "孪生体资产", value: "2,180+", icon: Boxes, color: "from-sky-500 to-cyan-500" },
-  { label: "AI+孪生能力", value: "740+", icon: Lightbulb, color: "from-blue-500 to-sky-500" },
+  { label: "通用能力组件", value: 1280, suffix: "+", icon: Boxes, color: "from-sky-500 to-blue-500" },
+  { label: "通用能力平台", value: 320, suffix: "+", icon: Layers, color: "from-cyan-500 to-sky-500" },
+  { label: "三维模型库", value: 8640, suffix: "+", icon: Database, color: "from-blue-500 to-indigo-500" },
+  { label: "高质量数据集", value: 560, suffix: "+", icon: ClipboardList, color: "from-indigo-500 to-sky-500" },
+  { label: "孪生体资产", value: 2180, suffix: "+", icon: Boxes, color: "from-sky-500 to-cyan-500" },
+  { label: "AI+孪生能力", value: 740, suffix: "+", icon: Lightbulb, color: "from-blue-500 to-sky-500" },
 ];
 
 const SERVICES = [
