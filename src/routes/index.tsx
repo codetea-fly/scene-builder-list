@@ -245,7 +245,7 @@ function Index() {
         </Reveal>
         <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-5">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.title} variant="fade-up" delay={i * 100}>
+            <Reveal key={s.title} variant="slide-right" delay={i * 130} duration={900}>
               <Link to="/promotion/lifecycle"
                 className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-110">
