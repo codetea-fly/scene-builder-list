@@ -380,6 +380,18 @@ function Index() {
           © 2026 全国场景建设需求汇聚平台 · 让每一个场景都被看见
         </footer>
       </div>
+
+      {/* 16:9 背景展示页 —— 仅保留需求清单页的背景效果 */}
+      <section className="relative mx-auto w-full max-w-7xl px-6 pb-16">
+        <div className="relative w-full overflow-hidden rounded-3xl border border-sky-100 shadow-xl shadow-sky-100/50 [aspect-ratio:16/9] bg-gradient-to-br from-sky-50 via-white to-blue-50">
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-sky-200/40 blur-3xl animate-blob" />
+            <div className="absolute top-40 -right-32 h-96 w-96 rounded-full bg-blue-200/40 blur-3xl animate-blob animation-delay-2000" />
+            <div className="absolute bottom-0 left-1/3 h-96 w-96 rounded-full bg-cyan-200/40 blur-3xl animate-blob animation-delay-4000" />
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(14,165,233,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(14,165,233,0.05)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_at_center,black_30%,transparent_75%)]" />
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
