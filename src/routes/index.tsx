@@ -221,7 +221,7 @@ function Index() {
         </Reveal>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
           {OVERVIEW.map((o, i) => (
-            <Reveal key={o.label} variant="fade-up" delay={i * 80}
+            <Reveal key={o.label} variant={i % 2 === 0 ? "slide-down" : "slide-up"} delay={i * 90} duration={800}
               className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-5 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-200/50">
               <div className={`absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gradient-to-br ${o.color} opacity-10 transition-transform duration-500 group-hover:scale-150`} />
               <o.icon className="mb-3 h-5 w-5 text-sky-500" />
