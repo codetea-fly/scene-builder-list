@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
+import { useEffect, useRef, useState, type CSSProperties, type ElementType, type ReactNode } from "react";
 
 type Variant = "fade-up" | "fade" | "scale" | "fade-left" | "fade-right";
 
@@ -9,7 +9,7 @@ interface RevealProps {
   variant?: Variant;
   once?: boolean;
   className?: string;
-  as?: keyof JSX.IntrinsicElements;
+  as?: ElementType;
   threshold?: number;
 }
 
