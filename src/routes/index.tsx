@@ -157,19 +157,18 @@ function Index() {
 
       {/* 行业资讯 */}
       <section id="news" className="relative mx-auto max-w-7xl px-6 py-20">
-        <div className="mb-10 flex items-end justify-between animate-fade-in">
+        <Reveal variant="fade-up" className="mb-10 flex items-end justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
               <Newspaper className="h-3.5 w-3.5" /> 行业资讯
             </div>
             <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">前沿动态 · 把握趋势</h2>
           </div>
-        </div>
+        </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {NEWS.map((n, i) => (
-            <article key={n.title}
-              className="group animate-fade-in overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50"
-              style={{ animationDelay: `${i * 80}ms`, animationFillMode: "backwards" }}>
+            <Reveal key={n.title} variant="fade-up" delay={i * 90} as="article"
+              className="group overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
               <div className={`relative h-32 bg-gradient-to-br ${n.color} overflow-hidden`}>
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:18px_18px]" />
                 <span className="absolute left-4 top-4 rounded-full bg-white/30 px-3 py-0.5 text-xs font-medium text-white backdrop-blur">{n.tag}</span>
@@ -179,95 +178,98 @@ function Index() {
                 <h3 className="mt-2 font-semibold text-slate-900 transition-colors group-hover:text-sky-600 line-clamp-2">{n.title}</h3>
                 <p className="mt-2 text-sm text-slate-500 line-clamp-2">{n.desc}</p>
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 热门场景 */}
       <section className="relative mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-10 animate-fade-in">
+        <Reveal variant="fade-up" className="mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Flame className="h-3.5 w-3.5" /> 热门场景
           </div>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">实时聚焦 · 高价值场景</h2>
-        </div>
+        </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {HOT_SCENES.map((s, i) => (
-            <Link key={s.name} to="/lab/plaza"
-              className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50 animate-fade-in"
-              style={{ animationDelay: `${i * 60}ms`, animationFillMode: "backwards" }}>
-              <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-10 transition-transform duration-500 group-hover:scale-150" />
-              <Boxes className="mb-3 h-6 w-6 text-sky-500" />
-              <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600">{s.name}</h3>
-              <p className="mt-1 text-xs text-slate-500">{s.domain}</p>
-              <div className="mt-4 flex flex-wrap gap-1.5">
-                {s.tags.map((t) => (
-                  <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
-                ))}
-              </div>
-            </Link>
+            <Reveal key={s.name} variant="scale" delay={i * 70}>
+              <Link to="/lab/plaza"
+                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
+                <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-10 transition-transform duration-500 group-hover:scale-150" />
+                <Boxes className="mb-3 h-6 w-6 text-sky-500" />
+                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600">{s.name}</h3>
+                <p className="mt-1 text-xs text-slate-500">{s.domain}</p>
+                <div className="mt-4 flex flex-wrap gap-1.5">
+                  {s.tags.map((t) => (
+                    <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
+                  ))}
+                </div>
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 资产总览 */}
       <section className="relative mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-10 animate-fade-in text-center">
+        <Reveal variant="fade-up" className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Database className="h-3.5 w-3.5" /> 组件 / 数据资产总览
           </div>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">沉淀能力 · 赋能场景</h2>
-        </div>
+        </Reveal>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
           {OVERVIEW.map((o, i) => (
-            <div key={o.label}
-              className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-5 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-200/50 animate-fade-in"
-              style={{ animationDelay: `${i * 60}ms`, animationFillMode: "backwards" }}>
+            <Reveal key={o.label} variant="fade-up" delay={i * 80}
+              className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-5 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-200/50">
               <div className={`absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gradient-to-br ${o.color} opacity-10 transition-transform duration-500 group-hover:scale-150`} />
               <o.icon className="mb-3 h-5 w-5 text-sky-500" />
-              <div className="bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-2xl font-bold text-transparent">{o.value}</div>
+              <div className="bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text text-2xl font-bold text-transparent">
+                <CountUp end={o.value} suffix={o.suffix} />
+              </div>
               <div className="mt-1 text-xs text-slate-500">{o.label}</div>
-            </div>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 专业服务 */}
       <section className="relative mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-10 animate-fade-in">
+        <Reveal variant="fade-up" className="mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Lightbulb className="h-3.5 w-3.5" /> 专业服务
           </div>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">场景创新全过程服务体系</h2>
           <p className="mt-2 text-slate-600">覆盖场景五大生命周期，提供端到端的专业服务。</p>
-        </div>
+        </Reveal>
         <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-5">
           {SERVICES.map((s, i) => (
-            <Link key={s.title} to="/promotion/lifecycle"
-              className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50 animate-fade-in"
-              style={{ animationDelay: `${i * 80}ms`, animationFillMode: "backwards" }}>
-              <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-110">
-                <s.icon className="h-6 w-6 text-white" />
-              </div>
-              <div className="text-xs font-mono text-sky-500">0{i + 1}</div>
-              <h3 className="mt-1 font-semibold text-slate-900 group-hover:text-sky-600">{s.title}</h3>
-              <p className="mt-2 text-sm text-slate-500">{s.desc}</p>
-              <ArrowRight className="absolute right-4 top-4 h-4 w-4 text-sky-400 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
-            </Link>
+            <Reveal key={s.title} variant="fade-up" delay={i * 100}>
+              <Link to="/promotion/lifecycle"
+                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
+                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-110">
+                  <s.icon className="h-6 w-6 text-white" />
+                </div>
+                <div className="text-xs font-mono text-sky-500">0{i + 1}</div>
+                <h3 className="mt-1 font-semibold text-slate-900 group-hover:text-sky-600">{s.title}</h3>
+                <p className="mt-2 text-sm text-slate-500">{s.desc}</p>
+                <ArrowRight className="absolute right-4 top-4 h-4 w-4 text-sky-400 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
+              </Link>
+            </Reveal>
           ))}
         </div>
       </section>
 
       {/* 生态圈 logo marquee */}
       <section className="relative mx-auto max-w-7xl px-6 py-16">
-        <div className="mb-8 animate-fade-in text-center">
+        <Reveal variant="fade-up" className="mb-8 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             创新中心生态圈
           </div>
           <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">汇聚伙伴 · 共建场景</h2>
-        </div>
-        <div className="relative overflow-hidden rounded-2xl border border-sky-100 bg-white/60 py-8 backdrop-blur [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+        </Reveal>
+        <Reveal variant="fade" className="relative overflow-hidden rounded-2xl border border-sky-100 bg-white/60 py-8 backdrop-blur [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
           <div className="flex w-max animate-marquee gap-12 px-6">
             {[...PARTNERS, ...PARTNERS].map((p, i) => (
               <div key={i} className="flex h-16 w-44 shrink-0 items-center justify-center gap-2 rounded-xl border border-sky-100 bg-white/80 px-4 text-sm font-semibold text-slate-700 shadow-sm">
@@ -278,8 +280,9 @@ function Index() {
               </div>
             ))}
           </div>
-        </div>
+        </Reveal>
       </section>
+
 
       <footer className="relative mt-12 border-t border-sky-100/80 bg-white/40 py-8 text-center text-xs text-slate-400 backdrop-blur">
         © 2026 数字孪生场景创新公共服务平台 · 场景创新，从这里开始
