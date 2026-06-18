@@ -4,6 +4,7 @@ import {
   Search, ArrowRight, Newspaper, Flame, Boxes, Database,
   Layers, ClipboardList, Lightbulb, Target, Rocket, Award,
 } from "lucide-react";
+import { Reveal, CountUp } from "@/components/Reveal";
 
 export const Route = createFileRoute("/")({
   head: () => ({
