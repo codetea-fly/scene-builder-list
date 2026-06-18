@@ -156,7 +156,7 @@ function Index() {
       <Hero />
 
       {/* 行业资讯 */}
-      <section id="news" className="relative mx-auto max-w-7xl px-6 py-20">
+      <section id="news" className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-20">
         <Reveal variant="fade-up" className="mb-10 flex items-end justify-between">
           <div>
             <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
@@ -184,7 +184,7 @@ function Index() {
       </section>
 
       {/* 热门场景 */}
-      <section className="relative mx-auto max-w-7xl px-6 py-16">
+      <section className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-16">
         <Reveal variant="fade-up" className="mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Flame className="h-3.5 w-3.5" /> 热门场景
@@ -212,7 +212,7 @@ function Index() {
       </section>
 
       {/* 资产总览 */}
-      <section className="relative mx-auto max-w-7xl px-6 py-16">
+      <section className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-16">
         <Reveal variant="fade-up" className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Database className="h-3.5 w-3.5" /> 组件 / 数据资产总览
@@ -235,7 +235,7 @@ function Index() {
       </section>
 
       {/* 专业服务 */}
-      <section className="relative mx-auto max-w-7xl px-6 py-16">
+      <section className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-16">
         <Reveal variant="fade-up" className="mb-10">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Lightbulb className="h-3.5 w-3.5" /> 专业服务
@@ -262,7 +262,7 @@ function Index() {
       </section>
 
       {/* 生态圈 logo marquee */}
-      <section className="relative mx-auto max-w-7xl px-6 py-16">
+      <section className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-16">
         <Reveal variant="fade-up" className="mb-8 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             创新中心生态圈

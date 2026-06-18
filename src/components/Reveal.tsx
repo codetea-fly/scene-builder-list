@@ -30,10 +30,10 @@ const initial: Record<Variant, string> = {
   scale: "opacity-0 scale-95",
   "fade-left": "opacity-0 -translate-x-8",
   "fade-right": "opacity-0 translate-x-8",
-  "slide-left": "opacity-0 -translate-x-24",
-  "slide-right": "opacity-0 translate-x-24",
-  "slide-up": "opacity-0 translate-y-20",
-  "slide-down": "opacity-0 -translate-y-20",
+  "slide-left": "-translate-x-[140%]",
+  "slide-right": "translate-x-[140%]",
+  "slide-up": "translate-y-[140%]",
+  "slide-down": "-translate-y-[140%]",
 };
 
 export function Reveal({
