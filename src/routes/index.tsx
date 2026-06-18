@@ -95,9 +95,10 @@ function HeroPointCloud() {
       {/* Perspective grid floor */}
       <div className="absolute inset-x-0 bottom-0 h-[80%] [perspective:800px]">
         <div
-          className="absolute inset-0 origin-bottom animate-gs-grid [transform:rotateX(68deg)_scale(1.4)] bg-[linear-gradient(to_right,rgba(14,165,233,0.7)_1.5px,transparent_1.5px),linear-gradient(to_bottom,rgba(37,99,235,0.7)_1.5px,transparent_1.5px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_top,black_30%,transparent_95%)]"
+          className="absolute inset-0 origin-bottom animate-gs-grid [transform:rotateX(64deg)_scale(1.4)_translateZ(0)] [backface-visibility:hidden] bg-[linear-gradient(to_right,rgba(14,165,233,0.7)_1.5px,transparent_1.5px),linear-gradient(to_bottom,rgba(37,99,235,0.7)_1.5px,transparent_1.5px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_top,black_25%,rgba(0,0,0,0.85)_45%,transparent_72%)]"
         />
       </div>
+
 
 
       {/* Orbiting ring */}
