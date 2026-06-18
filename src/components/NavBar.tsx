@@ -96,7 +96,8 @@ export function NavBar() {
     setOpen(label);
   };
   const leave = () => {
-    closeTimer.current = setTimeout(() => setOpen(null), 120);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(null), 220);
   };
 
   return (
@@ -121,6 +122,9 @@ export function NavBar() {
               onMouseLeave={leave}
             >
               <button
+                type="button"
+                onClick={() => setOpen((prev) => (prev === m.label ? null : m.label))}
+                onFocus={() => enter(m.label)}
                 className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
                   open === m.label
                     ? "bg-sky-50 text-sky-700"
@@ -137,7 +141,7 @@ export function NavBar() {
                       if ("leaves" in c) {
                         return (
                           <div key={c.label} className="px-2 py-1.5">
-                            <div className="px-2 pb-1 text-[11px] font-semibold uppercase tracking-wider text-sky-500">
+                            <div className="px-3 pb-1 text-sm font-semibold text-sky-600">
                               {c.label}
                             </div>
                             <div className="grid gap-0.5">
@@ -146,7 +150,7 @@ export function NavBar() {
                                   key={leaf.to}
                                   to={leaf.to}
                                   onClick={() => setOpen(null)}
-                                  className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
+                                  className="block rounded-lg px-3 py-2 pl-5 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
                                 >
                                   {leaf.label}
                                 </Link>
