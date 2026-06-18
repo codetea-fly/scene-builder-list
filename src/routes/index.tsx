@@ -167,7 +167,7 @@ function Index() {
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {NEWS.map((n, i) => (
-            <Reveal key={n.title} variant="fade-up" delay={i * 90} as="article"
+            <Reveal key={n.title} variant={i % 2 === 0 ? "slide-left" : "slide-right"} delay={i * 100} duration={850} as="article"
               className="group overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
               <div className={`relative h-32 bg-gradient-to-br ${n.color} overflow-hidden`}>
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:18px_18px]" />
