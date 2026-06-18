@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
+import { SceneBackground } from "../components/SceneBackground";
+import { NavBar } from "../components/NavBar";
 
 function NotFoundComponent() {
   return (
@@ -118,8 +120,11 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-      <Outlet />
+      <div className="relative min-h-screen text-slate-800">
+        <SceneBackground />
+        <NavBar />
+        <Outlet />
+      </div>
     </QueryClientProvider>
   );
 }
