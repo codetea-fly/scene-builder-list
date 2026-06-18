@@ -193,7 +193,7 @@ function Index() {
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {HOT_SCENES.map((s, i) => (
-            <Reveal key={s.name} variant="scale" delay={i * 70}>
+            <Reveal key={s.name} variant={i % 3 === 0 ? "slide-left" : i % 3 === 1 ? "slide-up" : "slide-right"} delay={i * 90} duration={900}>
               <Link to="/lab/plaza"
                 className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
                 <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-10 transition-transform duration-500 group-hover:scale-150" />
