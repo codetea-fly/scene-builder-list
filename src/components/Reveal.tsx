@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState, type CSSProperties, type ElementType, type ReactNode } from "react";
 
-type Variant = "fade-up" | "fade" | "scale" | "fade-left" | "fade-right";
+type Variant =
+  | "fade-up"
+  | "fade-down"
+  | "fade"
+  | "scale"
+  | "fade-left"
+  | "fade-right"
+  | "slide-left"
+  | "slide-right"
+  | "slide-up"
+  | "slide-down";
 
 interface RevealProps {
   children: ReactNode;
@@ -15,10 +25,15 @@ interface RevealProps {
 
 const initial: Record<Variant, string> = {
   "fade-up": "opacity-0 translate-y-8",
+  "fade-down": "opacity-0 -translate-y-8",
   fade: "opacity-0",
   scale: "opacity-0 scale-95",
   "fade-left": "opacity-0 -translate-x-8",
   "fade-right": "opacity-0 translate-x-8",
+  "slide-left": "opacity-0 -translate-x-24",
+  "slide-right": "opacity-0 translate-x-24",
+  "slide-up": "opacity-0 translate-y-20",
+  "slide-down": "opacity-0 -translate-y-20",
 };
 
 export function Reveal({

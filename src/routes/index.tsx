@@ -167,7 +167,7 @@ function Index() {
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {NEWS.map((n, i) => (
-            <Reveal key={n.title} variant="fade-up" delay={i * 90} as="article"
+            <Reveal key={n.title} variant={i % 2 === 0 ? "slide-left" : "slide-right"} delay={i * 100} duration={850} as="article"
               className="group overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
               <div className={`relative h-32 bg-gradient-to-br ${n.color} overflow-hidden`}>
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:18px_18px]" />
@@ -193,7 +193,7 @@ function Index() {
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {HOT_SCENES.map((s, i) => (
-            <Reveal key={s.name} variant="scale" delay={i * 70}>
+            <Reveal key={s.name} variant={i % 3 === 0 ? "slide-left" : i % 3 === 1 ? "slide-up" : "slide-right"} delay={i * 90} duration={900}>
               <Link to="/lab/plaza"
                 className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
                 <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-10 transition-transform duration-500 group-hover:scale-150" />
@@ -221,7 +221,7 @@ function Index() {
         </Reveal>
         <div className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-6">
           {OVERVIEW.map((o, i) => (
-            <Reveal key={o.label} variant="fade-up" delay={i * 80}
+            <Reveal key={o.label} variant={i % 2 === 0 ? "slide-down" : "slide-up"} delay={i * 90} duration={800}
               className="group relative overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-5 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-lg hover:shadow-sky-200/50">
               <div className={`absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gradient-to-br ${o.color} opacity-10 transition-transform duration-500 group-hover:scale-150`} />
               <o.icon className="mb-3 h-5 w-5 text-sky-500" />
@@ -245,7 +245,7 @@ function Index() {
         </Reveal>
         <div className="grid gap-5 md:grid-cols-3 lg:grid-cols-5">
           {SERVICES.map((s, i) => (
-            <Reveal key={s.title} variant="fade-up" delay={i * 100}>
+            <Reveal key={s.title} variant="slide-right" delay={i * 130} duration={900}>
               <Link to="/promotion/lifecycle"
                 className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
                 <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-110">
