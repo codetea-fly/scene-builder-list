@@ -184,8 +184,8 @@
   to   { transform: rotate(360deg); }
 }
 @keyframes gs-grid {
-  0%, 100% { opacity: 0.35; }
-  50% { opacity: 0.75; }
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 0 -64px, 0 -64px; }
 }
 
 @utility animate-gs-drift {
@@ -198,7 +198,7 @@
   animation: gs-orbit 40s linear infinite;
 }
 @utility animate-gs-grid {
-  animation: gs-grid 5s ease-in-out infinite;
+  animation: gs-grid 2.5s linear infinite;
 }
 
 
