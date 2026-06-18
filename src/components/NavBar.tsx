@@ -164,7 +164,7 @@ export function NavBar() {
                           key={c.to}
                           to={c.to}
                           onClick={() => setOpen(null)}
-                          className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
+                          className="block rounded-lg px-3 py-2 text-sm font-semibold text-sky-600 transition-colors hover:bg-sky-50 hover:text-sky-700"
                         >
                           {c.label}
                         </Link>
