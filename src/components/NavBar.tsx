@@ -96,7 +96,8 @@ export function NavBar() {
     setOpen(label);
   };
   const leave = () => {
-    closeTimer.current = setTimeout(() => setOpen(null), 120);
+    if (closeTimer.current) clearTimeout(closeTimer.current);
+    closeTimer.current = setTimeout(() => setOpen(null), 220);
   };
 
   return (
