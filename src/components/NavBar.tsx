@@ -150,7 +150,7 @@ export function NavBar() {
                                   key={leaf.to}
                                   to={leaf.to}
                                   onClick={() => setOpen(null)}
-                                  className="block rounded-lg px-3 py-2 pl-5 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
+                                  className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
                                 >
                                   {leaf.label}
                                 </Link>
