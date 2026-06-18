@@ -12,9 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PromotionLifecycleRouteImport } from './routes/promotion.lifecycle'
 import { Route as LabPlazaRouteImport } from './routes/lab.plaza'
+import { Route as DemoOnlineRouteImport } from './routes/demo.online'
 import { Route as AtlasOverviewRouteImport } from './routes/atlas.overview'
 import { Route as AtlasDemandsRouteImport } from './routes/atlas.demands'
 import { Route as LabPlazaIdRouteImport } from './routes/lab.plaza.$id'
+import { Route as LabDataTwinsRouteImport } from './routes/lab.data.twins'
+import { Route as LabDataModelsRouteImport } from './routes/lab.data.models'
+import { Route as LabDataDatasetsRouteImport } from './routes/lab.data.datasets'
 import { Route as LabCapabilityPlatformsRouteImport } from './routes/lab.capability.platforms'
 import { Route as LabCapabilityHardwareRouteImport } from './routes/lab.capability.hardware'
 import { Route as LabCapabilityExperienceRouteImport } from './routes/lab.capability.experience'
@@ -36,6 +40,11 @@ const LabPlazaRoute = LabPlazaRouteImport.update({
   path: '/lab/plaza',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DemoOnlineRoute = DemoOnlineRouteImport.update({
+  id: '/demo/online',
+  path: '/demo/online',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AtlasOverviewRoute = AtlasOverviewRouteImport.update({
   id: '/atlas/overview',
   path: '/atlas/overview',
@@ -50,6 +59,21 @@ const LabPlazaIdRoute = LabPlazaIdRouteImport.update({
   id: '/$id',
   path: '/$id',
   getParentRoute: () => LabPlazaRoute,
+} as any)
+const LabDataTwinsRoute = LabDataTwinsRouteImport.update({
+  id: '/lab/data/twins',
+  path: '/lab/data/twins',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabDataModelsRoute = LabDataModelsRouteImport.update({
+  id: '/lab/data/models',
+  path: '/lab/data/models',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabDataDatasetsRoute = LabDataDatasetsRouteImport.update({
+  id: '/lab/data/datasets',
+  path: '/lab/data/datasets',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LabCapabilityPlatformsRoute = LabCapabilityPlatformsRouteImport.update({
   id: '/lab/capability/platforms',
@@ -81,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/atlas/demands': typeof AtlasDemandsRoute
   '/atlas/overview': typeof AtlasOverviewRoute
+  '/demo/online': typeof DemoOnlineRoute
   '/lab/plaza': typeof LabPlazaRouteWithChildren
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/lab/capability/ai-twin': typeof LabCapabilityAiTwinRoute
@@ -88,12 +113,16 @@ export interface FileRoutesByFullPath {
   '/lab/capability/experience': typeof LabCapabilityExperienceRoute
   '/lab/capability/hardware': typeof LabCapabilityHardwareRoute
   '/lab/capability/platforms': typeof LabCapabilityPlatformsRoute
+  '/lab/data/datasets': typeof LabDataDatasetsRoute
+  '/lab/data/models': typeof LabDataModelsRoute
+  '/lab/data/twins': typeof LabDataTwinsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/atlas/demands': typeof AtlasDemandsRoute
   '/atlas/overview': typeof AtlasOverviewRoute
+  '/demo/online': typeof DemoOnlineRoute
   '/lab/plaza': typeof LabPlazaRouteWithChildren
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/lab/capability/ai-twin': typeof LabCapabilityAiTwinRoute
@@ -101,6 +130,9 @@ export interface FileRoutesByTo {
   '/lab/capability/experience': typeof LabCapabilityExperienceRoute
   '/lab/capability/hardware': typeof LabCapabilityHardwareRoute
   '/lab/capability/platforms': typeof LabCapabilityPlatformsRoute
+  '/lab/data/datasets': typeof LabDataDatasetsRoute
+  '/lab/data/models': typeof LabDataModelsRoute
+  '/lab/data/twins': typeof LabDataTwinsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRoutesById {
@@ -108,6 +140,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/atlas/demands': typeof AtlasDemandsRoute
   '/atlas/overview': typeof AtlasOverviewRoute
+  '/demo/online': typeof DemoOnlineRoute
   '/lab/plaza': typeof LabPlazaRouteWithChildren
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/lab/capability/ai-twin': typeof LabCapabilityAiTwinRoute
@@ -115,6 +148,9 @@ export interface FileRoutesById {
   '/lab/capability/experience': typeof LabCapabilityExperienceRoute
   '/lab/capability/hardware': typeof LabCapabilityHardwareRoute
   '/lab/capability/platforms': typeof LabCapabilityPlatformsRoute
+  '/lab/data/datasets': typeof LabDataDatasetsRoute
+  '/lab/data/models': typeof LabDataModelsRoute
+  '/lab/data/twins': typeof LabDataTwinsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRouteTypes {
@@ -123,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/atlas/demands'
     | '/atlas/overview'
+    | '/demo/online'
     | '/lab/plaza'
     | '/promotion/lifecycle'
     | '/lab/capability/ai-twin'
@@ -130,12 +167,16 @@ export interface FileRouteTypes {
     | '/lab/capability/experience'
     | '/lab/capability/hardware'
     | '/lab/capability/platforms'
+    | '/lab/data/datasets'
+    | '/lab/data/models'
+    | '/lab/data/twins'
     | '/lab/plaza/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/atlas/demands'
     | '/atlas/overview'
+    | '/demo/online'
     | '/lab/plaza'
     | '/promotion/lifecycle'
     | '/lab/capability/ai-twin'
@@ -143,12 +184,16 @@ export interface FileRouteTypes {
     | '/lab/capability/experience'
     | '/lab/capability/hardware'
     | '/lab/capability/platforms'
+    | '/lab/data/datasets'
+    | '/lab/data/models'
+    | '/lab/data/twins'
     | '/lab/plaza/$id'
   id:
     | '__root__'
     | '/'
     | '/atlas/demands'
     | '/atlas/overview'
+    | '/demo/online'
     | '/lab/plaza'
     | '/promotion/lifecycle'
     | '/lab/capability/ai-twin'
@@ -156,6 +201,9 @@ export interface FileRouteTypes {
     | '/lab/capability/experience'
     | '/lab/capability/hardware'
     | '/lab/capability/platforms'
+    | '/lab/data/datasets'
+    | '/lab/data/models'
+    | '/lab/data/twins'
     | '/lab/plaza/$id'
   fileRoutesById: FileRoutesById
 }
@@ -163,6 +211,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AtlasDemandsRoute: typeof AtlasDemandsRoute
   AtlasOverviewRoute: typeof AtlasOverviewRoute
+  DemoOnlineRoute: typeof DemoOnlineRoute
   LabPlazaRoute: typeof LabPlazaRouteWithChildren
   PromotionLifecycleRoute: typeof PromotionLifecycleRoute
   LabCapabilityAiTwinRoute: typeof LabCapabilityAiTwinRoute
@@ -170,6 +219,9 @@ export interface RootRouteChildren {
   LabCapabilityExperienceRoute: typeof LabCapabilityExperienceRoute
   LabCapabilityHardwareRoute: typeof LabCapabilityHardwareRoute
   LabCapabilityPlatformsRoute: typeof LabCapabilityPlatformsRoute
+  LabDataDatasetsRoute: typeof LabDataDatasetsRoute
+  LabDataModelsRoute: typeof LabDataModelsRoute
+  LabDataTwinsRoute: typeof LabDataTwinsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -195,6 +247,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabPlazaRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/demo/online': {
+      id: '/demo/online'
+      path: '/demo/online'
+      fullPath: '/demo/online'
+      preLoaderRoute: typeof DemoOnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/atlas/overview': {
       id: '/atlas/overview'
       path: '/atlas/overview'
@@ -215,6 +274,27 @@ declare module '@tanstack/react-router' {
       fullPath: '/lab/plaza/$id'
       preLoaderRoute: typeof LabPlazaIdRouteImport
       parentRoute: typeof LabPlazaRoute
+    }
+    '/lab/data/twins': {
+      id: '/lab/data/twins'
+      path: '/lab/data/twins'
+      fullPath: '/lab/data/twins'
+      preLoaderRoute: typeof LabDataTwinsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/data/models': {
+      id: '/lab/data/models'
+      path: '/lab/data/models'
+      fullPath: '/lab/data/models'
+      preLoaderRoute: typeof LabDataModelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/data/datasets': {
+      id: '/lab/data/datasets'
+      path: '/lab/data/datasets'
+      fullPath: '/lab/data/datasets'
+      preLoaderRoute: typeof LabDataDatasetsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/lab/capability/platforms': {
       id: '/lab/capability/platforms'
@@ -270,6 +350,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtlasDemandsRoute: AtlasDemandsRoute,
   AtlasOverviewRoute: AtlasOverviewRoute,
+  DemoOnlineRoute: DemoOnlineRoute,
   LabPlazaRoute: LabPlazaRouteWithChildren,
   PromotionLifecycleRoute: PromotionLifecycleRoute,
   LabCapabilityAiTwinRoute: LabCapabilityAiTwinRoute,
@@ -277,7 +358,20 @@ const rootRouteChildren: RootRouteChildren = {
   LabCapabilityExperienceRoute: LabCapabilityExperienceRoute,
   LabCapabilityHardwareRoute: LabCapabilityHardwareRoute,
   LabCapabilityPlatformsRoute: LabCapabilityPlatformsRoute,
+  LabDataDatasetsRoute: LabDataDatasetsRoute,
+  LabDataModelsRoute: LabDataModelsRoute,
+  LabDataTwinsRoute: LabDataTwinsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
