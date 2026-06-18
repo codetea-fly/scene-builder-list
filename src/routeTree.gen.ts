@@ -10,33 +10,101 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PromotionLifecycleRouteImport } from './routes/promotion.lifecycle'
+import { Route as LabPlazaRouteImport } from './routes/lab.plaza'
+import { Route as AtlasOverviewRouteImport } from './routes/atlas.overview'
+import { Route as AtlasDemandsRouteImport } from './routes/atlas.demands'
+import { Route as LabPlazaIdRouteImport } from './routes/lab.plaza.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromotionLifecycleRoute = PromotionLifecycleRouteImport.update({
+  id: '/promotion/lifecycle',
+  path: '/promotion/lifecycle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabPlazaRoute = LabPlazaRouteImport.update({
+  id: '/lab/plaza',
+  path: '/lab/plaza',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasOverviewRoute = AtlasOverviewRouteImport.update({
+  id: '/atlas/overview',
+  path: '/atlas/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasDemandsRoute = AtlasDemandsRouteImport.update({
+  id: '/atlas/demands',
+  path: '/atlas/demands',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabPlazaIdRoute = LabPlazaIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => LabPlazaRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas/demands': typeof AtlasDemandsRoute
+  '/atlas/overview': typeof AtlasOverviewRoute
+  '/lab/plaza': typeof LabPlazaRouteWithChildren
+  '/promotion/lifecycle': typeof PromotionLifecycleRoute
+  '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas/demands': typeof AtlasDemandsRoute
+  '/atlas/overview': typeof AtlasOverviewRoute
+  '/lab/plaza': typeof LabPlazaRouteWithChildren
+  '/promotion/lifecycle': typeof PromotionLifecycleRoute
+  '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas/demands': typeof AtlasDemandsRoute
+  '/atlas/overview': typeof AtlasOverviewRoute
+  '/lab/plaza': typeof LabPlazaRouteWithChildren
+  '/promotion/lifecycle': typeof PromotionLifecycleRoute
+  '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atlas/demands'
+    | '/atlas/overview'
+    | '/lab/plaza'
+    | '/promotion/lifecycle'
+    | '/lab/plaza/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atlas/demands'
+    | '/atlas/overview'
+    | '/lab/plaza'
+    | '/promotion/lifecycle'
+    | '/lab/plaza/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/atlas/demands'
+    | '/atlas/overview'
+    | '/lab/plaza'
+    | '/promotion/lifecycle'
+    | '/lab/plaza/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasDemandsRoute: typeof AtlasDemandsRoute
+  AtlasOverviewRoute: typeof AtlasOverviewRoute
+  LabPlazaRoute: typeof LabPlazaRouteWithChildren
+  PromotionLifecycleRoute: typeof PromotionLifecycleRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +116,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/promotion/lifecycle': {
+      id: '/promotion/lifecycle'
+      path: '/promotion/lifecycle'
+      fullPath: '/promotion/lifecycle'
+      preLoaderRoute: typeof PromotionLifecycleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/plaza': {
+      id: '/lab/plaza'
+      path: '/lab/plaza'
+      fullPath: '/lab/plaza'
+      preLoaderRoute: typeof LabPlazaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas/overview': {
+      id: '/atlas/overview'
+      path: '/atlas/overview'
+      fullPath: '/atlas/overview'
+      preLoaderRoute: typeof AtlasOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas/demands': {
+      id: '/atlas/demands'
+      path: '/atlas/demands'
+      fullPath: '/atlas/demands'
+      preLoaderRoute: typeof AtlasDemandsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/plaza/$id': {
+      id: '/lab/plaza/$id'
+      path: '/$id'
+      fullPath: '/lab/plaza/$id'
+      preLoaderRoute: typeof LabPlazaIdRouteImport
+      parentRoute: typeof LabPlazaRoute
+    }
   }
 }
 
+interface LabPlazaRouteChildren {
+  LabPlazaIdRoute: typeof LabPlazaIdRoute
+}
+
+const LabPlazaRouteChildren: LabPlazaRouteChildren = {
+  LabPlazaIdRoute: LabPlazaIdRoute,
+}
+
+const LabPlazaRouteWithChildren = LabPlazaRoute._addFileChildren(
+  LabPlazaRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasDemandsRoute: AtlasDemandsRoute,
+  AtlasOverviewRoute: AtlasOverviewRoute,
+  LabPlazaRoute: LabPlazaRouteWithChildren,
+  PromotionLifecycleRoute: PromotionLifecycleRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
