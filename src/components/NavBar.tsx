@@ -160,14 +160,15 @@ export function NavBar() {
                         );
                       }
                       return (
-                        <Link
-                          key={c.to}
-                          to={c.to}
-                          onClick={() => setOpen(null)}
-                          className="block rounded-lg px-3 py-2 text-sm font-semibold text-sky-600 transition-colors hover:bg-sky-50 hover:text-sky-700"
-                        >
-                          {c.label}
-                        </Link>
+                        <div key={c.to} className="px-2 py-1.5">
+                          <Link
+                            to={c.to}
+                            onClick={() => setOpen(null)}
+                            className="block rounded-lg px-3 py-1 text-sm font-semibold text-sky-600 transition-colors hover:bg-sky-50 hover:text-sky-700"
+                          >
+                            {c.label}
+                          </Link>
+                        </div>
                       );
                     })}
                   </div>
