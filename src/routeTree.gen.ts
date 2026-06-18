@@ -10,33 +10,379 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PromotionMaturityRouteImport } from './routes/promotion.maturity'
+import { Route as PromotionLifecycleRouteImport } from './routes/promotion.lifecycle'
+import { Route as PromotionConsultingRouteImport } from './routes/promotion.consulting'
+import { Route as PromotionCollectionRouteImport } from './routes/promotion.collection'
+import { Route as LabPlazaRouteImport } from './routes/lab.plaza'
+import { Route as DemoSipRouteImport } from './routes/demo.sip'
+import { Route as DemoOnlineRouteImport } from './routes/demo.online'
+import { Route as DemoCenterRouteImport } from './routes/demo.center'
+import { Route as CommunityProductSystemRouteImport } from './routes/community.product-system'
+import { Route as AtlasOverviewRouteImport } from './routes/atlas.overview'
+import { Route as AtlasDemandsRouteImport } from './routes/atlas.demands'
+import { Route as LabPlazaIdRouteImport } from './routes/lab.plaza.$id'
+import { Route as LabDataTwinsRouteImport } from './routes/lab.data.twins'
+import { Route as LabDataModelsRouteImport } from './routes/lab.data.models'
+import { Route as LabDataDatasetsRouteImport } from './routes/lab.data.datasets'
+import { Route as LabCapabilityPlatformsRouteImport } from './routes/lab.capability.platforms'
+import { Route as LabCapabilityHardwareRouteImport } from './routes/lab.capability.hardware'
+import { Route as LabCapabilityExperienceRouteImport } from './routes/lab.capability.experience'
+import { Route as LabCapabilityComponentsRouteImport } from './routes/lab.capability.components'
+import { Route as LabCapabilityAiTwinRouteImport } from './routes/lab.capability.ai-twin'
+import { Route as CommunityLibraryStandardsRouteImport } from './routes/community.library.standards'
+import { Route as CommunityLibrarySolutionsRouteImport } from './routes/community.library.solutions'
+import { Route as CommunityLibraryOpensourceRouteImport } from './routes/community.library.opensource'
+import { Route as CommunityLibraryCasesRouteImport } from './routes/community.library.cases'
+import { Route as CommunityEcosystemExpertsRouteImport } from './routes/community.ecosystem.experts'
+import { Route as CommunityEcosystemEventsRouteImport } from './routes/community.ecosystem.events'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromotionMaturityRoute = PromotionMaturityRouteImport.update({
+  id: '/promotion/maturity',
+  path: '/promotion/maturity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromotionLifecycleRoute = PromotionLifecycleRouteImport.update({
+  id: '/promotion/lifecycle',
+  path: '/promotion/lifecycle',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromotionConsultingRoute = PromotionConsultingRouteImport.update({
+  id: '/promotion/consulting',
+  path: '/promotion/consulting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromotionCollectionRoute = PromotionCollectionRouteImport.update({
+  id: '/promotion/collection',
+  path: '/promotion/collection',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabPlazaRoute = LabPlazaRouteImport.update({
+  id: '/lab/plaza',
+  path: '/lab/plaza',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoSipRoute = DemoSipRouteImport.update({
+  id: '/demo/sip',
+  path: '/demo/sip',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoOnlineRoute = DemoOnlineRouteImport.update({
+  id: '/demo/online',
+  path: '/demo/online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DemoCenterRoute = DemoCenterRouteImport.update({
+  id: '/demo/center',
+  path: '/demo/center',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityProductSystemRoute = CommunityProductSystemRouteImport.update({
+  id: '/community/product-system',
+  path: '/community/product-system',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasOverviewRoute = AtlasOverviewRouteImport.update({
+  id: '/atlas/overview',
+  path: '/atlas/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AtlasDemandsRoute = AtlasDemandsRouteImport.update({
+  id: '/atlas/demands',
+  path: '/atlas/demands',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabPlazaIdRoute = LabPlazaIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => LabPlazaRoute,
+} as any)
+const LabDataTwinsRoute = LabDataTwinsRouteImport.update({
+  id: '/lab/data/twins',
+  path: '/lab/data/twins',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabDataModelsRoute = LabDataModelsRouteImport.update({
+  id: '/lab/data/models',
+  path: '/lab/data/models',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabDataDatasetsRoute = LabDataDatasetsRouteImport.update({
+  id: '/lab/data/datasets',
+  path: '/lab/data/datasets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabCapabilityPlatformsRoute = LabCapabilityPlatformsRouteImport.update({
+  id: '/lab/capability/platforms',
+  path: '/lab/capability/platforms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabCapabilityHardwareRoute = LabCapabilityHardwareRouteImport.update({
+  id: '/lab/capability/hardware',
+  path: '/lab/capability/hardware',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabCapabilityExperienceRoute = LabCapabilityExperienceRouteImport.update({
+  id: '/lab/capability/experience',
+  path: '/lab/capability/experience',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabCapabilityComponentsRoute = LabCapabilityComponentsRouteImport.update({
+  id: '/lab/capability/components',
+  path: '/lab/capability/components',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabCapabilityAiTwinRoute = LabCapabilityAiTwinRouteImport.update({
+  id: '/lab/capability/ai-twin',
+  path: '/lab/capability/ai-twin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityLibraryStandardsRoute =
+  CommunityLibraryStandardsRouteImport.update({
+    id: '/community/library/standards',
+    path: '/community/library/standards',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CommunityLibrarySolutionsRoute =
+  CommunityLibrarySolutionsRouteImport.update({
+    id: '/community/library/solutions',
+    path: '/community/library/solutions',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CommunityLibraryOpensourceRoute =
+  CommunityLibraryOpensourceRouteImport.update({
+    id: '/community/library/opensource',
+    path: '/community/library/opensource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CommunityLibraryCasesRoute = CommunityLibraryCasesRouteImport.update({
+  id: '/community/library/cases',
+  path: '/community/library/cases',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommunityEcosystemExpertsRoute =
+  CommunityEcosystemExpertsRouteImport.update({
+    id: '/community/ecosystem/experts',
+    path: '/community/ecosystem/experts',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const CommunityEcosystemEventsRoute =
+  CommunityEcosystemEventsRouteImport.update({
+    id: '/community/ecosystem/events',
+    path: '/community/ecosystem/events',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/atlas/demands': typeof AtlasDemandsRoute
+  '/atlas/overview': typeof AtlasOverviewRoute
+  '/community/product-system': typeof CommunityProductSystemRoute
+  '/demo/center': typeof DemoCenterRoute
+  '/demo/online': typeof DemoOnlineRoute
+  '/demo/sip': typeof DemoSipRoute
+  '/lab/plaza': typeof LabPlazaRouteWithChildren
+  '/promotion/collection': typeof PromotionCollectionRoute
+  '/promotion/consulting': typeof PromotionConsultingRoute
+  '/promotion/lifecycle': typeof PromotionLifecycleRoute
+  '/promotion/maturity': typeof PromotionMaturityRoute
+  '/community/ecosystem/events': typeof CommunityEcosystemEventsRoute
+  '/community/ecosystem/experts': typeof CommunityEcosystemExpertsRoute
+  '/community/library/cases': typeof CommunityLibraryCasesRoute
+  '/community/library/opensource': typeof CommunityLibraryOpensourceRoute
+  '/community/library/solutions': typeof CommunityLibrarySolutionsRoute
+  '/community/library/standards': typeof CommunityLibraryStandardsRoute
+  '/lab/capability/ai-twin': typeof LabCapabilityAiTwinRoute
+  '/lab/capability/components': typeof LabCapabilityComponentsRoute
+  '/lab/capability/experience': typeof LabCapabilityExperienceRoute
+  '/lab/capability/hardware': typeof LabCapabilityHardwareRoute
+  '/lab/capability/platforms': typeof LabCapabilityPlatformsRoute
+  '/lab/data/datasets': typeof LabDataDatasetsRoute
+  '/lab/data/models': typeof LabDataModelsRoute
+  '/lab/data/twins': typeof LabDataTwinsRoute
+  '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/atlas/demands': typeof AtlasDemandsRoute
+  '/atlas/overview': typeof AtlasOverviewRoute
+  '/community/product-system': typeof CommunityProductSystemRoute
+  '/demo/center': typeof DemoCenterRoute
+  '/demo/online': typeof DemoOnlineRoute
+  '/demo/sip': typeof DemoSipRoute
+  '/lab/plaza': typeof LabPlazaRouteWithChildren
+  '/promotion/collection': typeof PromotionCollectionRoute
+  '/promotion/consulting': typeof PromotionConsultingRoute
+  '/promotion/lifecycle': typeof PromotionLifecycleRoute
+  '/promotion/maturity': typeof PromotionMaturityRoute
+  '/community/ecosystem/events': typeof CommunityEcosystemEventsRoute
+  '/community/ecosystem/experts': typeof CommunityEcosystemExpertsRoute
+  '/community/library/cases': typeof CommunityLibraryCasesRoute
+  '/community/library/opensource': typeof CommunityLibraryOpensourceRoute
+  '/community/library/solutions': typeof CommunityLibrarySolutionsRoute
+  '/community/library/standards': typeof CommunityLibraryStandardsRoute
+  '/lab/capability/ai-twin': typeof LabCapabilityAiTwinRoute
+  '/lab/capability/components': typeof LabCapabilityComponentsRoute
+  '/lab/capability/experience': typeof LabCapabilityExperienceRoute
+  '/lab/capability/hardware': typeof LabCapabilityHardwareRoute
+  '/lab/capability/platforms': typeof LabCapabilityPlatformsRoute
+  '/lab/data/datasets': typeof LabDataDatasetsRoute
+  '/lab/data/models': typeof LabDataModelsRoute
+  '/lab/data/twins': typeof LabDataTwinsRoute
+  '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/atlas/demands': typeof AtlasDemandsRoute
+  '/atlas/overview': typeof AtlasOverviewRoute
+  '/community/product-system': typeof CommunityProductSystemRoute
+  '/demo/center': typeof DemoCenterRoute
+  '/demo/online': typeof DemoOnlineRoute
+  '/demo/sip': typeof DemoSipRoute
+  '/lab/plaza': typeof LabPlazaRouteWithChildren
+  '/promotion/collection': typeof PromotionCollectionRoute
+  '/promotion/consulting': typeof PromotionConsultingRoute
+  '/promotion/lifecycle': typeof PromotionLifecycleRoute
+  '/promotion/maturity': typeof PromotionMaturityRoute
+  '/community/ecosystem/events': typeof CommunityEcosystemEventsRoute
+  '/community/ecosystem/experts': typeof CommunityEcosystemExpertsRoute
+  '/community/library/cases': typeof CommunityLibraryCasesRoute
+  '/community/library/opensource': typeof CommunityLibraryOpensourceRoute
+  '/community/library/solutions': typeof CommunityLibrarySolutionsRoute
+  '/community/library/standards': typeof CommunityLibraryStandardsRoute
+  '/lab/capability/ai-twin': typeof LabCapabilityAiTwinRoute
+  '/lab/capability/components': typeof LabCapabilityComponentsRoute
+  '/lab/capability/experience': typeof LabCapabilityExperienceRoute
+  '/lab/capability/hardware': typeof LabCapabilityHardwareRoute
+  '/lab/capability/platforms': typeof LabCapabilityPlatformsRoute
+  '/lab/data/datasets': typeof LabDataDatasetsRoute
+  '/lab/data/models': typeof LabDataModelsRoute
+  '/lab/data/twins': typeof LabDataTwinsRoute
+  '/lab/plaza/$id': typeof LabPlazaIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/atlas/demands'
+    | '/atlas/overview'
+    | '/community/product-system'
+    | '/demo/center'
+    | '/demo/online'
+    | '/demo/sip'
+    | '/lab/plaza'
+    | '/promotion/collection'
+    | '/promotion/consulting'
+    | '/promotion/lifecycle'
+    | '/promotion/maturity'
+    | '/community/ecosystem/events'
+    | '/community/ecosystem/experts'
+    | '/community/library/cases'
+    | '/community/library/opensource'
+    | '/community/library/solutions'
+    | '/community/library/standards'
+    | '/lab/capability/ai-twin'
+    | '/lab/capability/components'
+    | '/lab/capability/experience'
+    | '/lab/capability/hardware'
+    | '/lab/capability/platforms'
+    | '/lab/data/datasets'
+    | '/lab/data/models'
+    | '/lab/data/twins'
+    | '/lab/plaza/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/atlas/demands'
+    | '/atlas/overview'
+    | '/community/product-system'
+    | '/demo/center'
+    | '/demo/online'
+    | '/demo/sip'
+    | '/lab/plaza'
+    | '/promotion/collection'
+    | '/promotion/consulting'
+    | '/promotion/lifecycle'
+    | '/promotion/maturity'
+    | '/community/ecosystem/events'
+    | '/community/ecosystem/experts'
+    | '/community/library/cases'
+    | '/community/library/opensource'
+    | '/community/library/solutions'
+    | '/community/library/standards'
+    | '/lab/capability/ai-twin'
+    | '/lab/capability/components'
+    | '/lab/capability/experience'
+    | '/lab/capability/hardware'
+    | '/lab/capability/platforms'
+    | '/lab/data/datasets'
+    | '/lab/data/models'
+    | '/lab/data/twins'
+    | '/lab/plaza/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/atlas/demands'
+    | '/atlas/overview'
+    | '/community/product-system'
+    | '/demo/center'
+    | '/demo/online'
+    | '/demo/sip'
+    | '/lab/plaza'
+    | '/promotion/collection'
+    | '/promotion/consulting'
+    | '/promotion/lifecycle'
+    | '/promotion/maturity'
+    | '/community/ecosystem/events'
+    | '/community/ecosystem/experts'
+    | '/community/library/cases'
+    | '/community/library/opensource'
+    | '/community/library/solutions'
+    | '/community/library/standards'
+    | '/lab/capability/ai-twin'
+    | '/lab/capability/components'
+    | '/lab/capability/experience'
+    | '/lab/capability/hardware'
+    | '/lab/capability/platforms'
+    | '/lab/data/datasets'
+    | '/lab/data/models'
+    | '/lab/data/twins'
+    | '/lab/plaza/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AtlasDemandsRoute: typeof AtlasDemandsRoute
+  AtlasOverviewRoute: typeof AtlasOverviewRoute
+  CommunityProductSystemRoute: typeof CommunityProductSystemRoute
+  DemoCenterRoute: typeof DemoCenterRoute
+  DemoOnlineRoute: typeof DemoOnlineRoute
+  DemoSipRoute: typeof DemoSipRoute
+  LabPlazaRoute: typeof LabPlazaRouteWithChildren
+  PromotionCollectionRoute: typeof PromotionCollectionRoute
+  PromotionConsultingRoute: typeof PromotionConsultingRoute
+  PromotionLifecycleRoute: typeof PromotionLifecycleRoute
+  PromotionMaturityRoute: typeof PromotionMaturityRoute
+  CommunityEcosystemEventsRoute: typeof CommunityEcosystemEventsRoute
+  CommunityEcosystemExpertsRoute: typeof CommunityEcosystemExpertsRoute
+  CommunityLibraryCasesRoute: typeof CommunityLibraryCasesRoute
+  CommunityLibraryOpensourceRoute: typeof CommunityLibraryOpensourceRoute
+  CommunityLibrarySolutionsRoute: typeof CommunityLibrarySolutionsRoute
+  CommunityLibraryStandardsRoute: typeof CommunityLibraryStandardsRoute
+  LabCapabilityAiTwinRoute: typeof LabCapabilityAiTwinRoute
+  LabCapabilityComponentsRoute: typeof LabCapabilityComponentsRoute
+  LabCapabilityExperienceRoute: typeof LabCapabilityExperienceRoute
+  LabCapabilityHardwareRoute: typeof LabCapabilityHardwareRoute
+  LabCapabilityPlatformsRoute: typeof LabCapabilityPlatformsRoute
+  LabDataDatasetsRoute: typeof LabDataDatasetsRoute
+  LabDataModelsRoute: typeof LabDataModelsRoute
+  LabDataTwinsRoute: typeof LabDataTwinsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,22 +394,231 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/promotion/maturity': {
+      id: '/promotion/maturity'
+      path: '/promotion/maturity'
+      fullPath: '/promotion/maturity'
+      preLoaderRoute: typeof PromotionMaturityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/promotion/lifecycle': {
+      id: '/promotion/lifecycle'
+      path: '/promotion/lifecycle'
+      fullPath: '/promotion/lifecycle'
+      preLoaderRoute: typeof PromotionLifecycleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/promotion/consulting': {
+      id: '/promotion/consulting'
+      path: '/promotion/consulting'
+      fullPath: '/promotion/consulting'
+      preLoaderRoute: typeof PromotionConsultingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/promotion/collection': {
+      id: '/promotion/collection'
+      path: '/promotion/collection'
+      fullPath: '/promotion/collection'
+      preLoaderRoute: typeof PromotionCollectionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/plaza': {
+      id: '/lab/plaza'
+      path: '/lab/plaza'
+      fullPath: '/lab/plaza'
+      preLoaderRoute: typeof LabPlazaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/sip': {
+      id: '/demo/sip'
+      path: '/demo/sip'
+      fullPath: '/demo/sip'
+      preLoaderRoute: typeof DemoSipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/online': {
+      id: '/demo/online'
+      path: '/demo/online'
+      fullPath: '/demo/online'
+      preLoaderRoute: typeof DemoOnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/demo/center': {
+      id: '/demo/center'
+      path: '/demo/center'
+      fullPath: '/demo/center'
+      preLoaderRoute: typeof DemoCenterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/product-system': {
+      id: '/community/product-system'
+      path: '/community/product-system'
+      fullPath: '/community/product-system'
+      preLoaderRoute: typeof CommunityProductSystemRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas/overview': {
+      id: '/atlas/overview'
+      path: '/atlas/overview'
+      fullPath: '/atlas/overview'
+      preLoaderRoute: typeof AtlasOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/atlas/demands': {
+      id: '/atlas/demands'
+      path: '/atlas/demands'
+      fullPath: '/atlas/demands'
+      preLoaderRoute: typeof AtlasDemandsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/plaza/$id': {
+      id: '/lab/plaza/$id'
+      path: '/$id'
+      fullPath: '/lab/plaza/$id'
+      preLoaderRoute: typeof LabPlazaIdRouteImport
+      parentRoute: typeof LabPlazaRoute
+    }
+    '/lab/data/twins': {
+      id: '/lab/data/twins'
+      path: '/lab/data/twins'
+      fullPath: '/lab/data/twins'
+      preLoaderRoute: typeof LabDataTwinsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/data/models': {
+      id: '/lab/data/models'
+      path: '/lab/data/models'
+      fullPath: '/lab/data/models'
+      preLoaderRoute: typeof LabDataModelsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/data/datasets': {
+      id: '/lab/data/datasets'
+      path: '/lab/data/datasets'
+      fullPath: '/lab/data/datasets'
+      preLoaderRoute: typeof LabDataDatasetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/platforms': {
+      id: '/lab/capability/platforms'
+      path: '/lab/capability/platforms'
+      fullPath: '/lab/capability/platforms'
+      preLoaderRoute: typeof LabCapabilityPlatformsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/hardware': {
+      id: '/lab/capability/hardware'
+      path: '/lab/capability/hardware'
+      fullPath: '/lab/capability/hardware'
+      preLoaderRoute: typeof LabCapabilityHardwareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/experience': {
+      id: '/lab/capability/experience'
+      path: '/lab/capability/experience'
+      fullPath: '/lab/capability/experience'
+      preLoaderRoute: typeof LabCapabilityExperienceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/components': {
+      id: '/lab/capability/components'
+      path: '/lab/capability/components'
+      fullPath: '/lab/capability/components'
+      preLoaderRoute: typeof LabCapabilityComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/ai-twin': {
+      id: '/lab/capability/ai-twin'
+      path: '/lab/capability/ai-twin'
+      fullPath: '/lab/capability/ai-twin'
+      preLoaderRoute: typeof LabCapabilityAiTwinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/library/standards': {
+      id: '/community/library/standards'
+      path: '/community/library/standards'
+      fullPath: '/community/library/standards'
+      preLoaderRoute: typeof CommunityLibraryStandardsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/library/solutions': {
+      id: '/community/library/solutions'
+      path: '/community/library/solutions'
+      fullPath: '/community/library/solutions'
+      preLoaderRoute: typeof CommunityLibrarySolutionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/library/opensource': {
+      id: '/community/library/opensource'
+      path: '/community/library/opensource'
+      fullPath: '/community/library/opensource'
+      preLoaderRoute: typeof CommunityLibraryOpensourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/library/cases': {
+      id: '/community/library/cases'
+      path: '/community/library/cases'
+      fullPath: '/community/library/cases'
+      preLoaderRoute: typeof CommunityLibraryCasesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/ecosystem/experts': {
+      id: '/community/ecosystem/experts'
+      path: '/community/ecosystem/experts'
+      fullPath: '/community/ecosystem/experts'
+      preLoaderRoute: typeof CommunityEcosystemExpertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/community/ecosystem/events': {
+      id: '/community/ecosystem/events'
+      path: '/community/ecosystem/events'
+      fullPath: '/community/ecosystem/events'
+      preLoaderRoute: typeof CommunityEcosystemEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface LabPlazaRouteChildren {
+  LabPlazaIdRoute: typeof LabPlazaIdRoute
+}
+
+const LabPlazaRouteChildren: LabPlazaRouteChildren = {
+  LabPlazaIdRoute: LabPlazaIdRoute,
+}
+
+const LabPlazaRouteWithChildren = LabPlazaRoute._addFileChildren(
+  LabPlazaRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AtlasDemandsRoute: AtlasDemandsRoute,
+  AtlasOverviewRoute: AtlasOverviewRoute,
+  CommunityProductSystemRoute: CommunityProductSystemRoute,
+  DemoCenterRoute: DemoCenterRoute,
+  DemoOnlineRoute: DemoOnlineRoute,
+  DemoSipRoute: DemoSipRoute,
+  LabPlazaRoute: LabPlazaRouteWithChildren,
+  PromotionCollectionRoute: PromotionCollectionRoute,
+  PromotionConsultingRoute: PromotionConsultingRoute,
+  PromotionLifecycleRoute: PromotionLifecycleRoute,
+  PromotionMaturityRoute: PromotionMaturityRoute,
+  CommunityEcosystemEventsRoute: CommunityEcosystemEventsRoute,
+  CommunityEcosystemExpertsRoute: CommunityEcosystemExpertsRoute,
+  CommunityLibraryCasesRoute: CommunityLibraryCasesRoute,
+  CommunityLibraryOpensourceRoute: CommunityLibraryOpensourceRoute,
+  CommunityLibrarySolutionsRoute: CommunityLibrarySolutionsRoute,
+  CommunityLibraryStandardsRoute: CommunityLibraryStandardsRoute,
+  LabCapabilityAiTwinRoute: LabCapabilityAiTwinRoute,
+  LabCapabilityComponentsRoute: LabCapabilityComponentsRoute,
+  LabCapabilityExperienceRoute: LabCapabilityExperienceRoute,
+  LabCapabilityHardwareRoute: LabCapabilityHardwareRoute,
+  LabCapabilityPlatformsRoute: LabCapabilityPlatformsRoute,
+  LabDataDatasetsRoute: LabDataDatasetsRoute,
+  LabDataModelsRoute: LabDataModelsRoute,
+  LabDataTwinsRoute: LabDataTwinsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
