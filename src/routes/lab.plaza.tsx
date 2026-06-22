@@ -92,6 +92,11 @@ function PlazaPage() {
                 <Share2 className="h-4 w-4" />
               </button>
               <span className="absolute bottom-3 left-4 rounded-full bg-white/30 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur">{s.domain}</span>
+              {s.tags.includes(ONLINE_TAG) && (
+                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2 py-0.5 text-[10px] font-semibold text-white shadow ring-1 ring-white/40 backdrop-blur">
+                  <Sparkles className="h-3 w-3" />在线体验
+                </span>
+              )}
             </div>
             <div className="p-5">
               <h3 className="font-semibold text-slate-900 group-hover:text-sky-600 line-clamp-1">{s.name}</h3>
@@ -99,7 +104,11 @@ function PlazaPage() {
               <p className="mt-2 text-xs text-slate-500 line-clamp-2">{s.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {s.tags.map((t) => (
-                  <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
+                  <span key={t} className={`rounded-md px-2 py-0.5 text-[11px] ring-1 ${
+                    t === ONLINE_TAG
+                      ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+                      : "bg-sky-50 text-sky-700 ring-sky-100"
+                  }`}>{t}</span>
                 ))}
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-sky-50 pt-3 text-xs text-slate-500">
