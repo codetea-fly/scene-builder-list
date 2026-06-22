@@ -5,7 +5,7 @@ import { TWINS } from "@/lib/data-assets";
 import { PageHeader } from "@/components/PageHeader";
 import { StatGrid } from "@/components/StatGrid";
 
-export const Route = createFileRoute("/lab/data/twins")({
+export const Route = createFileRoute("/lab/data/twins/")({
   head: () => ({ meta: [{ title: "可归集孪生体资产 — 数据资产中心" }] }),
   component: TwinsPage,
 });
