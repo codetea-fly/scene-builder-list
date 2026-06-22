@@ -7,6 +7,6 @@ export const Route = createFileRoute("/lab/capability/ai-twin/")({
   component: () => (
     <CapabilityListPage eyebrow="能力组件中心" title="AI+" highlight="数字孪生能力库"
       description="AI 大模型与数字孪生融合的预训练模型与场景能力库。"
-      items={AI_TWIN} icon={Sparkles} />
+      items={AI_TWIN} icon={Sparkles} slug="ai-twin" />
   ),
 });

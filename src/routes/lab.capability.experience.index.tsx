@@ -7,6 +7,6 @@ export const Route = createFileRoute("/lab/capability/experience/")({
   component: () => (
     <CapabilityListPage eyebrow="能力组件中心" title="在线" highlight="体验系统"
       description="可直接体验的数字孪生在线交互系统，覆盖园区、城市、文旅、制造等。"
-      items={EXPERIENCE} icon={Monitor} />
+      items={EXPERIENCE} icon={Monitor} slug="experience" />
   ),
 });
