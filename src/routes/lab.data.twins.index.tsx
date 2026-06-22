@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search, Boxes, Building2, Tag, Layers, Cpu } from "lucide-react";
 import { TWINS } from "@/lib/data-assets";
@@ -53,7 +53,7 @@ function TwinsPage() {
 
       <section className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
         {filtered.map((t, i) => (
-          <article key={t.id}
+          <Link key={t.id} to="/lab/data/twins/$id" params={{ id: t.id }}
             className="group animate-fade-in overflow-hidden rounded-2xl border border-sky-100 bg-white/85 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50"
             style={{ animationDelay: `${i * 50}ms`, animationFillMode: "backwards" }}>
             <div className={`relative h-32 bg-gradient-to-br ${t.thumbnail} overflow-hidden`}>
@@ -93,7 +93,7 @@ function TwinsPage() {
                 ))}
               </div>
             </div>
-          </article>
+          </Link>
         ))}
       </section>
     </main>
