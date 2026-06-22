@@ -18,7 +18,7 @@ export function CapabilityDetailPage({ item, module: mod }: { item: Capability; 
         <ChevronRight className="h-3 w-3" />
         <span>能力组件中心</span>
         <ChevronRight className="h-3 w-3" />
-        <Link to={`/lab/capability/${mod.slug}` as string} className="hover:text-sky-600">{mod.label}</Link>
+        <Link to={`/lab/capability/${mod.slug}` as never} className="hover:text-sky-600">{mod.label}</Link>
         <ChevronRight className="h-3 w-3" />
         <span className="text-slate-700">{item.name}</span>
       </nav>
@@ -29,7 +29,7 @@ export function CapabilityDetailPage({ item, module: mod }: { item: Capability; 
         <div className="absolute -right-10 -top-10 h-48 w-48 rounded-full bg-white/15 blur-3xl" />
         <div className="relative flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
           <div className="min-w-0 flex-1">
-            <Link to={`/lab/capability/${mod.slug}` as string}
+            <Link to={`/lab/capability/${mod.slug}` as never}
               className="mb-4 inline-flex items-center gap-1 rounded-full bg-white/15 px-3 py-1 text-xs font-medium backdrop-blur transition hover:bg-white/25">
               <ArrowLeft className="h-3 w-3" /> 返回 {mod.label}
             </Link>
@@ -153,7 +153,7 @@ export function CapabilityDetailPage({ item, module: mod }: { item: Capability; 
             <h3 className="mb-3 text-sm font-semibold text-slate-900">同模块推荐</h3>
             <div className="space-y-2">
               {related.map((r) => (
-                <Link key={r.id} to={`/lab/capability/${mod.slug}/${r.id}` as string}
+                <Link key={r.id} to={`/lab/capability/${mod.slug}/$id` as never} params={{ id: r.id } as never}
                   className="flex items-start gap-2 rounded-xl border border-transparent p-2 transition hover:border-sky-200 hover:bg-sky-50">
                   <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-gradient-to-br ${mod.accent} text-white`}>
                     <Icon className="h-4 w-4" />
