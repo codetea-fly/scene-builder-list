@@ -1,18 +1,21 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
-import { Share2, Eye, GitFork, Tag, Search, Boxes } from "lucide-react";
-import { SCENES, ALL_TAGS } from "@/lib/plaza-data";
+import { useEffect, useMemo, useState } from "react";
+import { Share2, Eye, GitFork, Tag, Search, Boxes, Sparkles } from "lucide-react";
+import { SCENES, ALL_TAGS, ONLINE_TAG } from "@/lib/plaza-data";
 import { PageHeader } from "@/components/PageHeader";
 
 export const Route = createFileRoute("/lab/plaza")({
   head: () => ({ meta: [{ title: "场景创新广场 — 场景创新实验室" }] }),
+  validateSearch: (s: Record<string, unknown>) => ({ tag: typeof s.tag === "string" ? s.tag : undefined }),
   component: PlazaPage,
 });
 
 function PlazaPage() {
-  const [active, setActive] = useState<string[]>([]);
+  const { tag: initialTag } = Route.useSearch();
+  const [active, setActive] = useState<string[]>(initialTag ? [initialTag] : []);
   const [q, setQ] = useState("");
   const [toast, setToast] = useState<string | null>(null);
+  useEffect(() => { if (initialTag && !active.includes(initialTag)) setActive([initialTag]); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [initialTag]);
 
   const filtered = useMemo(() => SCENES.filter((s) => {
     const mq = !q || s.name.includes(q) || s.vendor.includes(q) || s.domain.includes(q);
@@ -51,14 +54,22 @@ function PlazaPage() {
         <div className="flex flex-wrap items-center gap-2">
           <Tag className="h-4 w-4 text-sky-500" />
           <span className="text-xs font-medium text-slate-500">标签筛选：</span>
-          {ALL_TAGS.map((t) => (
-            <button key={t} onClick={() => toggle(t)}
-              className={`rounded-full px-3 py-1 text-xs font-medium transition-all hover:scale-105 ${
-                active.includes(t)
-                  ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sm"
-                  : "border border-sky-200 bg-white text-slate-600 hover:border-sky-300 hover:text-sky-600"
-              }`}>{t}</button>
-          ))}
+          {ALL_TAGS.map((t) => {
+            const isOn = active.includes(t);
+            const isExp = t === ONLINE_TAG;
+            return (
+              <button key={t} onClick={() => toggle(t)}
+                className={`inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-medium transition-all hover:scale-105 ${
+                  isOn
+                    ? "bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-sm"
+                    : isExp
+                      ? "border border-emerald-300 bg-emerald-50 text-emerald-700 hover:border-emerald-400"
+                      : "border border-sky-200 bg-white text-slate-600 hover:border-sky-300 hover:text-sky-600"
+                }`}>
+                {isExp && <Sparkles className="h-3 w-3" />}{t}
+              </button>
+            );
+          })}
           {active.length > 0 && (
             <button onClick={() => setActive([])} className="ml-2 text-xs text-sky-500 underline">清空</button>
           )}
@@ -81,6 +92,11 @@ function PlazaPage() {
                 <Share2 className="h-4 w-4" />
               </button>
               <span className="absolute bottom-3 left-4 rounded-full bg-white/30 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur">{s.domain}</span>
+              {s.tags.includes(ONLINE_TAG) && (
+                <span className="absolute bottom-3 right-3 inline-flex items-center gap-1 rounded-full bg-emerald-500/90 px-2 py-0.5 text-[10px] font-semibold text-white shadow ring-1 ring-white/40 backdrop-blur">
+                  <Sparkles className="h-3 w-3" />在线体验
+                </span>
+              )}
             </div>
             <div className="p-5">
               <h3 className="font-semibold text-slate-900 group-hover:text-sky-600 line-clamp-1">{s.name}</h3>
@@ -88,7 +104,11 @@ function PlazaPage() {
               <p className="mt-2 text-xs text-slate-500 line-clamp-2">{s.description}</p>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {s.tags.map((t) => (
-                  <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
+                  <span key={t} className={`rounded-md px-2 py-0.5 text-[11px] ring-1 ${
+                    t === ONLINE_TAG
+                      ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+                      : "bg-sky-50 text-sky-700 ring-sky-100"
+                  }`}>{t}</span>
                 ))}
               </div>
               <div className="mt-4 flex items-center justify-between border-t border-sky-50 pt-3 text-xs text-slate-500">
