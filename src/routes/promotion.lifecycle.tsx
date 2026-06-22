@@ -71,28 +71,28 @@ function LifecyclePage() {
         {/* timeline line */}
         <div className="absolute left-8 top-0 hidden h-full w-0.5 bg-gradient-to-b from-sky-200 via-blue-200 to-indigo-200 md:block" />
 
-        <div className="space-y-8">
+        <div className="space-y-5">
           {STAGES.map((s, i) => (
             <div key={s.title}
-              className="relative animate-fade-in md:pl-24"
+              className="relative animate-fade-in md:pl-20"
               style={{ animationDelay: `${i * 100}ms`, animationFillMode: "backwards" }}>
-              <div className={`absolute left-0 top-6 hidden h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br ${s.color} shadow-lg shadow-sky-300/50 md:flex animate-float-y`}>
-                <s.icon className="h-7 w-7 text-white" />
+              <div className={`absolute left-0 top-5 hidden h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${s.color} shadow-md shadow-sky-300/50 md:flex animate-float-y`}>
+                <s.icon className="h-5 w-5 text-white" />
               </div>
-              <div className="rounded-2xl border border-sky-100 bg-white/80 p-7 shadow-md shadow-sky-100/50 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+              <div className="rounded-2xl border border-sky-100 bg-white/80 p-5 shadow-md shadow-sky-100/50 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
                 <div className="flex items-start justify-between gap-4">
                   <div>
                     <div className="text-xs font-mono text-sky-500">阶段 0{i + 1}</div>
-                    <h2 className="mt-1 text-2xl font-bold text-slate-900">{s.title}</h2>
-                    <p className="mt-1 text-sm text-sky-600">{s.subtitle}</p>
+                    <h2 className="mt-1 text-xl font-bold text-slate-900">{s.title}</h2>
+                    <p className="mt-0.5 text-sm text-sky-600">{s.subtitle}</p>
                   </div>
-                  <div className={`grid h-12 w-12 place-items-center rounded-xl bg-gradient-to-br ${s.color} shadow-md md:hidden`}>
-                    <s.icon className="h-6 w-6 text-white" />
+                  <div className={`grid h-10 w-10 place-items-center rounded-lg bg-gradient-to-br ${s.color} shadow-md md:hidden`}>
+                    <s.icon className="h-5 w-5 text-white" />
                   </div>
                 </div>
-                <ul className="mt-5 grid gap-2 md:grid-cols-2">
+                <ul className="mt-3 grid gap-2 md:grid-cols-2">
                   {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2 rounded-xl bg-sky-50/50 px-3 py-2 text-sm text-slate-700 ring-1 ring-sky-100/60">
+                    <li key={b} className="flex items-start gap-2 rounded-lg bg-sky-50/50 px-3 py-1.5 text-sm text-slate-700 ring-1 ring-sky-100/60">
                       <span className={`mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r ${s.color}`} />
                       {b}
                     </li>
