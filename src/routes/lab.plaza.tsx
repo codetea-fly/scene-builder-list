@@ -11,9 +11,11 @@ export const Route = createFileRoute("/lab/plaza")({
 });
 
 function PlazaPage() {
-  const [active, setActive] = useState<string[]>([]);
+  const { tag: initialTag } = Route.useSearch();
+  const [active, setActive] = useState<string[]>(initialTag ? [initialTag] : []);
   const [q, setQ] = useState("");
   const [toast, setToast] = useState<string | null>(null);
+  useEffect(() => { if (initialTag && !active.includes(initialTag)) setActive([initialTag]); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [initialTag]);
 
   const filtered = useMemo(() => SCENES.filter((s) => {
     const mq = !q || s.name.includes(q) || s.vendor.includes(q) || s.domain.includes(q);
