@@ -45,7 +45,7 @@ export function Reveal({
   delay = 0,
   duration = 700,
   variant = "fade-up",
-  once = false,
+  once = true,
   className = "",
   as: Tag = "div",
   threshold = 0.15,
