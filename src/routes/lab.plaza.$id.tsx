@@ -124,7 +124,7 @@ function SceneDetail() {
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                {s.images.map((im, i) => (
+                {s.images.map((im: Scene["images"][number], i: number) => (
                   <button key={i} onClick={() => setActiveImg(i)}
                     className={`relative aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-br ${im.gradient} ring-2 transition-all ${
                       activeImg === i ? "ring-sky-500" : "ring-transparent hover:ring-sky-200"
@@ -143,7 +143,7 @@ function SceneDetail() {
               <Video className="h-4 w-4 text-sky-500" /> 场景视频集
             </h2>
             <div className="mt-4 grid gap-4 md:grid-cols-2">
-              {s.videos.map((v, i) => (
+              {s.videos.map((v: Scene["videos"][number], i: number) => (
                 <button key={i} onClick={() => setPlayingVideo(i)}
                   className={`group relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br ${v.gradient} text-left`}>
                   <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
