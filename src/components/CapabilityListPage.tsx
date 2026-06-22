@@ -88,7 +88,8 @@ export function CapabilityListPage({
             </div>
             <div className="mt-4 flex items-center justify-between border-t border-sky-50 pt-3 text-xs text-slate-500">
               <span className="flex items-center gap-1"><Download className="h-3.5 w-3.5" />{it.downloads.toLocaleString()}</span>
-              <button className="rounded-lg bg-sky-50 px-3 py-1 font-medium text-sky-700 transition-colors hover:bg-sky-100">查看详情</button>
+              <Link to={`/lab/capability/${slug}/$id` as never} params={{ id: it.id } as never}
+                className="rounded-lg bg-sky-50 px-3 py-1 font-medium text-sky-700 transition-colors hover:bg-sky-100">查看详情 →</Link>
             </div>
           </article>
         ))}
