@@ -1,4 +1,5 @@
 import { useMemo, useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { Search, Download, Tag, Boxes } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/PageHeader";
@@ -6,7 +7,7 @@ import { StatGrid, type Stat } from "@/components/StatGrid";
 import type { Capability } from "@/lib/capability-data";
 
 export function CapabilityListPage({
-  eyebrow, title, highlight, description, items, icon: Icon = Boxes,
+  eyebrow, title, highlight, description, items, icon: Icon = Boxes, slug,
 }: {
   eyebrow: string;
   title: string;
@@ -14,6 +15,7 @@ export function CapabilityListPage({
   description: string;
   items: Capability[];
   icon?: LucideIcon;
+  slug: string;
 }) {
   const [q, setQ] = useState("");
   const [active, setActive] = useState<string[]>([]);

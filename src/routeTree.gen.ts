@@ -36,6 +36,11 @@ import { Route as LabCapabilityHardwareIndexRouteImport } from './routes/lab.cap
 import { Route as LabCapabilityExperienceIndexRouteImport } from './routes/lab.capability.experience.index'
 import { Route as LabCapabilityComponentsIndexRouteImport } from './routes/lab.capability.components.index'
 import { Route as LabCapabilityAiTwinIndexRouteImport } from './routes/lab.capability.ai-twin.index'
+import { Route as LabCapabilityPlatformsIdRouteImport } from './routes/lab.capability.platforms.$id'
+import { Route as LabCapabilityHardwareIdRouteImport } from './routes/lab.capability.hardware.$id'
+import { Route as LabCapabilityExperienceIdRouteImport } from './routes/lab.capability.experience.$id'
+import { Route as LabCapabilityComponentsIdRouteImport } from './routes/lab.capability.components.$id'
+import { Route as LabCapabilityAiTwinIdRouteImport } from './routes/lab.capability.ai-twin.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -182,6 +187,34 @@ const LabCapabilityAiTwinIndexRoute =
     path: '/lab/capability/ai-twin/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LabCapabilityPlatformsIdRoute =
+  LabCapabilityPlatformsIdRouteImport.update({
+    id: '/lab/capability/platforms/$id',
+    path: '/lab/capability/platforms/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LabCapabilityHardwareIdRoute = LabCapabilityHardwareIdRouteImport.update({
+  id: '/lab/capability/hardware/$id',
+  path: '/lab/capability/hardware/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabCapabilityExperienceIdRoute =
+  LabCapabilityExperienceIdRouteImport.update({
+    id: '/lab/capability/experience/$id',
+    path: '/lab/capability/experience/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LabCapabilityComponentsIdRoute =
+  LabCapabilityComponentsIdRouteImport.update({
+    id: '/lab/capability/components/$id',
+    path: '/lab/capability/components/$id',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const LabCapabilityAiTwinIdRoute = LabCapabilityAiTwinIdRouteImport.update({
+  id: '/lab/capability/ai-twin/$id',
+  path: '/lab/capability/ai-twin/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -203,6 +236,11 @@ export interface FileRoutesByFullPath {
   '/community/library/standards': typeof CommunityLibraryStandardsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
   '/lab/plaza/': typeof LabPlazaIndexRoute
+  '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
+  '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
+  '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
+  '/lab/capability/hardware/$id': typeof LabCapabilityHardwareIdRoute
+  '/lab/capability/platforms/$id': typeof LabCapabilityPlatformsIdRoute
   '/lab/capability/ai-twin/': typeof LabCapabilityAiTwinIndexRoute
   '/lab/capability/components/': typeof LabCapabilityComponentsIndexRoute
   '/lab/capability/experience/': typeof LabCapabilityExperienceIndexRoute
@@ -232,6 +270,11 @@ export interface FileRoutesByTo {
   '/community/library/standards': typeof CommunityLibraryStandardsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
   '/lab/plaza': typeof LabPlazaIndexRoute
+  '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
+  '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
+  '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
+  '/lab/capability/hardware/$id': typeof LabCapabilityHardwareIdRoute
+  '/lab/capability/platforms/$id': typeof LabCapabilityPlatformsIdRoute
   '/lab/capability/ai-twin': typeof LabCapabilityAiTwinIndexRoute
   '/lab/capability/components': typeof LabCapabilityComponentsIndexRoute
   '/lab/capability/experience': typeof LabCapabilityExperienceIndexRoute
@@ -262,6 +305,11 @@ export interface FileRoutesById {
   '/community/library/standards': typeof CommunityLibraryStandardsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
   '/lab/plaza/': typeof LabPlazaIndexRoute
+  '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
+  '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
+  '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
+  '/lab/capability/hardware/$id': typeof LabCapabilityHardwareIdRoute
+  '/lab/capability/platforms/$id': typeof LabCapabilityPlatformsIdRoute
   '/lab/capability/ai-twin/': typeof LabCapabilityAiTwinIndexRoute
   '/lab/capability/components/': typeof LabCapabilityComponentsIndexRoute
   '/lab/capability/experience/': typeof LabCapabilityExperienceIndexRoute
@@ -293,6 +341,11 @@ export interface FileRouteTypes {
     | '/community/library/standards'
     | '/lab/plaza/$id'
     | '/lab/plaza/'
+    | '/lab/capability/ai-twin/$id'
+    | '/lab/capability/components/$id'
+    | '/lab/capability/experience/$id'
+    | '/lab/capability/hardware/$id'
+    | '/lab/capability/platforms/$id'
     | '/lab/capability/ai-twin/'
     | '/lab/capability/components/'
     | '/lab/capability/experience/'
@@ -322,6 +375,11 @@ export interface FileRouteTypes {
     | '/community/library/standards'
     | '/lab/plaza/$id'
     | '/lab/plaza'
+    | '/lab/capability/ai-twin/$id'
+    | '/lab/capability/components/$id'
+    | '/lab/capability/experience/$id'
+    | '/lab/capability/hardware/$id'
+    | '/lab/capability/platforms/$id'
     | '/lab/capability/ai-twin'
     | '/lab/capability/components'
     | '/lab/capability/experience'
@@ -351,6 +409,11 @@ export interface FileRouteTypes {
     | '/community/library/standards'
     | '/lab/plaza/$id'
     | '/lab/plaza/'
+    | '/lab/capability/ai-twin/$id'
+    | '/lab/capability/components/$id'
+    | '/lab/capability/experience/$id'
+    | '/lab/capability/hardware/$id'
+    | '/lab/capability/platforms/$id'
     | '/lab/capability/ai-twin/'
     | '/lab/capability/components/'
     | '/lab/capability/experience/'
@@ -381,6 +444,11 @@ export interface RootRouteChildren {
   CommunityLibraryStandardsRoute: typeof CommunityLibraryStandardsRoute
   LabPlazaIdRoute: typeof LabPlazaIdRoute
   LabPlazaIndexRoute: typeof LabPlazaIndexRoute
+  LabCapabilityAiTwinIdRoute: typeof LabCapabilityAiTwinIdRoute
+  LabCapabilityComponentsIdRoute: typeof LabCapabilityComponentsIdRoute
+  LabCapabilityExperienceIdRoute: typeof LabCapabilityExperienceIdRoute
+  LabCapabilityHardwareIdRoute: typeof LabCapabilityHardwareIdRoute
+  LabCapabilityPlatformsIdRoute: typeof LabCapabilityPlatformsIdRoute
   LabCapabilityAiTwinIndexRoute: typeof LabCapabilityAiTwinIndexRoute
   LabCapabilityComponentsIndexRoute: typeof LabCapabilityComponentsIndexRoute
   LabCapabilityExperienceIndexRoute: typeof LabCapabilityExperienceIndexRoute
@@ -582,6 +650,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabCapabilityAiTwinIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lab/capability/platforms/$id': {
+      id: '/lab/capability/platforms/$id'
+      path: '/lab/capability/platforms/$id'
+      fullPath: '/lab/capability/platforms/$id'
+      preLoaderRoute: typeof LabCapabilityPlatformsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/hardware/$id': {
+      id: '/lab/capability/hardware/$id'
+      path: '/lab/capability/hardware/$id'
+      fullPath: '/lab/capability/hardware/$id'
+      preLoaderRoute: typeof LabCapabilityHardwareIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/experience/$id': {
+      id: '/lab/capability/experience/$id'
+      path: '/lab/capability/experience/$id'
+      fullPath: '/lab/capability/experience/$id'
+      preLoaderRoute: typeof LabCapabilityExperienceIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/components/$id': {
+      id: '/lab/capability/components/$id'
+      path: '/lab/capability/components/$id'
+      fullPath: '/lab/capability/components/$id'
+      preLoaderRoute: typeof LabCapabilityComponentsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/capability/ai-twin/$id': {
+      id: '/lab/capability/ai-twin/$id'
+      path: '/lab/capability/ai-twin/$id'
+      fullPath: '/lab/capability/ai-twin/$id'
+      preLoaderRoute: typeof LabCapabilityAiTwinIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -605,6 +708,11 @@ const rootRouteChildren: RootRouteChildren = {
   CommunityLibraryStandardsRoute: CommunityLibraryStandardsRoute,
   LabPlazaIdRoute: LabPlazaIdRoute,
   LabPlazaIndexRoute: LabPlazaIndexRoute,
+  LabCapabilityAiTwinIdRoute: LabCapabilityAiTwinIdRoute,
+  LabCapabilityComponentsIdRoute: LabCapabilityComponentsIdRoute,
+  LabCapabilityExperienceIdRoute: LabCapabilityExperienceIdRoute,
+  LabCapabilityHardwareIdRoute: LabCapabilityHardwareIdRoute,
+  LabCapabilityPlatformsIdRoute: LabCapabilityPlatformsIdRoute,
   LabCapabilityAiTwinIndexRoute: LabCapabilityAiTwinIndexRoute,
   LabCapabilityComponentsIndexRoute: LabCapabilityComponentsIndexRoute,
   LabCapabilityExperienceIndexRoute: LabCapabilityExperienceIndexRoute,
