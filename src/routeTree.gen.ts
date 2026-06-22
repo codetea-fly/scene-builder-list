@@ -14,13 +14,13 @@ import { Route as PromotionMaturityRouteImport } from './routes/promotion.maturi
 import { Route as PromotionLifecycleRouteImport } from './routes/promotion.lifecycle'
 import { Route as PromotionConsultingRouteImport } from './routes/promotion.consulting'
 import { Route as PromotionCollectionRouteImport } from './routes/promotion.collection'
-import { Route as LabPlazaRouteImport } from './routes/lab.plaza'
 import { Route as DemoSipRouteImport } from './routes/demo.sip'
 import { Route as DemoOnlineRouteImport } from './routes/demo.online'
 import { Route as DemoCenterRouteImport } from './routes/demo.center'
 import { Route as CommunityProductSystemRouteImport } from './routes/community.product-system'
 import { Route as AtlasOverviewRouteImport } from './routes/atlas.overview'
 import { Route as AtlasDemandsRouteImport } from './routes/atlas.demands'
+import { Route as LabPlazaIndexRouteImport } from './routes/lab.plaza.index'
 import { Route as LabPlazaIdRouteImport } from './routes/lab.plaza.$id'
 import { Route as LabDataTwinsRouteImport } from './routes/lab.data.twins'
 import { Route as LabDataModelsRouteImport } from './routes/lab.data.models'
@@ -62,11 +62,6 @@ const PromotionCollectionRoute = PromotionCollectionRouteImport.update({
   path: '/promotion/collection',
   getParentRoute: () => rootRouteImport,
 } as any)
-const LabPlazaRoute = LabPlazaRouteImport.update({
-  id: '/lab/plaza',
-  path: '/lab/plaza',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const DemoSipRoute = DemoSipRouteImport.update({
   id: '/demo/sip',
   path: '/demo/sip',
@@ -97,10 +92,15 @@ const AtlasDemandsRoute = AtlasDemandsRouteImport.update({
   path: '/atlas/demands',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LabPlazaIndexRoute = LabPlazaIndexRouteImport.update({
+  id: '/lab/plaza/',
+  path: '/lab/plaza/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LabPlazaIdRoute = LabPlazaIdRouteImport.update({
-  id: '/$id',
-  path: '/$id',
-  getParentRoute: () => LabPlazaRoute,
+  id: '/lab/plaza/$id',
+  path: '/lab/plaza/$id',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const LabDataTwinsRoute = LabDataTwinsRouteImport.update({
   id: '/lab/data/twins',
@@ -186,7 +186,6 @@ export interface FileRoutesByFullPath {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/lab/plaza': typeof LabPlazaRouteWithChildren
   '/promotion/collection': typeof PromotionCollectionRoute
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
@@ -206,6 +205,7 @@ export interface FileRoutesByFullPath {
   '/lab/data/models': typeof LabDataModelsRoute
   '/lab/data/twins': typeof LabDataTwinsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
+  '/lab/plaza/': typeof LabPlazaIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -215,7 +215,6 @@ export interface FileRoutesByTo {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/lab/plaza': typeof LabPlazaRouteWithChildren
   '/promotion/collection': typeof PromotionCollectionRoute
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
@@ -235,6 +234,7 @@ export interface FileRoutesByTo {
   '/lab/data/models': typeof LabDataModelsRoute
   '/lab/data/twins': typeof LabDataTwinsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
+  '/lab/plaza': typeof LabPlazaIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -245,7 +245,6 @@ export interface FileRoutesById {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/lab/plaza': typeof LabPlazaRouteWithChildren
   '/promotion/collection': typeof PromotionCollectionRoute
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
@@ -265,6 +264,7 @@ export interface FileRoutesById {
   '/lab/data/models': typeof LabDataModelsRoute
   '/lab/data/twins': typeof LabDataTwinsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
+  '/lab/plaza/': typeof LabPlazaIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -276,7 +276,6 @@ export interface FileRouteTypes {
     | '/demo/center'
     | '/demo/online'
     | '/demo/sip'
-    | '/lab/plaza'
     | '/promotion/collection'
     | '/promotion/consulting'
     | '/promotion/lifecycle'
@@ -296,6 +295,7 @@ export interface FileRouteTypes {
     | '/lab/data/models'
     | '/lab/data/twins'
     | '/lab/plaza/$id'
+    | '/lab/plaza/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -305,7 +305,6 @@ export interface FileRouteTypes {
     | '/demo/center'
     | '/demo/online'
     | '/demo/sip'
-    | '/lab/plaza'
     | '/promotion/collection'
     | '/promotion/consulting'
     | '/promotion/lifecycle'
@@ -325,6 +324,7 @@ export interface FileRouteTypes {
     | '/lab/data/models'
     | '/lab/data/twins'
     | '/lab/plaza/$id'
+    | '/lab/plaza'
   id:
     | '__root__'
     | '/'
@@ -334,7 +334,6 @@ export interface FileRouteTypes {
     | '/demo/center'
     | '/demo/online'
     | '/demo/sip'
-    | '/lab/plaza'
     | '/promotion/collection'
     | '/promotion/consulting'
     | '/promotion/lifecycle'
@@ -354,6 +353,7 @@ export interface FileRouteTypes {
     | '/lab/data/models'
     | '/lab/data/twins'
     | '/lab/plaza/$id'
+    | '/lab/plaza/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -364,7 +364,6 @@ export interface RootRouteChildren {
   DemoCenterRoute: typeof DemoCenterRoute
   DemoOnlineRoute: typeof DemoOnlineRoute
   DemoSipRoute: typeof DemoSipRoute
-  LabPlazaRoute: typeof LabPlazaRouteWithChildren
   PromotionCollectionRoute: typeof PromotionCollectionRoute
   PromotionConsultingRoute: typeof PromotionConsultingRoute
   PromotionLifecycleRoute: typeof PromotionLifecycleRoute
@@ -383,6 +382,8 @@ export interface RootRouteChildren {
   LabDataDatasetsRoute: typeof LabDataDatasetsRoute
   LabDataModelsRoute: typeof LabDataModelsRoute
   LabDataTwinsRoute: typeof LabDataTwinsRoute
+  LabPlazaIdRoute: typeof LabPlazaIdRoute
+  LabPlazaIndexRoute: typeof LabPlazaIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -420,13 +421,6 @@ declare module '@tanstack/react-router' {
       path: '/promotion/collection'
       fullPath: '/promotion/collection'
       preLoaderRoute: typeof PromotionCollectionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lab/plaza': {
-      id: '/lab/plaza'
-      path: '/lab/plaza'
-      fullPath: '/lab/plaza'
-      preLoaderRoute: typeof LabPlazaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/demo/sip': {
@@ -471,12 +465,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AtlasDemandsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lab/plaza/': {
+      id: '/lab/plaza/'
+      path: '/lab/plaza'
+      fullPath: '/lab/plaza/'
+      preLoaderRoute: typeof LabPlazaIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lab/plaza/$id': {
       id: '/lab/plaza/$id'
-      path: '/$id'
+      path: '/lab/plaza/$id'
       fullPath: '/lab/plaza/$id'
       preLoaderRoute: typeof LabPlazaIdRouteImport
-      parentRoute: typeof LabPlazaRoute
+      parentRoute: typeof rootRouteImport
     }
     '/lab/data/twins': {
       id: '/lab/data/twins'
@@ -579,18 +580,6 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface LabPlazaRouteChildren {
-  LabPlazaIdRoute: typeof LabPlazaIdRoute
-}
-
-const LabPlazaRouteChildren: LabPlazaRouteChildren = {
-  LabPlazaIdRoute: LabPlazaIdRoute,
-}
-
-const LabPlazaRouteWithChildren = LabPlazaRoute._addFileChildren(
-  LabPlazaRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AtlasDemandsRoute: AtlasDemandsRoute,
@@ -599,7 +588,6 @@ const rootRouteChildren: RootRouteChildren = {
   DemoCenterRoute: DemoCenterRoute,
   DemoOnlineRoute: DemoOnlineRoute,
   DemoSipRoute: DemoSipRoute,
-  LabPlazaRoute: LabPlazaRouteWithChildren,
   PromotionCollectionRoute: PromotionCollectionRoute,
   PromotionConsultingRoute: PromotionConsultingRoute,
   PromotionLifecycleRoute: PromotionLifecycleRoute,
@@ -618,6 +606,8 @@ const rootRouteChildren: RootRouteChildren = {
   LabDataDatasetsRoute: LabDataDatasetsRoute,
   LabDataModelsRoute: LabDataModelsRoute,
   LabDataTwinsRoute: LabDataTwinsRoute,
+  LabPlazaIdRoute: LabPlazaIdRoute,
+  LabPlazaIndexRoute: LabPlazaIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

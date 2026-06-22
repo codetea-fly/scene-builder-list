@@ -4,7 +4,7 @@ import { Share2, Eye, GitFork, Tag, Search, Boxes, Sparkles } from "lucide-react
 import { SCENES, ALL_TAGS, ONLINE_TAG } from "@/lib/plaza-data";
 import { PageHeader } from "@/components/PageHeader";
 
-export const Route = createFileRoute("/lab/plaza")({
+export const Route = createFileRoute("/lab/plaza/")({
   head: () => ({ meta: [{ title: "场景创新广场 — 场景创新实验室" }] }),
   validateSearch: (s: Record<string, unknown>) => ({ tag: typeof s.tag === "string" ? s.tag : undefined }),
   component: PlazaPage,
