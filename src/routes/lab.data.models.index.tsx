@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search, Boxes, Download, Eye, Tag, Layers } from "lucide-react";
 import { MODELS } from "@/lib/data-assets";
@@ -6,7 +6,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { StatGrid } from "@/components/StatGrid";
 import { useModelPreview } from "@/components/ModelPreview";
 
-export const Route = createFileRoute("/lab/data/models")({
+export const Route = createFileRoute("/lab/data/models/")({
   head: () => ({ meta: [{ title: "三维模型库 — 数据资产中心" }] }),
   component: ModelsPage,
 });
@@ -64,9 +64,11 @@ function ModelsPage() {
                 style={{ background: `radial-gradient(circle at 35% 30%, ${m.color}cc, ${m.color}55 60%, ${m.color}11 80%)`, boxShadow: `0 10px 30px ${m.color}55` }} />
             </div>
             <div className="p-5">
-              <div className="font-mono text-[11px] text-sky-500">{m.id}</div>
-              <h3 className="font-semibold text-slate-900 group-hover:text-sky-600">{m.name}</h3>
-              <div className="mt-1 text-xs text-slate-500">{m.category} · {m.format} · {m.size}</div>
+              <Link to="/lab/data/models/$id" params={{ id: m.id }} className="block">
+                <div className="font-mono text-[11px] text-sky-500">{m.id}</div>
+                <h3 className="font-semibold text-slate-900 group-hover:text-sky-600">{m.name}</h3>
+                <div className="mt-1 text-xs text-slate-500">{m.category} · {m.format} · {m.size}</div>
+              </Link>
               <div className="mt-3 flex flex-wrap gap-1.5">
                 {m.tags.map((t) => (
                   <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
@@ -76,9 +78,10 @@ function ModelsPage() {
                 <button onClick={() => preview.open(m)} className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 px-3 py-2 text-xs font-semibold text-white shadow-md transition-all hover:-translate-y-0.5">
                   <Eye className="h-3.5 w-3.5" /> 预览
                 </button>
-                <button className="flex items-center justify-center gap-1.5 rounded-lg bg-sky-50 px-3 py-2 text-xs font-medium text-sky-700 hover:bg-sky-100">
-                  <Download className="h-3.5 w-3.5" /> 下载
-                </button>
+                <Link to="/lab/data/models/$id" params={{ id: m.id }}
+                  className="flex items-center justify-center gap-1.5 rounded-lg bg-sky-50 px-3 py-2 text-xs font-medium text-sky-700 hover:bg-sky-100">
+                  详情
+                </Link>
               </div>
             </div>
           </article>

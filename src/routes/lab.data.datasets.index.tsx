@@ -1,11 +1,11 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { Search, Download, Heart, Database, Tag, Layers, Calendar } from "lucide-react";
 import { DATASETS } from "@/lib/data-assets";
 import { PageHeader } from "@/components/PageHeader";
 import { StatGrid } from "@/components/StatGrid";
 
-export const Route = createFileRoute("/lab/data/datasets")({
+export const Route = createFileRoute("/lab/data/datasets/")({
   head: () => ({ meta: [{ title: "高质量数据集 — 数据资产中心" }] }),
   component: DatasetsPage,
 });
@@ -98,7 +98,8 @@ function DatasetsPage() {
                       ))}
                     </div>
                   </div>
-                  <button className="shrink-0 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md transition-all hover:-translate-y-0.5">使用</button>
+                  <Link to="/lab/data/datasets/$id" params={{ id: d.id }}
+                    className="shrink-0 rounded-lg bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md transition-all hover:-translate-y-0.5">查看详情 →</Link>
                 </div>
               </article>
             ))}
