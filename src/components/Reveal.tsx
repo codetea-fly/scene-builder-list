@@ -84,8 +84,10 @@ export function Reveal({
 
   const Comp = Tag as any;
   return (
-    <Comp ref={ref as any} style={style} className={className}>
-      {children}
+    <Comp ref={ref as any}>
+      <div style={style} className={className}>
+        {children}
+      </div>
     </Comp>
   );
 }
