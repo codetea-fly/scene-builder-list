@@ -5,7 +5,7 @@ import { DATASETS } from "@/lib/data-assets";
 import { PageHeader } from "@/components/PageHeader";
 import { StatGrid } from "@/components/StatGrid";
 
-export const Route = createFileRoute("/lab/data/datasets")({
+export const Route = createFileRoute("/lab/data/datasets/")({
   head: () => ({ meta: [{ title: "高质量数据集 — 数据资产中心" }] }),
   component: DatasetsPage,
 });

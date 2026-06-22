@@ -6,7 +6,7 @@ import { PageHeader } from "@/components/PageHeader";
 import { StatGrid } from "@/components/StatGrid";
 import { useModelPreview } from "@/components/ModelPreview";
 
-export const Route = createFileRoute("/lab/data/models")({
+export const Route = createFileRoute("/lab/data/models/")({
   head: () => ({ meta: [{ title: "三维模型库 — 数据资产中心" }] }),
   component: ModelsPage,
 });
