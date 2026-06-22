@@ -247,13 +247,13 @@ function Index() {
           {SERVICES.map((s, i) => (
             <Reveal key={s.title} variant="slide-right" delay={i * 130} duration={900}>
               <Link to="/promotion/lifecycle"
-                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
-                <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-110">
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-sky-100 bg-white/80 px-6 py-9 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50 min-h-[260px]">
+                <div className="mb-5 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-110">
                   <s.icon className="h-6 w-6 text-white" />
                 </div>
                 <div className="text-xs font-mono text-sky-500">0{i + 1}</div>
                 <h3 className="mt-1 font-semibold text-slate-900 group-hover:text-sky-600">{s.title}</h3>
-                <p className="mt-2 text-sm text-slate-500">{s.desc}</p>
+                <p className="mt-3 text-sm leading-relaxed text-slate-500">{s.desc}</p>
                 <ArrowRight className="absolute right-4 top-4 h-4 w-4 text-sky-400 opacity-0 transition-all group-hover:translate-x-1 group-hover:opacity-100" />
               </Link>
             </Reveal>
