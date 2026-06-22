@@ -36,6 +36,9 @@ import { Route as LabCapabilityHardwareIndexRouteImport } from './routes/lab.cap
 import { Route as LabCapabilityExperienceIndexRouteImport } from './routes/lab.capability.experience.index'
 import { Route as LabCapabilityComponentsIndexRouteImport } from './routes/lab.capability.components.index'
 import { Route as LabCapabilityAiTwinIndexRouteImport } from './routes/lab.capability.ai-twin.index'
+import { Route as LabDataTwinsIdRouteImport } from './routes/lab.data.twins.$id'
+import { Route as LabDataModelsIdRouteImport } from './routes/lab.data.models.$id'
+import { Route as LabDataDatasetsIdRouteImport } from './routes/lab.data.datasets.$id'
 import { Route as LabCapabilityPlatformsIdRouteImport } from './routes/lab.capability.platforms.$id'
 import { Route as LabCapabilityHardwareIdRouteImport } from './routes/lab.capability.hardware.$id'
 import { Route as LabCapabilityExperienceIdRouteImport } from './routes/lab.capability.experience.$id'
@@ -187,6 +190,21 @@ const LabCapabilityAiTwinIndexRoute =
     path: '/lab/capability/ai-twin/',
     getParentRoute: () => rootRouteImport,
   } as any)
+const LabDataTwinsIdRoute = LabDataTwinsIdRouteImport.update({
+  id: '/lab/data/twins/$id',
+  path: '/lab/data/twins/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabDataModelsIdRoute = LabDataModelsIdRouteImport.update({
+  id: '/lab/data/models/$id',
+  path: '/lab/data/models/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LabDataDatasetsIdRoute = LabDataDatasetsIdRouteImport.update({
+  id: '/lab/data/datasets/$id',
+  path: '/lab/data/datasets/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LabCapabilityPlatformsIdRoute =
   LabCapabilityPlatformsIdRouteImport.update({
     id: '/lab/capability/platforms/$id',
@@ -241,6 +259,9 @@ export interface FileRoutesByFullPath {
   '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
   '/lab/capability/hardware/$id': typeof LabCapabilityHardwareIdRoute
   '/lab/capability/platforms/$id': typeof LabCapabilityPlatformsIdRoute
+  '/lab/data/datasets/$id': typeof LabDataDatasetsIdRoute
+  '/lab/data/models/$id': typeof LabDataModelsIdRoute
+  '/lab/data/twins/$id': typeof LabDataTwinsIdRoute
   '/lab/capability/ai-twin/': typeof LabCapabilityAiTwinIndexRoute
   '/lab/capability/components/': typeof LabCapabilityComponentsIndexRoute
   '/lab/capability/experience/': typeof LabCapabilityExperienceIndexRoute
@@ -275,6 +296,9 @@ export interface FileRoutesByTo {
   '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
   '/lab/capability/hardware/$id': typeof LabCapabilityHardwareIdRoute
   '/lab/capability/platforms/$id': typeof LabCapabilityPlatformsIdRoute
+  '/lab/data/datasets/$id': typeof LabDataDatasetsIdRoute
+  '/lab/data/models/$id': typeof LabDataModelsIdRoute
+  '/lab/data/twins/$id': typeof LabDataTwinsIdRoute
   '/lab/capability/ai-twin': typeof LabCapabilityAiTwinIndexRoute
   '/lab/capability/components': typeof LabCapabilityComponentsIndexRoute
   '/lab/capability/experience': typeof LabCapabilityExperienceIndexRoute
@@ -310,6 +334,9 @@ export interface FileRoutesById {
   '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
   '/lab/capability/hardware/$id': typeof LabCapabilityHardwareIdRoute
   '/lab/capability/platforms/$id': typeof LabCapabilityPlatformsIdRoute
+  '/lab/data/datasets/$id': typeof LabDataDatasetsIdRoute
+  '/lab/data/models/$id': typeof LabDataModelsIdRoute
+  '/lab/data/twins/$id': typeof LabDataTwinsIdRoute
   '/lab/capability/ai-twin/': typeof LabCapabilityAiTwinIndexRoute
   '/lab/capability/components/': typeof LabCapabilityComponentsIndexRoute
   '/lab/capability/experience/': typeof LabCapabilityExperienceIndexRoute
@@ -346,6 +373,9 @@ export interface FileRouteTypes {
     | '/lab/capability/experience/$id'
     | '/lab/capability/hardware/$id'
     | '/lab/capability/platforms/$id'
+    | '/lab/data/datasets/$id'
+    | '/lab/data/models/$id'
+    | '/lab/data/twins/$id'
     | '/lab/capability/ai-twin/'
     | '/lab/capability/components/'
     | '/lab/capability/experience/'
@@ -380,6 +410,9 @@ export interface FileRouteTypes {
     | '/lab/capability/experience/$id'
     | '/lab/capability/hardware/$id'
     | '/lab/capability/platforms/$id'
+    | '/lab/data/datasets/$id'
+    | '/lab/data/models/$id'
+    | '/lab/data/twins/$id'
     | '/lab/capability/ai-twin'
     | '/lab/capability/components'
     | '/lab/capability/experience'
@@ -414,6 +447,9 @@ export interface FileRouteTypes {
     | '/lab/capability/experience/$id'
     | '/lab/capability/hardware/$id'
     | '/lab/capability/platforms/$id'
+    | '/lab/data/datasets/$id'
+    | '/lab/data/models/$id'
+    | '/lab/data/twins/$id'
     | '/lab/capability/ai-twin/'
     | '/lab/capability/components/'
     | '/lab/capability/experience/'
@@ -449,6 +485,9 @@ export interface RootRouteChildren {
   LabCapabilityExperienceIdRoute: typeof LabCapabilityExperienceIdRoute
   LabCapabilityHardwareIdRoute: typeof LabCapabilityHardwareIdRoute
   LabCapabilityPlatformsIdRoute: typeof LabCapabilityPlatformsIdRoute
+  LabDataDatasetsIdRoute: typeof LabDataDatasetsIdRoute
+  LabDataModelsIdRoute: typeof LabDataModelsIdRoute
+  LabDataTwinsIdRoute: typeof LabDataTwinsIdRoute
   LabCapabilityAiTwinIndexRoute: typeof LabCapabilityAiTwinIndexRoute
   LabCapabilityComponentsIndexRoute: typeof LabCapabilityComponentsIndexRoute
   LabCapabilityExperienceIndexRoute: typeof LabCapabilityExperienceIndexRoute
@@ -650,6 +689,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LabCapabilityAiTwinIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/lab/data/twins/$id': {
+      id: '/lab/data/twins/$id'
+      path: '/lab/data/twins/$id'
+      fullPath: '/lab/data/twins/$id'
+      preLoaderRoute: typeof LabDataTwinsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/data/models/$id': {
+      id: '/lab/data/models/$id'
+      path: '/lab/data/models/$id'
+      fullPath: '/lab/data/models/$id'
+      preLoaderRoute: typeof LabDataModelsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lab/data/datasets/$id': {
+      id: '/lab/data/datasets/$id'
+      path: '/lab/data/datasets/$id'
+      fullPath: '/lab/data/datasets/$id'
+      preLoaderRoute: typeof LabDataDatasetsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lab/capability/platforms/$id': {
       id: '/lab/capability/platforms/$id'
       path: '/lab/capability/platforms/$id'
@@ -713,6 +773,9 @@ const rootRouteChildren: RootRouteChildren = {
   LabCapabilityExperienceIdRoute: LabCapabilityExperienceIdRoute,
   LabCapabilityHardwareIdRoute: LabCapabilityHardwareIdRoute,
   LabCapabilityPlatformsIdRoute: LabCapabilityPlatformsIdRoute,
+  LabDataDatasetsIdRoute: LabDataDatasetsIdRoute,
+  LabDataModelsIdRoute: LabDataModelsIdRoute,
+  LabDataTwinsIdRoute: LabDataTwinsIdRoute,
   LabCapabilityAiTwinIndexRoute: LabCapabilityAiTwinIndexRoute,
   LabCapabilityComponentsIndexRoute: LabCapabilityComponentsIndexRoute,
   LabCapabilityExperienceIndexRoute: LabCapabilityExperienceIndexRoute,
