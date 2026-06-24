@@ -44,9 +44,8 @@ function SceneDetail() {
       <article className="overflow-hidden rounded-3xl border border-sky-100 bg-white/85 shadow-xl shadow-sky-100/50 backdrop-blur animate-fade-in">
         {/* 主图 */}
         <div className={`relative h-72 bg-gradient-to-br ${s.cover} overflow-hidden`}>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
-          <div className="absolute -left-16 top-10 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -right-10 bottom-0 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
+          <img src={s.image} alt={s.name} width={1280} height={768} className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/30 to-slate-900/10" />
           <Boxes className="absolute left-8 top-8 h-12 w-12 text-white/90 animate-float-y" />
           <div className="absolute bottom-6 left-8 right-8 flex items-end justify-between gap-4 text-white">
             <div>
