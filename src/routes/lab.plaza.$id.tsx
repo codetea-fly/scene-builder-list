@@ -221,7 +221,7 @@ function ExperienceModal({ scene, onClose }: { scene: Scene; onClose: () => void
   );
 }
 
-function VideoModal({ video, onClose }: { video: { title: string; duration: string; gradient: string }; onClose: () => void }) {
+function VideoModal({ video, onClose }: { video: { title: string; duration: string; gradient: string; image?: string }; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm animate-fade-in p-4" onClick={onClose}>
       <div className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-slate-900 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -230,7 +230,10 @@ function VideoModal({ video, onClose }: { video: { title: string; duration: stri
           <button onClick={onClose} className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 hover:bg-white/20"><X className="h-5 w-5" /></button>
         </div>
         <div className={`relative aspect-video bg-gradient-to-br ${video.gradient}`}>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:32px_32px]" />
+          {video.image && (
+            <img src={video.image} alt={video.title} width={1280} height={720} className="absolute inset-0 h-full w-full object-cover opacity-80" />
+          )}
+          <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 grid place-items-center">
             <Loader2 className="h-10 w-10 animate-spin text-white/90" />
           </div>
