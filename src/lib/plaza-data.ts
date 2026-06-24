@@ -1,3 +1,26 @@
+import sc01 from "@/assets/scenes/sc-01.jpg";
+import sc02 from "@/assets/scenes/sc-02.jpg";
+import sc03 from "@/assets/scenes/sc-03.jpg";
+import sc04 from "@/assets/scenes/sc-04.jpg";
+import sc05 from "@/assets/scenes/sc-05.jpg";
+import sc06 from "@/assets/scenes/sc-06.jpg";
+import sc07 from "@/assets/scenes/sc-07.jpg";
+import sc08 from "@/assets/scenes/sc-08.jpg";
+import sc09 from "@/assets/scenes/sc-09.jpg";
+import sc10 from "@/assets/scenes/sc-10.jpg";
+import sc11 from "@/assets/scenes/sc-11.jpg";
+import sc12 from "@/assets/scenes/sc-12.jpg";
+import sc13 from "@/assets/scenes/sc-13.jpg";
+import sc14 from "@/assets/scenes/sc-14.jpg";
+import sc15 from "@/assets/scenes/sc-15.jpg";
+import sc16 from "@/assets/scenes/sc-16.jpg";
+import sc17 from "@/assets/scenes/sc-17.jpg";
+import sc18 from "@/assets/scenes/sc-18.jpg";
+import sc19 from "@/assets/scenes/sc-19.jpg";
+import sc20 from "@/assets/scenes/sc-20.jpg";
+
+const SCENE_IMAGES = [sc01, sc02, sc03, sc04, sc05, sc06, sc07, sc08, sc09, sc10, sc11, sc12, sc13, sc14, sc15, sc16, sc17, sc18, sc19, sc20];
+
 export interface Scene {
   id: string;
   name: string;
