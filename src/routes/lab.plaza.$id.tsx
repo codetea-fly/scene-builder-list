@@ -131,7 +131,10 @@ function SceneDetail() {
                     className={`relative aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-br ${im.gradient} ring-2 transition-all ${
                       activeImg === i ? "ring-sky-500" : "ring-transparent hover:ring-sky-200"
                     }`}>
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:14px_14px]" />
+                    {im.image && (
+                      <img src={im.image} alt={im.caption} loading="lazy" width={640} height={480} className="absolute inset-0 h-full w-full object-cover" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     <span className="absolute bottom-1.5 left-2 text-[11px] font-medium text-white drop-shadow">{im.caption}</span>
                   </button>
                 ))}
