@@ -66,7 +66,7 @@ const IMG_GRADIENTS = [
 /** 这些索引的场景会被打上「在线体验」标签，且会出现在「在线体验中心」 */
 const ONLINE_INDEXES = new Set([0, 1, 3, 4, 5, 6, 7, 8, 10, 12, 16, 18]);
 
-const RAW: Omit<Scene, "id" | "cover" | "views" | "forks" | "images" | "videos" | "users" | "duration">[] = [
+const RAW: Omit<Scene, "id" | "cover" | "image" | "views" | "forks" | "images" | "videos" | "users" | "duration">[] = [
   { name: "城市交通智能调度孪生场景", vendor: "百度 Apollo", domain: "智慧交通", tags: ["3DGS", "高精地图", "实时仿真"], description: "面向中心城区的交通信号与车流实时联动调度。", longDescription: "以城市级高精地图为底座，融合卡口、雷视一体机、信号机、网联车等多源数据，对中心城区交通流进行实时孪生。通过强化学习对路口信号配时进行在线优化，对突发拥堵、事件交通进行毫秒级感知与策略下发，实现城市干线协调、区域协同与应急疏导。", builder: "百度 Apollo 智能交通事业部", builderDesc: "国内领先的车路云一体化解决方案提供商，已在 50+ 城市落地车城网项目。" },
   { name: "智慧园区能耗管控场景", vendor: "腾讯 WeCity", domain: "智慧园区", tags: ["IoT", "能耗", "BIM"], description: "园区楼宇能耗数字孪生与异常诊断。", longDescription: "基于 BIM + IoT 构建园区级建筑能耗孪生体，覆盖空调、照明、电梯、给排水等全用能设备，结合 AI 异常诊断模型实现能耗画像、节能寻优、故障定位与碳排核算。", builder: "腾讯云 WeCity 团队", builderDesc: "腾讯智慧城市核心团队，深耕园区、政务、交通等场景的数字底座建设。" },
   { name: "黄河流域生态监测孪生", vendor: "中科院遥感所", domain: "生态环保", tags: ["遥感", "GIS", "AI 识别"], description: "黄河流域水质、植被、岸线一体化监测。", builder: "中科院空天信息创新研究院", builderDesc: "国家级遥感与地球信息科学研究机构。" },
