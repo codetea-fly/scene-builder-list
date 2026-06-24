@@ -30,15 +30,17 @@ export interface Scene {
   description: string;
   longDescription?: string;
   cover: string; // gradient class for cover
+  /** 场景主图 URL（自动生成） */
+  image: string;
   views: number;
   forks: number;
   /** 场景建设方 */
   builder: string;
   builderDesc: string;
-  /** 图片集合（使用渐变 class 占位，避免外部图源） */
-  images: { caption: string; gradient: string }[];
+  /** 图片集合 */
+  images: { caption: string; gradient: string; image?: string }[];
   /** 视频集合（占位） */
-  videos: { title: string; duration: string; gradient: string }[];
+  videos: { title: string; duration: string; gradient: string; image?: string }[];
   /** 在线体验体验人次（带「在线体验」标签时使用） */
   users?: number;
   /** 在线体验预计时长 */
