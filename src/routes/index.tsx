@@ -157,13 +157,11 @@ function Index() {
 
       {/* 行业资讯 */}
       <section id="news" className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-20">
-        <Reveal variant="fade-up" className="mb-10 flex items-end justify-between">
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
-              <Newspaper className="h-3.5 w-3.5" /> 行业资讯
-            </div>
-            <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">前沿动态 · 把握趋势</h2>
+        <Reveal variant="fade-up" className="mb-10 text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
+            <Newspaper className="h-3.5 w-3.5" /> 行业资讯
           </div>
+          <h2 className="mt-3 text-3xl font-bold tracking-tight text-slate-900">前沿动态 · 把握趋势</h2>
         </Reveal>
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {NEWS.map((n, i) => (
@@ -185,7 +183,7 @@ function Index() {
 
       {/* 热门场景 */}
       <section className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-16">
-        <Reveal variant="fade-up" className="mb-10">
+        <Reveal variant="fade-up" className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Flame className="h-3.5 w-3.5" /> 热门场景
           </div>
@@ -236,7 +234,7 @@ function Index() {
 
       {/* 专业服务 */}
       <section className="relative mx-auto max-w-7xl overflow-x-clip px-6 py-16">
-        <Reveal variant="fade-up" className="mb-10">
+        <Reveal variant="fade-up" className="mb-10 text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/70 px-4 py-1.5 text-xs font-medium text-sky-700 shadow-sm backdrop-blur">
             <Lightbulb className="h-3.5 w-3.5" /> 专业服务
           </div>
