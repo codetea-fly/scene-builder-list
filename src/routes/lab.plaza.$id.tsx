@@ -116,7 +116,10 @@ function SceneDetail() {
               <ImageIcon className="h-4 w-4 text-sky-500" /> 场景图片集
             </h2>
             <div className="mt-4 grid gap-4 md:grid-cols-[2fr,1fr]">
-              <div className={`relative aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${s.images[activeImg].gradient}`}>
+            <div className={`relative aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${s.images[activeImg].gradient}`}>
+                {s.images[activeImg].image && (
+                  <img src={s.images[activeImg].image} alt={s.images[activeImg].caption} loading="lazy" width={1280} height={768} className="absolute inset-0 h-full w-full object-cover" />
+                )}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
                 <div className="absolute bottom-4 left-4 rounded-full bg-black/30 px-3 py-1 text-xs text-white backdrop-blur">
                   {s.images[activeImg].caption}
