@@ -151,7 +151,10 @@ function SceneDetail() {
               {s.videos.map((v: Scene["videos"][number], i: number) => (
                 <button key={i} onClick={() => setPlayingVideo(i)}
                   className={`group relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br ${v.gradient} text-left`}>
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  {v.image && (
+                    <img src={v.image} alt={v.title} loading="lazy" width={1280} height={720} className="absolute inset-0 h-full w-full object-cover" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   <div className="absolute inset-0 grid place-items-center">
                     <div className="grid h-14 w-14 place-items-center rounded-full bg-white/80 text-sky-600 shadow-lg backdrop-blur transition-transform group-hover:scale-110">
                       <Play className="h-6 w-6 translate-x-0.5" />
