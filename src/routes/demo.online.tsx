@@ -79,7 +79,8 @@ function OnlineExperiencePage() {
             className="group animate-fade-in overflow-hidden rounded-2xl border border-sky-100 bg-white/85 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50"
             style={{ animationDelay: `${i * 40}ms`, animationFillMode: "backwards" }}>
             <div className={`relative h-32 bg-gradient-to-br ${s.cover} overflow-hidden`}>
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:20px_20px]" />
+              <img src={s.image} alt={s.name} loading="lazy" width={1280} height={768} className="absolute inset-0 h-full w-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/55 via-slate-900/10 to-transparent" />
               <Boxes className="absolute left-4 top-4 h-7 w-7 text-white/90" />
               <span className="absolute bottom-3 left-4 rounded-full bg-white/30 px-2.5 py-0.5 text-[11px] font-medium text-white backdrop-blur">{s.domain}</span>
             </div>

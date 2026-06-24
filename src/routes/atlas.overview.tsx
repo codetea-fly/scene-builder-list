@@ -237,7 +237,9 @@ function HoverCard({ scene, x, y }: { scene: Scene; x: number; y: number }) {
       className="pointer-events-none fixed z-50 w-72 -translate-y-full rounded-xl border border-sky-100 bg-white p-3 shadow-xl animate-fade-in"
       style={{ left, top }}
     >
-      <div className={`mb-2 h-24 w-full rounded-lg bg-gradient-to-br ${scene.cover}`} />
+      <div className={`relative mb-2 h-24 w-full overflow-hidden rounded-lg bg-gradient-to-br ${scene.cover}`}>
+        <img src={scene.image} alt={scene.name} loading="lazy" width={1280} height={768} className="absolute inset-0 h-full w-full object-cover" />
+      </div>
       <div className="text-sm font-semibold text-slate-900">{scene.name}</div>
       <div className="mt-0.5 text-xs text-slate-500">{scene.vendor} · {scene.domain}</div>
       <p className="mt-1 line-clamp-2 text-xs text-slate-600">{scene.description}</p>

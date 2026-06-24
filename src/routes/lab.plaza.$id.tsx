@@ -44,9 +44,8 @@ function SceneDetail() {
       <article className="overflow-hidden rounded-3xl border border-sky-100 bg-white/85 shadow-xl shadow-sky-100/50 backdrop-blur animate-fade-in">
         {/* 主图 */}
         <div className={`relative h-72 bg-gradient-to-br ${s.cover} overflow-hidden`}>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:24px_24px]" />
-          <div className="absolute -left-16 top-10 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
-          <div className="absolute -right-10 bottom-0 h-64 w-64 rounded-full bg-white/15 blur-3xl" />
+          <img src={s.image} alt={s.name} width={1280} height={768} className="absolute inset-0 h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/30 to-slate-900/10" />
           <Boxes className="absolute left-8 top-8 h-12 w-12 text-white/90 animate-float-y" />
           <div className="absolute bottom-6 left-8 right-8 flex items-end justify-between gap-4 text-white">
             <div>
@@ -117,7 +116,10 @@ function SceneDetail() {
               <ImageIcon className="h-4 w-4 text-sky-500" /> 场景图片集
             </h2>
             <div className="mt-4 grid gap-4 md:grid-cols-[2fr,1fr]">
-              <div className={`relative aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${s.images[activeImg].gradient}`}>
+            <div className={`relative aspect-[16/9] overflow-hidden rounded-2xl bg-gradient-to-br ${s.images[activeImg].gradient}`}>
+                {s.images[activeImg].image && (
+                  <img src={s.images[activeImg].image} alt={s.images[activeImg].caption} loading="lazy" width={1280} height={768} className="absolute inset-0 h-full w-full object-cover" />
+                )}
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
                 <div className="absolute bottom-4 left-4 rounded-full bg-black/30 px-3 py-1 text-xs text-white backdrop-blur">
                   {s.images[activeImg].caption}
@@ -129,7 +131,10 @@ function SceneDetail() {
                     className={`relative aspect-[4/3] overflow-hidden rounded-xl bg-gradient-to-br ${im.gradient} ring-2 transition-all ${
                       activeImg === i ? "ring-sky-500" : "ring-transparent hover:ring-sky-200"
                     }`}>
-                    <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:14px_14px]" />
+                    {im.image && (
+                      <img src={im.image} alt={im.caption} loading="lazy" width={640} height={480} className="absolute inset-0 h-full w-full object-cover" />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                     <span className="absolute bottom-1.5 left-2 text-[11px] font-medium text-white drop-shadow">{im.caption}</span>
                   </button>
                 ))}
@@ -146,7 +151,10 @@ function SceneDetail() {
               {s.videos.map((v: Scene["videos"][number], i: number) => (
                 <button key={i} onClick={() => setPlayingVideo(i)}
                   className={`group relative aspect-video overflow-hidden rounded-2xl bg-gradient-to-br ${v.gradient} text-left`}>
-                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.12)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.12)_1px,transparent_1px)] bg-[size:24px_24px]" />
+                  {v.image && (
+                    <img src={v.image} alt={v.title} loading="lazy" width={1280} height={720} className="absolute inset-0 h-full w-full object-cover" />
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
                   <div className="absolute inset-0 grid place-items-center">
                     <div className="grid h-14 w-14 place-items-center rounded-full bg-white/80 text-sky-600 shadow-lg backdrop-blur transition-transform group-hover:scale-110">
                       <Play className="h-6 w-6 translate-x-0.5" />
@@ -213,7 +221,7 @@ function ExperienceModal({ scene, onClose }: { scene: Scene; onClose: () => void
   );
 }
 
-function VideoModal({ video, onClose }: { video: { title: string; duration: string; gradient: string }; onClose: () => void }) {
+function VideoModal({ video, onClose }: { video: { title: string; duration: string; gradient: string; image?: string }; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/80 backdrop-blur-sm animate-fade-in p-4" onClick={onClose}>
       <div className="relative w-full max-w-4xl overflow-hidden rounded-3xl bg-slate-900 shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -222,7 +230,10 @@ function VideoModal({ video, onClose }: { video: { title: string; duration: stri
           <button onClick={onClose} className="grid h-9 w-9 place-items-center rounded-lg bg-white/10 hover:bg-white/20"><X className="h-5 w-5" /></button>
         </div>
         <div className={`relative aspect-video bg-gradient-to-br ${video.gradient}`}>
-          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.1)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.1)_1px,transparent_1px)] bg-[size:32px_32px]" />
+          {video.image && (
+            <img src={video.image} alt={video.title} width={1280} height={720} className="absolute inset-0 h-full w-full object-cover opacity-80" />
+          )}
+          <div className="absolute inset-0 bg-black/40" />
           <div className="absolute inset-0 grid place-items-center">
             <Loader2 className="h-10 w-10 animate-spin text-white/90" />
           </div>
