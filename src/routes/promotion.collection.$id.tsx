@@ -4,7 +4,7 @@ import {
   ArrowLeft, Calendar, MapPin, Megaphone, Trophy, Users, CheckCircle2,
   ClipboardList, Award, Download, Sparkles, FileText, Mail, Phone,
 } from "lucide-react";
-import { COLLECTION_EVENTS } from "./promotion.collection";
+import { COLLECTION_EVENTS } from "@/data/collectionEvents";
 import posterImg from "@/assets/poster-case-selection.jpg";
 
 export const Route = createFileRoute("/promotion/collection/$id")({
