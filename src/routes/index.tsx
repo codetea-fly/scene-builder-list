@@ -183,7 +183,7 @@ function Index() {
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:18px_18px]" />
                 <span className="absolute left-4 top-4 rounded-full bg-white/30 px-3 py-0.5 text-xs font-medium text-white backdrop-blur">{n.tag}</span>
               </div>
-              <div className="p-5">
+              <div className="flex flex-1 flex-col p-5">
                 <div className="text-xs text-slate-400">{n.date}</div>
                 <h3 className="mt-2 font-semibold text-slate-900 transition-colors group-hover:text-sky-600 line-clamp-2">{n.title}</h3>
                 <p className="mt-2 text-sm text-slate-500 line-clamp-2">{n.desc}</p>
