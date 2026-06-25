@@ -5,6 +5,16 @@ import {
   Layers, ClipboardList, Lightbulb, Target, Rocket, Award,
 } from "lucide-react";
 import { Reveal, CountUp } from "@/components/Reveal";
+import newsImg1 from "@/assets/scenes/sc-01.jpg";
+import newsImg2 from "@/assets/scenes/sc-04.jpg";
+import newsImg3 from "@/assets/scenes/sc-02.jpg";
+import newsImg4 from "@/assets/scenes/sc-05.jpg";
+import hotImg1 from "@/assets/scenes/sc-01.jpg";
+import hotImg2 from "@/assets/scenes/sc-02.jpg";
+import hotImg3 from "@/assets/scenes/sc-04.jpg";
+import hotImg4 from "@/assets/scenes/sc-05.jpg";
+import hotImg5 from "@/assets/scenes/sc-07.jpg";
+import hotImg6 from "@/assets/scenes/sc-09.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
