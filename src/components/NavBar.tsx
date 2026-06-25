@@ -106,10 +106,18 @@ export function NavBar() {
   return (
     <nav className="sticky top-0 z-40 border-b border-sky-100/80 bg-white/75 backdrop-blur-xl">
       <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-6">
-        <Link to="/" className="group flex shrink-0 items-center gap-3">
-          <img src={logoDsip} alt="数园区 DSIP" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
-          <span className="h-8 w-px bg-slate-200" />
-          <img src={logoTwin} alt="数字孪生创新中心" className="h-8 w-auto object-contain transition-transform group-hover:scale-105" />
+        <Link to="/" className="group flex h-12 shrink-0 items-center gap-4">
+          <img
+            src={logoDsip}
+            alt="数园区 DSIP"
+            className="block h-full w-auto max-h-12 object-contain transition-transform group-hover:scale-105"
+          />
+          <span className="block h-8 w-px shrink-0 bg-slate-200" />
+          <img
+            src={logoTwin}
+            alt="数字孪生创新中心"
+            className="block h-full w-auto max-h-12 object-contain transition-transform group-hover:scale-105"
+          />
         </Link>
 
         <div className="mx-auto hidden flex-1 items-center justify-center gap-2 lg:flex">
