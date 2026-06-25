@@ -185,12 +185,22 @@ export function NavBar() {
           ))}
         </div>
 
-        <Link
-          to="/lab/plaza"
-          className="hidden shrink-0 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-sky-300/50 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:inline-flex"
-        >
-          进入实验室
-        </Link>
+        <div className="hidden shrink-0 items-center gap-2 sm:flex">
+          <Link
+            to="/auth"
+            search={{ mode: "login" }}
+            className="rounded-lg px-3 py-1.5 text-sm font-medium text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
+          >
+            登录
+          </Link>
+          <Link
+            to="/auth"
+            search={{ mode: "register" }}
+            className="rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-md shadow-sky-300/50 transition-all hover:-translate-y-0.5 hover:shadow-lg"
+          >
+            注册
+          </Link>
+        </div>
       </div>
 
     </nav>
