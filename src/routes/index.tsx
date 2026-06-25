@@ -123,10 +123,10 @@ function Hero() {
 }
 
 const NEWS = [
-  { tag: "政策", date: "2026-06-12", title: "国家发改委印发《数字孪生城市建设指引(2026)》", desc: "明确未来三年城市级数字孪生建设的重点任务与配套政策。", color: "from-sky-400 to-blue-500" },
-  { tag: "技术", date: "2026-06-08", title: "3DGS 高斯泼溅技术在城市重建落地新进展", desc: "多家厂商在城市级场景中实现千平米级实时高斯泼溅重建。", color: "from-cyan-400 to-sky-500" },
-  { tag: "产业", date: "2026-06-02", title: "全国首批场景创新示范基地名单发布", desc: "12 个城市入选首批数字孪生场景创新示范基地。", color: "from-indigo-400 to-blue-500" },
-  { tag: "活动", date: "2026-05-28", title: "2026 中国数字孪生大会即将开幕", desc: "聚焦城市、工业、文旅三大领域的场景创新最新实践。", color: "from-blue-400 to-cyan-500" },
+  { tag: "政策", date: "2026-06-12", title: "国家发改委印发《数字孪生城市建设指引(2026)》", desc: "明确未来三年城市级数字孪生建设的重点任务与配套政策。", color: "from-sky-400 to-blue-500", image: newsImg1 },
+  { tag: "技术", date: "2026-06-08", title: "3DGS 高斯泼溅技术在城市重建落地新进展", desc: "多家厂商在城市级场景中实现千平米级实时高斯泼溅重建。", color: "from-cyan-400 to-sky-500", image: newsImg2 },
+  { tag: "产业", date: "2026-06-02", title: "全国首批场景创新示范基地名单发布", desc: "12 个城市入选首批数字孪生场景创新示范基地。", color: "from-indigo-400 to-blue-500", image: newsImg3 },
+  { tag: "活动", date: "2026-05-28", title: "2026 中国数字孪生大会即将开幕", desc: "聚焦城市、工业、文旅三大领域的场景创新最新实践。", color: "from-blue-400 to-cyan-500", image: newsImg4 },
 ];
 
 const HOT_SCENES = [
