@@ -5,6 +5,16 @@ import {
   Layers, ClipboardList, Lightbulb, Target, Rocket, Award,
 } from "lucide-react";
 import { Reveal, CountUp } from "@/components/Reveal";
+import newsImg1 from "@/assets/scenes/sc-01.jpg";
+import newsImg2 from "@/assets/scenes/sc-04.jpg";
+import newsImg3 from "@/assets/scenes/sc-02.jpg";
+import newsImg4 from "@/assets/scenes/sc-05.jpg";
+import hotImg1 from "@/assets/scenes/sc-01.jpg";
+import hotImg2 from "@/assets/scenes/sc-02.jpg";
+import hotImg3 from "@/assets/scenes/sc-04.jpg";
+import hotImg4 from "@/assets/scenes/sc-05.jpg";
+import hotImg5 from "@/assets/scenes/sc-07.jpg";
+import hotImg6 from "@/assets/scenes/sc-09.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -113,19 +123,19 @@ function Hero() {
 }
 
 const NEWS = [
-  { tag: "政策", date: "2026-06-12", title: "国家发改委印发《数字孪生城市建设指引(2026)》", desc: "明确未来三年城市级数字孪生建设的重点任务与配套政策。", color: "from-sky-400 to-blue-500" },
-  { tag: "技术", date: "2026-06-08", title: "3DGS 高斯泼溅技术在城市重建落地新进展", desc: "多家厂商在城市级场景中实现千平米级实时高斯泼溅重建。", color: "from-cyan-400 to-sky-500" },
-  { tag: "产业", date: "2026-06-02", title: "全国首批场景创新示范基地名单发布", desc: "12 个城市入选首批数字孪生场景创新示范基地。", color: "from-indigo-400 to-blue-500" },
-  { tag: "活动", date: "2026-05-28", title: "2026 中国数字孪生大会即将开幕", desc: "聚焦城市、工业、文旅三大领域的场景创新最新实践。", color: "from-blue-400 to-cyan-500" },
+  { tag: "政策", date: "2026-06-12", title: "国家发改委印发《数字孪生城市建设指引(2026)》", desc: "明确未来三年城市级数字孪生建设的重点任务与配套政策。", color: "from-sky-400 to-blue-500", image: newsImg1 },
+  { tag: "技术", date: "2026-06-08", title: "3DGS 高斯泼溅技术在城市重建落地新进展", desc: "多家厂商在城市级场景中实现千平米级实时高斯泼溅重建。", color: "from-cyan-400 to-sky-500", image: newsImg2 },
+  { tag: "产业", date: "2026-06-02", title: "全国首批场景创新示范基地名单发布", desc: "12 个城市入选首批数字孪生场景创新示范基地。", color: "from-indigo-400 to-blue-500", image: newsImg3 },
+  { tag: "活动", date: "2026-05-28", title: "2026 中国数字孪生大会即将开幕", desc: "聚焦城市、工业、文旅三大领域的场景创新最新实践。", color: "from-blue-400 to-cyan-500", image: newsImg4 },
 ];
 
 const HOT_SCENES = [
-  { name: "城市交通智能调度", domain: "智慧交通", tags: ["3DGS", "高精地图"] },
-  { name: "智慧园区能耗管控", domain: "智慧园区", tags: ["IoT", "BIM"] },
-  { name: "工业产线孪生", domain: "智能制造", tags: ["MES", "VR"] },
-  { name: "数字文旅景区导览", domain: "智慧文旅", tags: ["AR", "数字人"] },
-  { name: "雄安零碳园区", domain: "智慧能源", tags: ["零碳", "光伏"] },
-  { name: "城市低空航路调度", domain: "低空经济", tags: ["无人机", "调度"] },
+  { name: "城市交通智能调度", domain: "智慧交通", tags: ["3DGS", "高精地图"], image: hotImg1 },
+  { name: "智慧园区能耗管控", domain: "智慧园区", tags: ["IoT", "BIM"], image: hotImg2 },
+  { name: "工业产线孪生", domain: "智能制造", tags: ["MES", "VR"], image: hotImg3 },
+  { name: "数字文旅景区导览", domain: "智慧文旅", tags: ["AR", "数字人"], image: hotImg4 },
+  { name: "雄安零碳园区", domain: "智慧能源", tags: ["零碳", "光伏"], image: hotImg5 },
+  { name: "城市低空航路调度", domain: "低空经济", tags: ["无人机", "调度"], image: hotImg6 },
 ];
 
 const OVERVIEW = [
@@ -167,7 +177,9 @@ function Index() {
           {NEWS.map((n, i) => (
             <Reveal key={n.title} variant={i % 2 === 0 ? "slide-left" : "slide-right"} delay={i * 100} duration={850} as="article"
               className="group overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
-              <div className={`relative h-32 bg-gradient-to-br ${n.color} overflow-hidden`}>
+              <div className={`relative h-32 overflow-hidden`}>
+                <img src={n.image} alt={n.title} className="h-full w-full object-cover" />
+                <div className={`absolute inset-0 bg-gradient-to-br ${n.color} opacity-40`} />
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.15)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.15)_1px,transparent_1px)] bg-[size:18px_18px]" />
                 <span className="absolute left-4 top-4 rounded-full bg-white/30 px-3 py-0.5 text-xs font-medium text-white backdrop-blur">{n.tag}</span>
               </div>
@@ -193,15 +205,19 @@ function Index() {
           {HOT_SCENES.map((s, i) => (
             <Reveal key={s.name} variant={i % 3 === 0 ? "slide-left" : i % 3 === 1 ? "slide-up" : "slide-right"} delay={i * 90} duration={900}>
               <Link to="/lab/plaza"
-                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
-                <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-10 transition-transform duration-500 group-hover:scale-150" />
-                <Boxes className="mb-3 h-6 w-6 text-sky-500" />
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600">{s.name}</h3>
-                <p className="mt-1 text-xs text-slate-500">{s.domain}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {s.tags.map((t) => (
-                    <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
-                  ))}
+                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
+                <div className="relative h-40 overflow-hidden">
+                  <img src={s.image} alt={s.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600">{s.name}</h3>
+                  <p className="mt-1 text-xs text-slate-500">{s.domain}</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {s.tags.map((t) => (
+                      <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
+                    ))}
+                  </div>
                 </div>
               </Link>
             </Reveal>
