@@ -176,7 +176,7 @@ function Index() {
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {NEWS.map((n, i) => (
             <Reveal key={n.title} variant={i % 2 === 0 ? "slide-left" : "slide-right"} delay={i * 100} duration={850} as="article"
-              className="group overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
+              className="group flex h-full flex-col overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
               <div className={`relative h-32 overflow-hidden`}>
                 <img src={n.image} alt={n.title} className="h-full w-full object-cover" />
                 <div className={`absolute inset-0 bg-gradient-to-br ${n.color} opacity-40`} />
