@@ -32,6 +32,23 @@ const ALL_TECHS = Array.from(
 
 const LANES_PER_PAGE = 4;
 
+// 领域配色（按域名稳定派生）
+const DOMAIN_PALETTE = [
+  { bar: "bg-orange-400", chipBg: "bg-orange-50", chipBorder: "border-orange-300", chipText: "text-orange-700", dot: "bg-orange-500" },
+  { bar: "bg-emerald-400", chipBg: "bg-emerald-50", chipBorder: "border-emerald-300", chipText: "text-emerald-700", dot: "bg-emerald-500" },
+  { bar: "bg-rose-400", chipBg: "bg-rose-50", chipBorder: "border-rose-300", chipText: "text-rose-700", dot: "bg-rose-500" },
+  { bar: "bg-blue-400", chipBg: "bg-blue-50", chipBorder: "border-blue-300", chipText: "text-blue-700", dot: "bg-blue-500" },
+  { bar: "bg-violet-400", chipBg: "bg-violet-50", chipBorder: "border-violet-300", chipText: "text-violet-700", dot: "bg-violet-500" },
+  { bar: "bg-cyan-400", chipBg: "bg-cyan-50", chipBorder: "border-cyan-300", chipText: "text-cyan-700", dot: "bg-cyan-500" },
+  { bar: "bg-amber-400", chipBg: "bg-amber-50", chipBorder: "border-amber-300", chipText: "text-amber-700", dot: "bg-amber-500" },
+  { bar: "bg-lime-500", chipBg: "bg-lime-50", chipBorder: "border-lime-400", chipText: "text-lime-700", dot: "bg-lime-500" },
+];
+function domainStyle(domain: string) {
+  let h = 0;
+  for (let i = 0; i < domain.length; i++) h = (h * 31 + domain.charCodeAt(i)) >>> 0;
+  return DOMAIN_PALETTE[h % DOMAIN_PALETTE.length];
+}
+
 function AtlasOverview() {
   const [domainFilter, setDomainFilter] = useState<string[]>([]);
   const [maturityFilter, setMaturityFilter] = useState<MaturityKey[]>([]);
@@ -138,28 +155,29 @@ function AtlasOverview() {
       </div>
 
       {/* 泳道 */}
-      <section className="space-y-3">
+      <section className="divide-y divide-slate-100 rounded-2xl border border-slate-200 bg-white/80">
         {lanesToRender.map((domain) => {
           const scenes = SCENES.filter((s) => s.domain === domain);
           if (scenes.length === 0) return null;
           const isDomainFiltered = domainFilter.length === 0 || domainFilter.includes(domain);
+          const ds = domainStyle(domain);
           return (
             <div
               key={domain}
-              className={`group flex items-stretch rounded-xl border bg-white/70 transition ${isDomainFiltered ? "border-sky-100" : "border-slate-100 opacity-60"}`}
+              className={`group flex items-stretch transition ${isDomainFiltered ? "" : "opacity-40"}`}
             >
-              <div className="flex w-32 shrink-0 items-center justify-center rounded-l-xl bg-gradient-to-br from-sky-50 to-blue-100/60 px-3 py-6 text-center text-sm font-semibold text-slate-700">
-                {domain}
+              <div className="relative flex w-32 shrink-0 items-center px-4 py-6 text-sm font-semibold text-slate-700">
+                <span className={`absolute left-0 top-3 bottom-3 w-1 rounded-r ${ds.bar}`} />
+                <span className="pl-2">{domain}</span>
               </div>
-              <div className="relative grid flex-1 grid-cols-5 gap-2 px-3 py-6">
-                {/* 列分隔线 */}
+              <div className="relative grid flex-1 grid-cols-5 gap-2 px-3 py-5">
                 {MATURITY_LEVELS.map((_, i) => (
-                  <div key={i} className="pointer-events-none absolute top-2 bottom-2 border-l border-dashed border-slate-100" style={{ left: `${(i / 5) * 100}%` }} />
+                  i > 0 && <div key={i} className="pointer-events-none absolute top-3 bottom-3 border-l border-dashed border-slate-100" style={{ left: `${(i / 5) * 100}%` }} />
                 ))}
                 {MATURITY_LEVELS.map((m) => {
                   const cell = scenes.filter((s) => maturityOf(s) === m.key);
                   return (
-                    <div key={m.key} className="relative flex flex-wrap content-start items-start gap-2">
+                    <div key={m.key} className="relative flex flex-wrap content-start items-center justify-center gap-2">
                       {cell.map((s) => {
                         const hi = isHighlighted(s);
                         return (
@@ -172,13 +190,16 @@ function AtlasOverview() {
                               setHover({ scene: s, x: r.left + r.width / 2, y: r.top });
                             }}
                             onMouseLeave={() => setHover(null)}
-                            className={`relative h-4 w-4 rounded-full transition-transform hover:scale-150 ${
+                            className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs font-medium whitespace-nowrap transition ${
                               hi
-                                ? `bg-gradient-to-br ${s.cover} shadow-md ring-2 ring-white`
-                                : "bg-slate-200 opacity-40"
+                                ? `${ds.chipBg} ${ds.chipBorder} ${ds.chipText} shadow-sm hover:-translate-y-0.5 hover:shadow-md`
+                                : "border-slate-200 bg-white text-slate-300 opacity-40 hover:opacity-60"
                             }`}
                             aria-label={s.name}
-                          />
+                          >
+                            <span className={`h-1.5 w-1.5 rounded-full ${hi ? ds.dot : "bg-slate-300"}`} />
+                            <span className="max-w-[110px] truncate">{s.name.replace(/场景$/, "").replace(/孪生$/, "")}</span>
+                          </Link>
                         );
                       })}
                     </div>
