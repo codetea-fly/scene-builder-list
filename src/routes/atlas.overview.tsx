@@ -106,7 +106,7 @@ function AtlasOverview() {
       <PageHeader
         eyebrow="全景式场景图谱"
         title="场景"
-        highlight="二维全景图"
+        highlight="图谱"
         description="横轴为成熟度，纵向泳道为应用领域。每个圆点是一个场景，悬停可预览，点击进入详情。"
       />
 
