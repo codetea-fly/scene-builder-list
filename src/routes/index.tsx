@@ -130,12 +130,12 @@ const NEWS = [
 ];
 
 const HOT_SCENES = [
-  { name: "城市交通智能调度", domain: "智慧交通", tags: ["3DGS", "高精地图"] },
-  { name: "智慧园区能耗管控", domain: "智慧园区", tags: ["IoT", "BIM"] },
-  { name: "工业产线孪生", domain: "智能制造", tags: ["MES", "VR"] },
-  { name: "数字文旅景区导览", domain: "智慧文旅", tags: ["AR", "数字人"] },
-  { name: "雄安零碳园区", domain: "智慧能源", tags: ["零碳", "光伏"] },
-  { name: "城市低空航路调度", domain: "低空经济", tags: ["无人机", "调度"] },
+  { name: "城市交通智能调度", domain: "智慧交通", tags: ["3DGS", "高精地图"], image: hotImg1 },
+  { name: "智慧园区能耗管控", domain: "智慧园区", tags: ["IoT", "BIM"], image: hotImg2 },
+  { name: "工业产线孪生", domain: "智能制造", tags: ["MES", "VR"], image: hotImg3 },
+  { name: "数字文旅景区导览", domain: "智慧文旅", tags: ["AR", "数字人"], image: hotImg4 },
+  { name: "雄安零碳园区", domain: "智慧能源", tags: ["零碳", "光伏"], image: hotImg5 },
+  { name: "城市低空航路调度", domain: "低空经济", tags: ["无人机", "调度"], image: hotImg6 },
 ];
 
 const OVERVIEW = [
