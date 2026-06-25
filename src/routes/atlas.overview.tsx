@@ -32,6 +32,23 @@ const ALL_TECHS = Array.from(
 
 const LANES_PER_PAGE = 4;
 
+// 领域配色（按域名稳定派生）
+const DOMAIN_PALETTE = [
+  { bar: "bg-orange-400", chipBg: "bg-orange-50", chipBorder: "border-orange-300", chipText: "text-orange-700", dot: "bg-orange-500" },
+  { bar: "bg-emerald-400", chipBg: "bg-emerald-50", chipBorder: "border-emerald-300", chipText: "text-emerald-700", dot: "bg-emerald-500" },
+  { bar: "bg-rose-400", chipBg: "bg-rose-50", chipBorder: "border-rose-300", chipText: "text-rose-700", dot: "bg-rose-500" },
+  { bar: "bg-blue-400", chipBg: "bg-blue-50", chipBorder: "border-blue-300", chipText: "text-blue-700", dot: "bg-blue-500" },
+  { bar: "bg-violet-400", chipBg: "bg-violet-50", chipBorder: "border-violet-300", chipText: "text-violet-700", dot: "bg-violet-500" },
+  { bar: "bg-cyan-400", chipBg: "bg-cyan-50", chipBorder: "border-cyan-300", chipText: "text-cyan-700", dot: "bg-cyan-500" },
+  { bar: "bg-amber-400", chipBg: "bg-amber-50", chipBorder: "border-amber-300", chipText: "text-amber-700", dot: "bg-amber-500" },
+  { bar: "bg-lime-500", chipBg: "bg-lime-50", chipBorder: "border-lime-400", chipText: "text-lime-700", dot: "bg-lime-500" },
+];
+function domainStyle(domain: string) {
+  let h = 0;
+  for (let i = 0; i < domain.length; i++) h = (h * 31 + domain.charCodeAt(i)) >>> 0;
+  return DOMAIN_PALETTE[h % DOMAIN_PALETTE.length];
+}
+
 function AtlasOverview() {
   const [domainFilter, setDomainFilter] = useState<string[]>([]);
   const [maturityFilter, setMaturityFilter] = useState<MaturityKey[]>([]);
