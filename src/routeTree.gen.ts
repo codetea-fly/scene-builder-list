@@ -21,6 +21,7 @@ import { Route as DemoCenterRouteImport } from './routes/demo.center'
 import { Route as CommunityProductSystemRouteImport } from './routes/community.product-system'
 import { Route as AtlasOverviewRouteImport } from './routes/atlas.overview'
 import { Route as AtlasDemandsRouteImport } from './routes/atlas.demands'
+import { Route as PromotionCollectionIndexRouteImport } from './routes/promotion.collection.index'
 import { Route as LabPlazaIndexRouteImport } from './routes/lab.plaza.index'
 import { Route as PromotionCollectionIdRouteImport } from './routes/promotion.collection.$id'
 import { Route as LabPlazaIdRouteImport } from './routes/lab.plaza.$id'
@@ -107,6 +108,12 @@ const AtlasDemandsRoute = AtlasDemandsRouteImport.update({
   path: '/atlas/demands',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PromotionCollectionIndexRoute =
+  PromotionCollectionIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => PromotionCollectionRoute,
+  } as any)
 const LabPlazaIndexRoute = LabPlazaIndexRouteImport.update({
   id: '/lab/plaza/',
   path: '/lab/plaza/',
@@ -268,6 +275,7 @@ export interface FileRoutesByFullPath {
   '/lab/plaza/$id': typeof LabPlazaIdRoute
   '/promotion/collection/$id': typeof PromotionCollectionIdRoute
   '/lab/plaza/': typeof LabPlazaIndexRoute
+  '/promotion/collection/': typeof PromotionCollectionIndexRoute
   '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
   '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
   '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
@@ -294,7 +302,6 @@ export interface FileRoutesByTo {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/promotion/collection': typeof PromotionCollectionRouteWithChildren
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/promotion/maturity': typeof PromotionMaturityRoute
@@ -307,6 +314,7 @@ export interface FileRoutesByTo {
   '/lab/plaza/$id': typeof LabPlazaIdRoute
   '/promotion/collection/$id': typeof PromotionCollectionIdRoute
   '/lab/plaza': typeof LabPlazaIndexRoute
+  '/promotion/collection': typeof PromotionCollectionIndexRoute
   '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
   '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
   '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
@@ -347,6 +355,7 @@ export interface FileRoutesById {
   '/lab/plaza/$id': typeof LabPlazaIdRoute
   '/promotion/collection/$id': typeof PromotionCollectionIdRoute
   '/lab/plaza/': typeof LabPlazaIndexRoute
+  '/promotion/collection/': typeof PromotionCollectionIndexRoute
   '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
   '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
   '/lab/capability/experience/$id': typeof LabCapabilityExperienceIdRoute
@@ -388,6 +397,7 @@ export interface FileRouteTypes {
     | '/lab/plaza/$id'
     | '/promotion/collection/$id'
     | '/lab/plaza/'
+    | '/promotion/collection/'
     | '/lab/capability/ai-twin/$id'
     | '/lab/capability/components/$id'
     | '/lab/capability/experience/$id'
@@ -414,7 +424,6 @@ export interface FileRouteTypes {
     | '/demo/center'
     | '/demo/online'
     | '/demo/sip'
-    | '/promotion/collection'
     | '/promotion/consulting'
     | '/promotion/lifecycle'
     | '/promotion/maturity'
@@ -427,6 +436,7 @@ export interface FileRouteTypes {
     | '/lab/plaza/$id'
     | '/promotion/collection/$id'
     | '/lab/plaza'
+    | '/promotion/collection'
     | '/lab/capability/ai-twin/$id'
     | '/lab/capability/components/$id'
     | '/lab/capability/experience/$id'
@@ -466,6 +476,7 @@ export interface FileRouteTypes {
     | '/lab/plaza/$id'
     | '/promotion/collection/$id'
     | '/lab/plaza/'
+    | '/promotion/collection/'
     | '/lab/capability/ai-twin/$id'
     | '/lab/capability/components/$id'
     | '/lab/capability/experience/$id'
@@ -608,6 +619,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/atlas/demands'
       preLoaderRoute: typeof AtlasDemandsRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/promotion/collection/': {
+      id: '/promotion/collection/'
+      path: '/'
+      fullPath: '/promotion/collection/'
+      preLoaderRoute: typeof PromotionCollectionIndexRouteImport
+      parentRoute: typeof PromotionCollectionRoute
     }
     '/lab/plaza/': {
       id: '/lab/plaza/'
@@ -789,10 +807,12 @@ declare module '@tanstack/react-router' {
 
 interface PromotionCollectionRouteChildren {
   PromotionCollectionIdRoute: typeof PromotionCollectionIdRoute
+  PromotionCollectionIndexRoute: typeof PromotionCollectionIndexRoute
 }
 
 const PromotionCollectionRouteChildren: PromotionCollectionRouteChildren = {
   PromotionCollectionIdRoute: PromotionCollectionIdRoute,
+  PromotionCollectionIndexRoute: PromotionCollectionIndexRoute,
 }
 
 const PromotionCollectionRouteWithChildren =
