@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as PromotionMaturityRouteImport } from './routes/promotion.maturity'
 import { Route as PromotionLifecycleRouteImport } from './routes/promotion.lifecycle'
@@ -45,6 +46,11 @@ import { Route as LabCapabilityExperienceIdRouteImport } from './routes/lab.capa
 import { Route as LabCapabilityComponentsIdRouteImport } from './routes/lab.capability.components.$id'
 import { Route as LabCapabilityAiTwinIdRouteImport } from './routes/lab.capability.ai-twin.$id'
 
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -236,6 +242,7 @@ const LabCapabilityAiTwinIdRoute = LabCapabilityAiTwinIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/atlas/demands': typeof AtlasDemandsRoute
   '/atlas/overview': typeof AtlasOverviewRoute
   '/community/product-system': typeof CommunityProductSystemRoute
@@ -273,6 +280,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/atlas/demands': typeof AtlasDemandsRoute
   '/atlas/overview': typeof AtlasOverviewRoute
   '/community/product-system': typeof CommunityProductSystemRoute
@@ -311,6 +319,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/atlas/demands': typeof AtlasDemandsRoute
   '/atlas/overview': typeof AtlasOverviewRoute
   '/community/product-system': typeof CommunityProductSystemRoute
@@ -350,6 +359,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth'
     | '/atlas/demands'
     | '/atlas/overview'
     | '/community/product-system'
@@ -387,6 +397,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth'
     | '/atlas/demands'
     | '/atlas/overview'
     | '/community/product-system'
@@ -424,6 +435,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/auth'
     | '/atlas/demands'
     | '/atlas/overview'
     | '/community/product-system'
@@ -462,6 +474,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
   AtlasDemandsRoute: typeof AtlasDemandsRoute
   AtlasOverviewRoute: typeof AtlasOverviewRoute
   CommunityProductSystemRoute: typeof CommunityProductSystemRoute
@@ -500,6 +513,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -750,6 +770,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
   AtlasDemandsRoute: AtlasDemandsRoute,
   AtlasOverviewRoute: AtlasOverviewRoute,
   CommunityProductSystemRoute: CommunityProductSystemRoute,
