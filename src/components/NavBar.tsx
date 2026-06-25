@@ -1,6 +1,9 @@
 import { Link } from "@tanstack/react-router";
 import { useState, useRef, useEffect } from "react";
-import { ChevronDown, Boxes } from "lucide-react";
+import { ChevronDown } from "lucide-react";
+import logoDsip from "@/assets/logo-dsip.png";
+import logoTwin from "@/assets/logo-twin.png";
+
 
 type Leaf = { label: string; to: string };
 type Group = { label: string; leaves: Leaf[] };
@@ -102,18 +105,14 @@ export function NavBar() {
 
   return (
     <nav className="sticky top-0 z-40 border-b border-sky-100/80 bg-white/75 backdrop-blur-xl">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-6 px-6">
-        <Link to="/" className="group flex items-center gap-2">
-          <div className="grid h-9 w-9 place-items-center rounded-xl bg-gradient-to-br from-sky-500 to-blue-600 shadow-md shadow-sky-300/50 transition-transform group-hover:scale-105">
-            <Boxes className="h-5 w-5 text-white" />
-          </div>
-          <div className="flex flex-col leading-tight">
-            <span className="text-sm font-bold text-slate-900">数字孪生场景创新</span>
-            <span className="text-[10px] text-slate-500">公共服务平台</span>
-          </div>
+      <div className="mx-auto flex h-20 max-w-7xl items-center gap-6 px-6">
+        <Link to="/" className="group flex shrink-0 items-center gap-3">
+          <img src={logoDsip} alt="数园区 DSIP" className="h-10 w-auto object-contain transition-transform group-hover:scale-105" />
+          <span className="h-8 w-px bg-slate-200" />
+          <img src={logoTwin} alt="数字孪生创新中心" className="h-8 w-auto object-contain transition-transform group-hover:scale-105" />
         </Link>
 
-        <div className="ml-4 hidden flex-1 items-center gap-1 lg:flex">
+        <div className="mx-auto hidden flex-1 items-center justify-center gap-2 lg:flex">
           {MENUS.map((m) => (
             <div
               key={m.label}
@@ -125,7 +124,7 @@ export function NavBar() {
                 type="button"
                 onClick={() => setOpen((prev) => (prev === m.label ? null : m.label))}
                 onFocus={() => enter(m.label)}
-                className={`inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium transition-all ${
+                className={`inline-flex items-center gap-1 rounded-lg px-4 py-2 text-[15px] font-medium transition-all ${
                   open === m.label
                     ? "bg-sky-50 text-sky-700"
                     : "text-slate-700 hover:bg-sky-50 hover:text-sky-700"
@@ -135,7 +134,7 @@ export function NavBar() {
                 <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open === m.label ? "rotate-180" : ""}`} />
               </button>
               {open === m.label && (
-                <div className="absolute left-0 top-full pt-2 animate-fade-in">
+                <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 animate-fade-in">
                   <div className="min-w-[260px] overflow-hidden rounded-2xl border border-sky-100 bg-white/95 p-2 shadow-xl shadow-sky-200/40 backdrop-blur-xl">
                     {m.children.map((c) => {
                       if ("leaves" in c) {
@@ -180,11 +179,12 @@ export function NavBar() {
 
         <Link
           to="/lab/plaza"
-          className="ml-auto hidden rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-sky-300/50 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:inline-flex"
+          className="hidden shrink-0 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-4 py-2 text-xs font-semibold text-white shadow-md shadow-sky-300/50 transition-all hover:-translate-y-0.5 hover:shadow-lg sm:inline-flex"
         >
           进入实验室
         </Link>
       </div>
+
     </nav>
   );
 }
