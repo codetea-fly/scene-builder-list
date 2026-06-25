@@ -205,15 +205,19 @@ function Index() {
           {HOT_SCENES.map((s, i) => (
             <Reveal key={s.name} variant={i % 3 === 0 ? "slide-left" : i % 3 === 1 ? "slide-up" : "slide-right"} delay={i * 90} duration={900}>
               <Link to="/lab/plaza"
-                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 p-6 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
-                <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full bg-gradient-to-br from-sky-400 to-blue-500 opacity-10 transition-transform duration-500 group-hover:scale-150" />
-                <Boxes className="mb-3 h-6 w-6 text-sky-500" />
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600">{s.name}</h3>
-                <p className="mt-1 text-xs text-slate-500">{s.domain}</p>
-                <div className="mt-4 flex flex-wrap gap-1.5">
-                  {s.tags.map((t) => (
-                    <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
-                  ))}
+                className="group relative block overflow-hidden rounded-2xl border border-sky-100 bg-white/80 shadow-sm backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-sky-200/50">
+                <div className="relative h-40 overflow-hidden">
+                  <img src={s.image} alt={s.name} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
+                </div>
+                <div className="p-5">
+                  <h3 className="text-lg font-semibold text-slate-900 group-hover:text-sky-600">{s.name}</h3>
+                  <p className="mt-1 text-xs text-slate-500">{s.domain}</p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {s.tags.map((t) => (
+                      <span key={t} className="rounded-md bg-sky-50 px-2 py-0.5 text-[11px] text-sky-700 ring-1 ring-sky-100">{t}</span>
+                    ))}
+                  </div>
                 </div>
               </Link>
             </Reveal>
