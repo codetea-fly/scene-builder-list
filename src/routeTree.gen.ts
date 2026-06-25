@@ -22,6 +22,7 @@ import { Route as CommunityProductSystemRouteImport } from './routes/community.p
 import { Route as AtlasOverviewRouteImport } from './routes/atlas.overview'
 import { Route as AtlasDemandsRouteImport } from './routes/atlas.demands'
 import { Route as LabPlazaIndexRouteImport } from './routes/lab.plaza.index'
+import { Route as PromotionCollectionIdRouteImport } from './routes/promotion.collection.$id'
 import { Route as LabPlazaIdRouteImport } from './routes/lab.plaza.$id'
 import { Route as CommunityLibraryStandardsRouteImport } from './routes/community.library.standards'
 import { Route as CommunityLibrarySolutionsRouteImport } from './routes/community.library.solutions'
@@ -110,6 +111,11 @@ const LabPlazaIndexRoute = LabPlazaIndexRouteImport.update({
   id: '/lab/plaza/',
   path: '/lab/plaza/',
   getParentRoute: () => rootRouteImport,
+} as any)
+const PromotionCollectionIdRoute = PromotionCollectionIdRouteImport.update({
+  id: '/$id',
+  path: '/$id',
+  getParentRoute: () => PromotionCollectionRoute,
 } as any)
 const LabPlazaIdRoute = LabPlazaIdRouteImport.update({
   id: '/lab/plaza/$id',
@@ -249,7 +255,7 @@ export interface FileRoutesByFullPath {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/promotion/collection': typeof PromotionCollectionRoute
+  '/promotion/collection': typeof PromotionCollectionRouteWithChildren
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/promotion/maturity': typeof PromotionMaturityRoute
@@ -260,6 +266,7 @@ export interface FileRoutesByFullPath {
   '/community/library/solutions': typeof CommunityLibrarySolutionsRoute
   '/community/library/standards': typeof CommunityLibraryStandardsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
+  '/promotion/collection/$id': typeof PromotionCollectionIdRoute
   '/lab/plaza/': typeof LabPlazaIndexRoute
   '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
   '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
@@ -287,7 +294,7 @@ export interface FileRoutesByTo {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/promotion/collection': typeof PromotionCollectionRoute
+  '/promotion/collection': typeof PromotionCollectionRouteWithChildren
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/promotion/maturity': typeof PromotionMaturityRoute
@@ -298,6 +305,7 @@ export interface FileRoutesByTo {
   '/community/library/solutions': typeof CommunityLibrarySolutionsRoute
   '/community/library/standards': typeof CommunityLibraryStandardsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
+  '/promotion/collection/$id': typeof PromotionCollectionIdRoute
   '/lab/plaza': typeof LabPlazaIndexRoute
   '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
   '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
@@ -326,7 +334,7 @@ export interface FileRoutesById {
   '/demo/center': typeof DemoCenterRoute
   '/demo/online': typeof DemoOnlineRoute
   '/demo/sip': typeof DemoSipRoute
-  '/promotion/collection': typeof PromotionCollectionRoute
+  '/promotion/collection': typeof PromotionCollectionRouteWithChildren
   '/promotion/consulting': typeof PromotionConsultingRoute
   '/promotion/lifecycle': typeof PromotionLifecycleRoute
   '/promotion/maturity': typeof PromotionMaturityRoute
@@ -337,6 +345,7 @@ export interface FileRoutesById {
   '/community/library/solutions': typeof CommunityLibrarySolutionsRoute
   '/community/library/standards': typeof CommunityLibraryStandardsRoute
   '/lab/plaza/$id': typeof LabPlazaIdRoute
+  '/promotion/collection/$id': typeof PromotionCollectionIdRoute
   '/lab/plaza/': typeof LabPlazaIndexRoute
   '/lab/capability/ai-twin/$id': typeof LabCapabilityAiTwinIdRoute
   '/lab/capability/components/$id': typeof LabCapabilityComponentsIdRoute
@@ -377,6 +386,7 @@ export interface FileRouteTypes {
     | '/community/library/solutions'
     | '/community/library/standards'
     | '/lab/plaza/$id'
+    | '/promotion/collection/$id'
     | '/lab/plaza/'
     | '/lab/capability/ai-twin/$id'
     | '/lab/capability/components/$id'
@@ -415,6 +425,7 @@ export interface FileRouteTypes {
     | '/community/library/solutions'
     | '/community/library/standards'
     | '/lab/plaza/$id'
+    | '/promotion/collection/$id'
     | '/lab/plaza'
     | '/lab/capability/ai-twin/$id'
     | '/lab/capability/components/$id'
@@ -453,6 +464,7 @@ export interface FileRouteTypes {
     | '/community/library/solutions'
     | '/community/library/standards'
     | '/lab/plaza/$id'
+    | '/promotion/collection/$id'
     | '/lab/plaza/'
     | '/lab/capability/ai-twin/$id'
     | '/lab/capability/components/$id'
@@ -481,7 +493,7 @@ export interface RootRouteChildren {
   DemoCenterRoute: typeof DemoCenterRoute
   DemoOnlineRoute: typeof DemoOnlineRoute
   DemoSipRoute: typeof DemoSipRoute
-  PromotionCollectionRoute: typeof PromotionCollectionRoute
+  PromotionCollectionRoute: typeof PromotionCollectionRouteWithChildren
   PromotionConsultingRoute: typeof PromotionConsultingRoute
   PromotionLifecycleRoute: typeof PromotionLifecycleRoute
   PromotionMaturityRoute: typeof PromotionMaturityRoute
@@ -603,6 +615,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/lab/plaza/'
       preLoaderRoute: typeof LabPlazaIndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/promotion/collection/$id': {
+      id: '/promotion/collection/$id'
+      path: '/$id'
+      fullPath: '/promotion/collection/$id'
+      preLoaderRoute: typeof PromotionCollectionIdRouteImport
+      parentRoute: typeof PromotionCollectionRoute
     }
     '/lab/plaza/$id': {
       id: '/lab/plaza/$id'
@@ -768,6 +787,17 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface PromotionCollectionRouteChildren {
+  PromotionCollectionIdRoute: typeof PromotionCollectionIdRoute
+}
+
+const PromotionCollectionRouteChildren: PromotionCollectionRouteChildren = {
+  PromotionCollectionIdRoute: PromotionCollectionIdRoute,
+}
+
+const PromotionCollectionRouteWithChildren =
+  PromotionCollectionRoute._addFileChildren(PromotionCollectionRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthRoute: AuthRoute,
@@ -777,7 +807,7 @@ const rootRouteChildren: RootRouteChildren = {
   DemoCenterRoute: DemoCenterRoute,
   DemoOnlineRoute: DemoOnlineRoute,
   DemoSipRoute: DemoSipRoute,
-  PromotionCollectionRoute: PromotionCollectionRoute,
+  PromotionCollectionRoute: PromotionCollectionRouteWithChildren,
   PromotionConsultingRoute: PromotionConsultingRoute,
   PromotionLifecycleRoute: PromotionLifecycleRoute,
   PromotionMaturityRoute: PromotionMaturityRoute,
