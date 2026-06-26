@@ -6,16 +6,20 @@ import { PageHeader } from "@/components/PageHeader";
 
 export const Route = createFileRoute("/lab/plaza/")({
   head: () => ({ meta: [{ title: "场景创新广场 — 场景创新实验室" }] }),
-  validateSearch: (s: Record<string, unknown>) => ({ tag: typeof s.tag === "string" ? s.tag : undefined }),
+  validateSearch: (s: Record<string, unknown>) => ({
+    tag: typeof s.tag === "string" ? s.tag : undefined,
+    q: typeof s.q === "string" ? s.q : undefined,
+  }),
   component: PlazaPage,
 });
 
 function PlazaPage() {
-  const { tag: initialTag } = Route.useSearch();
+  const { tag: initialTag, q: initialQ } = Route.useSearch();
   const [active, setActive] = useState<string[]>(initialTag ? [initialTag] : []);
-  const [q, setQ] = useState("");
+  const [q, setQ] = useState(initialQ ?? "");
   const [toast, setToast] = useState<string | null>(null);
   useEffect(() => { if (initialTag && !active.includes(initialTag)) setActive([initialTag]); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [initialTag]);
+  useEffect(() => { if (initialQ !== undefined) setQ(initialQ); /* eslint-disable-next-line react-hooks/exhaustive-deps */ }, [initialQ]);
 
   const filtered = useMemo(() => SCENES.filter((s) => {
     const mq = !q || s.name.includes(q) || s.vendor.includes(q) || s.domain.includes(q);

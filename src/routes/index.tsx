@@ -82,8 +82,12 @@ function HeroPointCloud() {
 
 function Hero() {
   const [q, setQ] = useState("");
+  const navigate = Route.useNavigate();
   const scrollDown = () => {
     document.getElementById("news")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const explore = () => {
+    navigate({ to: "/lab/plaza", search: q.trim() ? { q: q.trim() } : {} });
   };
   return (
     <section className="relative isolate flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden border-b border-sky-100">
@@ -99,7 +103,7 @@ function Hero() {
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}>
           场景创新，从这里开始
         </p>
-        <form onSubmit={(e) => { e.preventDefault(); scrollDown(); }}
+        <form onSubmit={(e) => { e.preventDefault(); explore(); }}
           className="mt-10 flex w-full max-w-2xl animate-fade-in flex-col gap-3 sm:flex-row"
           style={{ animationDelay: "240ms", animationFillMode: "backwards" }}>
           <div className="relative flex-1">
