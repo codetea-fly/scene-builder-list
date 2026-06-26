@@ -82,8 +82,12 @@ function HeroPointCloud() {
 
 function Hero() {
   const [q, setQ] = useState("");
+  const navigate = Route.useNavigate();
   const scrollDown = () => {
     document.getElementById("news")?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
+  const explore = () => {
+    navigate({ to: "/lab/plaza", search: q.trim() ? { q: q.trim() } : {} });
   };
   return (
     <section className="relative isolate flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden border-b border-sky-100">
