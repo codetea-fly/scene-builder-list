@@ -103,7 +103,7 @@ function Hero() {
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}>
           场景创新，从这里开始
         </p>
-        <form onSubmit={(e) => { e.preventDefault(); scrollDown(); }}
+        <form onSubmit={(e) => { e.preventDefault(); explore(); }}
           className="mt-10 flex w-full max-w-2xl animate-fade-in flex-col gap-3 sm:flex-row"
           style={{ animationDelay: "240ms", animationFillMode: "backwards" }}>
           <div className="relative flex-1">
