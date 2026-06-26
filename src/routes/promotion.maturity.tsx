@@ -201,7 +201,7 @@ function MaturityPage() {
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* 雷达图 */}
-        <Reveal variant="fade-left" className="lg:col-span-3">
+        <Reveal variant="fade-left" className="lg:col-span-3 h-full">
           <section className="rounded-3xl border border-sky-100 bg-white/85 p-6 shadow-lg backdrop-blur">
             <div className="mb-4 flex items-center justify-between">
               <div>
