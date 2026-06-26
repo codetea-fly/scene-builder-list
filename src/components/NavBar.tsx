@@ -5,7 +5,7 @@ import logoDsip from "@/assets/logo-dsip.png";
 import logoTwin from "@/assets/logo-twin.png";
 
 
-type Leaf = { label: string; to: string };
+type Leaf = { label: string; to: string; disabled?: boolean };
 type Group = { label: string; leaves: Leaf[] };
 type MenuEntry = Leaf | Group;
 
@@ -61,19 +61,19 @@ const MENUS: Menu[] = [
       {
         label: "能力组件中心",
         leaves: [
-          { label: "通用能力组件", to: "/lab/capability/components" },
-          { label: "通用能力平台", to: "/lab/capability/platforms" },
-          { label: "在线体验系统", to: "/lab/capability/experience" },
-          { label: "特定领域软硬件", to: "/lab/capability/hardware" },
-          { label: "AI+数字孪生能力库", to: "/lab/capability/ai-twin" },
+          { label: "通用能力组件", to: "/lab/capability/components", disabled: true },
+          { label: "通用能力平台", to: "/lab/capability/platforms", disabled: true },
+          { label: "在线体验系统", to: "/lab/capability/experience", disabled: true },
+          { label: "特定领域软硬件", to: "/lab/capability/hardware", disabled: true },
+          { label: "AI+数字孪生能力库", to: "/lab/capability/ai-twin", disabled: true },
         ],
       },
       {
         label: "数据资产中心",
         leaves: [
-          { label: "三维模型库", to: "/lab/data/models" },
-          { label: "高质量数据集", to: "/lab/data/datasets" },
-          { label: "可归集孪生体资产", to: "/lab/data/twins" },
+          { label: "三维模型库", to: "/lab/data/models", disabled: true },
+          { label: "高质量数据集", to: "/lab/data/datasets", disabled: true },
+          { label: "可归集孪生体资产", to: "/lab/data/twins", disabled: true },
         ],
       },
     ],
@@ -152,16 +152,28 @@ export function NavBar() {
                               {c.label}
                             </div>
                             <div className="grid gap-0.5">
-                              {c.leaves.map((leaf) => (
-                                <Link
-                                  key={leaf.to}
-                                  to={leaf.to}
-                                  onClick={() => setOpen(null)}
-                                  className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
-                                >
-                                  {leaf.label}
-                                </Link>
-                              ))}
+                              {c.leaves.map((leaf) =>
+                                leaf.disabled ? (
+                                  <span
+                                    key={leaf.to}
+                                    aria-disabled="true"
+                                    title="即将上线"
+                                    className="block cursor-not-allowed rounded-lg px-3 py-2 text-sm text-slate-400"
+                                  >
+                                    {leaf.label}
+                                    <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-400">即将上线</span>
+                                  </span>
+                                ) : (
+                                  <Link
+                                    key={leaf.to}
+                                    to={leaf.to}
+                                    onClick={() => setOpen(null)}
+                                    className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
+                                  >
+                                    {leaf.label}
+                                  </Link>
+                                )
+                              )}
                             </div>
                           </div>
                         );
