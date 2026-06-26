@@ -173,7 +173,7 @@ function MaturityPage() {
       />
 
       {/* 模型概览 */}
-      <Reveal variant="slide-up">
+      <Reveal variant="fade-up">
         <section className="mb-10 grid gap-4 md:grid-cols-5">
           {DIMENSIONS.map((d) => {
             const Icon = d.icon;
@@ -201,7 +201,7 @@ function MaturityPage() {
 
       <div className="grid gap-8 lg:grid-cols-5">
         {/* 雷达图 */}
-        <Reveal variant="slide-left" className="lg:col-span-3">
+        <Reveal variant="fade-left" className="lg:col-span-3">
           <section className="rounded-3xl border border-sky-100 bg-white/85 p-6 shadow-lg backdrop-blur">
             <div className="mb-4 flex items-center justify-between">
               <div>
@@ -292,7 +292,7 @@ function MaturityPage() {
         </Reveal>
 
         {/* 评分汇总 */}
-        <Reveal variant="slide-right" className="lg:col-span-2">
+        <Reveal variant="fade-right" className="lg:col-span-2">
           <section className="flex h-full flex-col gap-5">
             <div
               className="rounded-3xl border p-6 text-white shadow-lg"
@@ -360,7 +360,7 @@ function MaturityPage() {
       </div>
 
       {/* 指标体系详解 */}
-      <Reveal variant="slide-up">
+      <Reveal variant="fade-up">
         <section className="mt-12">
           <div className="mb-4 flex items-end justify-between">
             <div>
@@ -435,7 +435,7 @@ function MaturityPage() {
       </Reveal>
 
       {/* 评估方法 */}
-      <Reveal variant="slide-up">
+      <Reveal variant="fade-up">
         <section className="mt-12 rounded-3xl border border-sky-100 bg-gradient-to-br from-sky-50/70 to-white/80 p-8 shadow-sm backdrop-blur">
           <h2 className="text-2xl font-bold text-slate-900">评估方法</h2>
           <p className="mt-2 max-w-3xl text-sm text-slate-600">
