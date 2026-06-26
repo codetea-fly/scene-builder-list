@@ -5,7 +5,7 @@ import logoDsip from "@/assets/logo-dsip.png";
 import logoTwin from "@/assets/logo-twin.png";
 
 
-type Leaf = { label: string; to: string };
+type Leaf = { label: string; to: string; disabled?: boolean };
 type Group = { label: string; leaves: Leaf[] };
 type MenuEntry = Leaf | Group;
 
