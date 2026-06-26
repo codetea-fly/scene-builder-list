@@ -61,19 +61,19 @@ const MENUS: Menu[] = [
       {
         label: "能力组件中心",
         leaves: [
-          { label: "通用能力组件", to: "/lab/capability/components" },
-          { label: "通用能力平台", to: "/lab/capability/platforms" },
-          { label: "在线体验系统", to: "/lab/capability/experience" },
-          { label: "特定领域软硬件", to: "/lab/capability/hardware" },
-          { label: "AI+数字孪生能力库", to: "/lab/capability/ai-twin" },
+          { label: "通用能力组件", to: "/lab/capability/components", disabled: true },
+          { label: "通用能力平台", to: "/lab/capability/platforms", disabled: true },
+          { label: "在线体验系统", to: "/lab/capability/experience", disabled: true },
+          { label: "特定领域软硬件", to: "/lab/capability/hardware", disabled: true },
+          { label: "AI+数字孪生能力库", to: "/lab/capability/ai-twin", disabled: true },
         ],
       },
       {
         label: "数据资产中心",
         leaves: [
-          { label: "三维模型库", to: "/lab/data/models" },
-          { label: "高质量数据集", to: "/lab/data/datasets" },
-          { label: "可归集孪生体资产", to: "/lab/data/twins" },
+          { label: "三维模型库", to: "/lab/data/models", disabled: true },
+          { label: "高质量数据集", to: "/lab/data/datasets", disabled: true },
+          { label: "可归集孪生体资产", to: "/lab/data/twins", disabled: true },
         ],
       },
     ],
