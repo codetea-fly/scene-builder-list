@@ -292,7 +292,7 @@ function MaturityPage() {
         </Reveal>
 
         {/* 评分汇总 */}
-        <Reveal variant="fade-right" className="lg:col-span-2">
+        <Reveal variant="fade-right" className="lg:col-span-2 h-full">
           <section className="flex h-full flex-col gap-5">
             <div
               className="rounded-3xl border p-6 text-white shadow-lg"
@@ -316,12 +316,12 @@ function MaturityPage() {
               <p className="mt-3 text-sm leading-relaxed opacity-90">{currentLevel.desc}</p>
             </div>
 
-            <div className="rounded-3xl border border-sky-100 bg-white/85 p-5 shadow-sm backdrop-blur">
+            <div className="flex flex-1 flex-col rounded-3xl border border-sky-100 bg-white/85 p-5 shadow-sm backdrop-blur">
               <div className="mb-3 flex items-center gap-2 text-sm font-semibold text-slate-900">
                 <Layers className="h-4 w-4 text-sky-600" />
                 五级成熟度划分
               </div>
-              <div className="space-y-2">
+              <div className="flex flex-1 flex-col justify-between gap-2">
                 {LEVELS.map((l) => {
                   const active = l.level === currentLevel.level;
                   return (
@@ -339,7 +339,7 @@ function MaturityPage() {
                       >
                         L{l.level}
                       </div>
-                      <div className="flex-1">
+                      <div className="min-w-0 flex-1">
                         <div className="flex items-baseline justify-between">
                           <span className="text-sm font-semibold text-slate-900">
                             {l.name}
