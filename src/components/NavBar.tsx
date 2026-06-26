@@ -152,16 +152,28 @@ export function NavBar() {
                               {c.label}
                             </div>
                             <div className="grid gap-0.5">
-                              {c.leaves.map((leaf) => (
-                                <Link
-                                  key={leaf.to}
-                                  to={leaf.to}
-                                  onClick={() => setOpen(null)}
-                                  className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
-                                >
-                                  {leaf.label}
-                                </Link>
-                              ))}
+                              {c.leaves.map((leaf) =>
+                                leaf.disabled ? (
+                                  <span
+                                    key={leaf.to}
+                                    aria-disabled="true"
+                                    title="即将上线"
+                                    className="block cursor-not-allowed rounded-lg px-3 py-2 text-sm text-slate-400"
+                                  >
+                                    {leaf.label}
+                                    <span className="ml-2 rounded bg-slate-100 px-1.5 py-0.5 text-[10px] text-slate-400">即将上线</span>
+                                  </span>
+                                ) : (
+                                  <Link
+                                    key={leaf.to}
+                                    to={leaf.to}
+                                    onClick={() => setOpen(null)}
+                                    className="block rounded-lg px-3 py-2 text-sm text-slate-700 transition-colors hover:bg-sky-50 hover:text-sky-700"
+                                  >
+                                    {leaf.label}
+                                  </Link>
+                                )
+                              )}
                             </div>
                           </div>
                         );
