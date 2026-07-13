@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Search, ArrowRight, Newspaper, Flame, Boxes, Database,
   Layers, ClipboardList, Lightbulb, Target, Rocket, Award,
@@ -19,10 +19,10 @@ import hotImg6 from "@/assets/scenes/sc-09.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "数字孪生场景创新公共服务平台" },
-      { name: "description", content: "数字孪生场景创新公共服务平台 —— 汇聚全国场景建设需求，加速供需对接与创新落地。" },
-      { property: "og:title", content: "数字孪生场景创新公共服务平台" },
-      { property: "og:description", content: "场景创新，从这里开始。" },
+      { title: "“AI x 数字孪生” 场景创新公共服务平台" },
+      { name: "description", content: "“AI x 数字孪生” 场景创新公共服务平台 —— 汇聚全国场景建设需求，加速供需对接与创新落地。" },
+      { property: "og:title", content: "“AI x 数字孪生” 场景创新公共服务平台" },
+      { property: "og:description", content: "场景资源的汇聚枢纽、场景落地的服务中枢、场景推广的产业载体。" },
     ],
   }),
   component: Index,
@@ -80,6 +80,36 @@ function HeroPointCloud() {
   );
 }
 
+const SLOGANS = [
+  "场景资源的汇聚枢纽",
+  "场景落地的服务中枢",
+  "场景推广的产业载体",
+];
+
+function SloganCarousel() {
+  const [index, setIndex] = useState(0);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIndex((i) => (i + 1) % SLOGANS.length);
+    }, 3000);
+    return () => clearInterval(timer);
+  }, []);
+  return (
+    <p className="relative text-base text-slate-600 sm:text-lg">
+      {SLOGANS.map((s, i) => (
+        <span
+          key={s}
+          className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
+            i === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          {s}
+        </span>
+      ))}
+    </p>
+  );
+}
+
 function Hero() {
   const [q, setQ] = useState("");
   const navigate = Route.useNavigate();
@@ -95,21 +125,20 @@ function Hero() {
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
         <h1 className="animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
           style={{ animationDelay: "80ms", animationFillMode: "backwards" }}>
-          数字孪生
-          <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">场景创新</span>
-          公共服务平台
+          <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">“AI x 数字孪生”</span>
+          场景创新公共服务平台
         </h1>
-        <p className="mt-5 animate-fade-in text-base text-slate-600 sm:text-lg"
+        <div className="mt-5 h-7 animate-fade-in overflow-hidden sm:h-8"
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}>
-          场景创新，从这里开始
-        </p>
+          <SloganCarousel />
+        </div>
         <form onSubmit={(e) => { e.preventDefault(); explore(); }}
           className="mt-10 flex w-full max-w-2xl animate-fade-in flex-col gap-3 sm:flex-row"
           style={{ animationDelay: "240ms", animationFillMode: "backwards" }}>
           <div className="relative flex-1">
             <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-sky-400" />
             <input value={q} onChange={(e) => setQ(e.target.value)}
-              placeholder="搜索场景、能力组件、数据资产…"
+              placeholder="场景创新，从这里开始"
               className="h-14 w-full rounded-2xl border border-sky-200 bg-white/90 pl-12 pr-4 text-base shadow-lg shadow-sky-200/40 outline-none backdrop-blur transition-all placeholder:text-slate-400 focus:border-sky-400 focus:ring-4 focus:ring-sky-100" />
           </div>
           <button type="submit"
@@ -304,7 +333,7 @@ function Index() {
 
 
       <footer className="relative mt-12 border-t border-sky-100/80 bg-white/40 py-8 text-center text-xs text-slate-400 backdrop-blur">
-        © 2026 数字孪生场景创新公共服务平台 · 场景创新，从这里开始
+        © 2026 “AI x 数字孪生” 场景创新公共服务平台
       </footer>
     </>
   );
