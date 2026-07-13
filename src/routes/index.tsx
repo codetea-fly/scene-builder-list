@@ -86,6 +86,23 @@ const SLOGANS = [
   "场景推广的产业载体",
 ];
 
+function SloganItem({ text }: { text: string }) {
+  const prefix = text.slice(0, -4);
+  const suffix = text.slice(-4);
+  return (
+    <span className="whitespace-nowrap text-base text-slate-500 sm:text-lg">
+      {prefix}
+      <span className="mx-1 inline-flex items-baseline font-bold">
+        <span className="text-sky-300">“</span>
+        <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+          {suffix}
+        </span>
+        <span className="text-sky-300">”</span>
+      </span>
+    </span>
+  );
+}
+
 function SloganCarousel() {
   const [index, setIndex] = useState(0);
   useEffect(() => {
@@ -95,18 +112,26 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <p className="relative h-full text-base text-slate-600 sm:text-lg">
-      {SLOGANS.map((s, i) => (
-        <span
-          key={s}
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
-            i === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-          }`}
-        >
-          {s}
-        </span>
-      ))}
-    </p>
+    <div className="relative h-full w-full overflow-hidden">
+      <div
+        className="flex h-full items-center transition-transform duration-700 ease-out"
+        style={{ transform: `translateX(${15 - index * 70}%)` }}
+      >
+        {SLOGANS.map((s, i) => {
+          const isActive = i === index;
+          return (
+            <div
+              key={s}
+              className={`flex h-full min-w-[70%] items-center justify-center px-2 transition-opacity duration-700 ${
+                isActive ? "opacity-100" : "opacity-30"
+              }`}
+            >
+              <SloganItem text={s} />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
