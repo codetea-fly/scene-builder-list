@@ -112,23 +112,26 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="relative h-full w-full [perspective:1000px] [transform-style:preserve-3d]">
+    <div className="relative mx-auto h-full w-full max-w-2xl [perspective:1000px] [transform-style:preserve-3d]">
       {SLOGANS.map((s, i) => {
-        const angle = (index - i) * 120;
+        const diff = (index - i + SLOGANS.length) % SLOGANS.length;
+        const step = diff > SLOGANS.length / 2 ? diff - SLOGANS.length : diff;
+        const angle = step * 85;
         const isCurrent = i === index;
         return (
           <div
             key={s}
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-lg border border-sky-200/40 bg-white/70 px-3 py-0.5 shadow-lg shadow-sky-200/30 backdrop-blur-sm transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(190px) scale(${isCurrent ? 0.79 : 0.78})`,
-              opacity: isCurrent ? 1 : 0.6,
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(165px) scale(${isCurrent ? 0.85 : 0.74})`,
+              opacity: isCurrent ? 1 : 0.32,
+              filter: isCurrent ? "blur(0px)" : "blur(1.5px)",
               zIndex: isCurrent ? 20 : 10,
             }}
           >
             <div
               className="transition-all duration-700 ease-out"
-              style={{ transform: `rotateY(${-angle * 0.75}deg)` }}
+              style={{ transform: `rotateY(${-angle * 0.55}deg)` }}
             >
               <SloganItem text={s} />
             </div>
