@@ -112,32 +112,26 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="relative h-full w-full">
+    <div className="relative h-full w-full [perspective:1000px] [transform-style:preserve-3d]">
       {SLOGANS.map((s, i) => {
-        const step = ((i - index) % SLOGANS.length + SLOGANS.length) % SLOGANS.length;
-        let position: "prev" | "current" | "next" | "hidden" = "hidden";
-        if (step === 0) position = "current";
-        else if (step === 1) position = "next";
-        else if (step === SLOGANS.length - 1) position = "prev";
-        if (position === "hidden") return null;
-
-        const style: React.CSSProperties =
-          position === "current"
-            ? { left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: 1 }
-            : position === "prev"
-            ? { right: "88%", top: "50%", transform: "translate(0, -50%)", opacity: 0.35 }
-            : { left: "88%", top: "50%", transform: "translate(0, -50%)", opacity: 0.35 };
-
-        const alignClass =
-          position === "current" ? "text-center" : position === "prev" ? "text-right" : "text-left";
-
+        const angle = (index - i) * 120;
+        const isCurrent = i === index;
         return (
           <div
             key={s}
-            className={`absolute w-auto whitespace-nowrap transition-all duration-700 ease-out ${alignClass}`}
-            style={style}
+            className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-lg border border-sky-200/40 bg-white/70 px-3 py-0.5 shadow-lg shadow-sky-200/30 backdrop-blur-sm transition-all duration-700 ease-out [transform-style:preserve-3d]"
+            style={{
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(170px) scale(${isCurrent ? 0.83 : 0.7})`,
+              opacity: isCurrent ? 1 : 0.55,
+              zIndex: isCurrent ? 20 : 10,
+            }}
           >
-            <SloganItem text={s} />
+            <div
+              className="transition-all duration-700 ease-out"
+              style={{ transform: `rotateY(${-angle * 0.65}deg)` }}
+            >
+              <SloganItem text={s} />
+            </div>
           </div>
         );
       })}
