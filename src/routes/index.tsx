@@ -86,6 +86,23 @@ const SLOGANS = [
   "场景推广的产业载体",
 ];
 
+function SloganItem({ text }: { text: string }) {
+  const prefix = text.slice(0, -4);
+  const suffix = text.slice(-4);
+  return (
+    <span className="whitespace-nowrap text-base text-slate-500 sm:text-lg">
+      {prefix}
+      <span className="mx-1 inline-flex items-baseline font-bold">
+        <span className="text-sky-300">“</span>
+        <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
+          {suffix}
+        </span>
+        <span className="text-sky-300">”</span>
+      </span>
+    </span>
+  );
+}
+
 function SloganCarousel() {
   const [index, setIndex] = useState(0);
   useEffect(() => {
@@ -95,18 +112,36 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <p className="relative h-full text-base text-slate-600 sm:text-lg">
-      {SLOGANS.map((s, i) => (
-        <span
-          key={s}
-          className={`absolute inset-0 flex items-center justify-center transition-all duration-700 ${
-            i === index ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
-          }`}
-        >
-          {s}
-        </span>
-      ))}
-    </p>
+    <div className="relative h-full w-full">
+      {SLOGANS.map((s, i) => {
+        const step = ((i - index) % SLOGANS.length + SLOGANS.length) % SLOGANS.length;
+        let position: "prev" | "current" | "next" | "hidden" = "hidden";
+        if (step === 0) position = "current";
+        else if (step === 1) position = "next";
+        else if (step === SLOGANS.length - 1) position = "prev";
+        if (position === "hidden") return null;
+
+        const style: React.CSSProperties =
+          position === "current"
+            ? { left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: 1 }
+            : position === "prev"
+            ? { right: "88%", top: "50%", transform: "translate(0, -50%)", opacity: 0.35 }
+            : { left: "88%", top: "50%", transform: "translate(0, -50%)", opacity: 0.35 };
+
+        const alignClass =
+          position === "current" ? "text-center" : position === "prev" ? "text-right" : "text-left";
+
+        return (
+          <div
+            key={s}
+            className={`absolute w-auto whitespace-nowrap transition-all duration-700 ease-out ${alignClass}`}
+            style={style}
+          >
+            <SloganItem text={s} />
+          </div>
+        );
+      })}
+    </div>
   );
 }
 
