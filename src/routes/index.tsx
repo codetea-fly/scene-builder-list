@@ -125,8 +125,8 @@ function SloganCarousel() {
           position === "current"
             ? { left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: 1 }
             : position === "prev"
-            ? { right: "12%", top: "50%", transform: "translate(0, -50%)", opacity: 0.25 }
-            : { left: "12%", top: "50%", transform: "translate(0, -50%)", opacity: 0.25 };
+            ? { right: "88%", top: "50%", transform: "translate(0, -50%)", opacity: 0.25 }
+            : { left: "88%", top: "50%", transform: "translate(0, -50%)", opacity: 0.25 };
 
         const alignClass =
           position === "current" ? "text-center" : position === "prev" ? "text-right" : "text-left";
