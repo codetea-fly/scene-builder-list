@@ -95,7 +95,7 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <p className="relative text-base text-slate-600 sm:text-lg">
+    <p className="relative h-full text-base text-slate-600 sm:text-lg">
       {SLOGANS.map((s, i) => (
         <span
           key={s}
