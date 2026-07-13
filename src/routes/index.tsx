@@ -128,7 +128,7 @@ function Hero() {
           <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">“AI x 数字孪生”</span>
           场景创新公共服务平台
         </h1>
-        <div className="mt-5 h-7 w-full animate-fade-in overflow-hidden sm:h-8"
+        <div className="mt-5 h-7 w-full animate-fade-in overflow-hidden self-stretch sm:h-8"
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}>
           <SloganCarousel />
         </div>
