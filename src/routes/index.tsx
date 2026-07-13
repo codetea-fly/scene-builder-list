@@ -121,14 +121,14 @@ function SloganCarousel() {
             key={s}
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-lg border border-sky-200/40 bg-white/70 px-3 py-0.5 shadow-lg shadow-sky-200/30 backdrop-blur-sm transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(170px) scale(${isCurrent ? 0.83 : 0.7})`,
-              opacity: isCurrent ? 1 : 0.55,
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(190px) scale(${isCurrent ? 0.79 : 0.78})`,
+              opacity: isCurrent ? 1 : 0.6,
               zIndex: isCurrent ? 20 : 10,
             }}
           >
             <div
               className="transition-all duration-700 ease-out"
-              style={{ transform: `rotateY(${-angle * 0.65}deg)` }}
+              style={{ transform: `rotateY(${-angle * 0.75}deg)` }}
             >
               <SloganItem text={s} />
             </div>
