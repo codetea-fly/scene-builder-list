@@ -112,25 +112,32 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="relative h-full w-full overflow-hidden">
-      <div
-        className="flex h-full items-center transition-transform duration-700 ease-out"
-        style={{ transform: `translateX(${15 - index * 70}%)` }}
-      >
-        {SLOGANS.map((s, i) => {
-          const isActive = i === index;
-          return (
-            <div
-              key={s}
-              className={`flex h-full min-w-[70%] items-center justify-center px-2 transition-opacity duration-700 ${
-                isActive ? "opacity-100" : "opacity-30"
-              }`}
-            >
+    <div className="relative h-full w-full">
+      {SLOGANS.map((s, i) => {
+        const step = ((i - index) % SLOGANS.length + SLOGANS.length) % SLOGANS.length;
+        let xShift = 0;
+        let opacity = 1;
+        if (step === 1) {
+          xShift = 80;
+          opacity = 0.25;
+        } else if (step === SLOGANS.length - 1) {
+          xShift = -80;
+          opacity = 0.25;
+        } else if (step !== 0) {
+          return null;
+        }
+        return (
+          <div
+            key={s}
+            className="absolute left-1/2 top-1/2 w-full transition-all duration-700 ease-out"
+            style={{ transform: `translate(calc(-50% + ${xShift}%), -50%)`, opacity }}
+          >
+            <div className="flex items-center justify-center">
               <SloganItem text={s} />
             </div>
-          );
-        })}
-      </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
