@@ -115,26 +115,29 @@ function SloganCarousel() {
     <div className="relative h-full w-full">
       {SLOGANS.map((s, i) => {
         const step = ((i - index) % SLOGANS.length + SLOGANS.length) % SLOGANS.length;
-        let xShift = 0;
-        let opacity = 1;
-        if (step === 1) {
-          xShift = 80;
-          opacity = 0.25;
-        } else if (step === SLOGANS.length - 1) {
-          xShift = -80;
-          opacity = 0.25;
-        } else if (step !== 0) {
-          return null;
-        }
+        let position: "prev" | "current" | "next" | "hidden" = "hidden";
+        if (step === 0) position = "current";
+        else if (step === 1) position = "next";
+        else if (step === SLOGANS.length - 1) position = "prev";
+        if (position === "hidden") return null;
+
+        const style: React.CSSProperties =
+          position === "current"
+            ? { left: "50%", top: "50%", transform: "translate(-50%, -50%)", opacity: 1 }
+            : position === "prev"
+            ? { right: "12%", top: "50%", transform: "translate(0, -50%)", opacity: 0.25 }
+            : { left: "12%", top: "50%", transform: "translate(0, -50%)", opacity: 0.25 };
+
+        const alignClass =
+          position === "current" ? "text-center" : position === "prev" ? "text-right" : "text-left";
+
         return (
           <div
             key={s}
-            className="absolute left-1/2 top-1/2 w-full transition-all duration-700 ease-out"
-            style={{ transform: `translate(calc(-50% + ${xShift}%), -50%)`, opacity }}
+            className={`absolute w-auto whitespace-nowrap transition-all duration-700 ease-out ${alignClass}`}
+            style={style}
           >
-            <div className="flex items-center justify-center">
-              <SloganItem text={s} />
-            </div>
+            <SloganItem text={s} />
           </div>
         );
       })}
