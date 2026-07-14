@@ -160,13 +160,13 @@ function Hero() {
   return (
     <section className="relative isolate flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden border-b border-sky-100">
       <HeroPointCloud />
-      <div className="absolute right-3 top-3 z-10 max-w-[15rem] animate-fade-in rounded-xl border border-sky-100/80 bg-white/70 px-3 py-2 shadow-sm backdrop-blur-sm sm:right-6 sm:top-6 sm:max-w-[18rem] sm:px-4 sm:py-2.5"
+      <div className="absolute right-4 top-4 z-10 hidden max-w-[18rem] animate-fade-in text-right sm:right-8 sm:top-6 sm:block"
         style={{ animationDelay: "320ms", animationFillMode: "backwards" }}>
-        <div className="flex items-center gap-1.5 text-[10px] font-medium text-sky-600 sm:text-xs">
-          <Building2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+        <div className="mb-1.5 flex items-center justify-end gap-2 text-[10px] font-medium tracking-wider text-slate-400/80 sm:text-xs">
+          <span className="h-px w-6 bg-slate-200/70" />
           指导单位
         </div>
-        <div className="mt-1 space-y-0.5 text-[10px] font-medium leading-tight text-slate-600 sm:text-xs sm:leading-snug">
+        <div className="space-y-0.5 text-[10px] font-normal leading-snug text-slate-500/70 sm:text-xs sm:leading-relaxed">
           <p>中国信息通信研究院</p>
           <p>中国互联网协会数字孪生技术应用工作委员会</p>
         </div>
