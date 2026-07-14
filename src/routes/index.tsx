@@ -116,20 +116,20 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="relative mx-auto h-full w-full max-w-2xl [perspective:1400px] [transform-style:preserve-3d]">
+    <div className="relative mx-auto h-full w-full max-w-2xl [perspective:1600px] [transform-style:preserve-3d]">
       {SLOGANS.map((s, i) => {
         const diff = (index - i + SLOGANS.length) % SLOGANS.length;
         const step = diff > SLOGANS.length / 2 ? diff - SLOGANS.length : diff;
-        const angle = step * 44;
+        const angle = step * 56;
         const isCurrent = i === index;
         return (
           <div
             key={s}
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-xl border border-sky-200/50 bg-white/80 px-4 py-1 shadow-xl shadow-sky-200/30 backdrop-blur-md transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(340px) scale(${isCurrent ? 1 : 0.78})`,
-              opacity: isCurrent ? 1 : 0.55,
-              filter: isCurrent ? "blur(0px)" : "blur(1px)",
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(380px) scale(${isCurrent ? 1 : 0.76})`,
+              opacity: isCurrent ? 1 : 0.6,
+              filter: isCurrent ? "blur(0px)" : "blur(0.8px)",
               zIndex: isCurrent ? 20 : 10,
               willChange: "transform, opacity",
             }}
