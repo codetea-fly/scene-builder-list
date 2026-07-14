@@ -128,8 +128,8 @@ function SloganCarousel() {
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-xl border border-sky-200/50 bg-white/80 px-4 py-1 shadow-xl shadow-sky-200/30 backdrop-blur-md transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
               transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(280px) scale(${isCurrent ? 1 : 0.74})`,
-              opacity: isCurrent ? 1 : 0.48,
-              filter: isCurrent ? "blur(0px)" : "blur(0.4px)",
+              opacity: isCurrent ? 1 : 0.58,
+              filter: isCurrent ? "blur(0px)" : "blur(0px)",
               zIndex: isCurrent ? 20 : 10,
             }}
           >
@@ -144,9 +144,9 @@ function SloganCarousel() {
                     className="pointer-events-none absolute inset-x-0 top-full mt-0.5 origin-top"
                     style={{
                       transform: "scaleY(-1)",
-                      opacity: 0.16,
-                      maskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
-                      WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
+                      opacity: 0.22,
+                      maskImage: "linear-gradient(to bottom, black 0%, transparent 60%)",
+                      WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 60%)",
                     }}
                   >
                     <SloganItem text={s} isCurrent={false} />
@@ -155,9 +155,9 @@ function SloganCarousel() {
                     className="pointer-events-none absolute inset-0"
                     style={{
                       transform: "scaleX(-1)",
-                      opacity: 0.12,
-                      maskImage: "linear-gradient(to left, black 0%, transparent 60%)",
-                      WebkitMaskImage: "linear-gradient(to left, black 0%, transparent 60%)",
+                      opacity: 0.18,
+                      maskImage: "linear-gradient(to left, black 0%, transparent 55%)",
+                      WebkitMaskImage: "linear-gradient(to left, black 0%, transparent 55%)",
                     }}
                   >
                     <SloganItem text={s} isCurrent={false} />
