@@ -117,36 +117,49 @@ function SloganCarousel() {
       {SLOGANS.map((s, i) => {
         const diff = (index - i + SLOGANS.length) % SLOGANS.length;
         const step = diff > SLOGANS.length / 2 ? diff - SLOGANS.length : diff;
-        const angle = step * 68;
+        const angle = step * 75;
         const isCurrent = i === index;
         return (
           <div
             key={s}
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-xl border border-sky-200/50 bg-white/80 px-4 py-1 shadow-xl shadow-sky-200/30 backdrop-blur-md transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(260px) scale(${isCurrent ? 1 : 0.76})`,
-              opacity: isCurrent ? 1 : 0.45,
-              filter: isCurrent ? "blur(0px)" : "blur(0.6px)",
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(280px) scale(${isCurrent ? 1 : 0.74})`,
+              opacity: isCurrent ? 1 : 0.48,
+              filter: isCurrent ? "blur(0px)" : "blur(0.4px)",
               zIndex: isCurrent ? 20 : 10,
             }}
           >
             <div
               className="relative transition-all duration-700 ease-out"
-              style={{ transform: `rotateY(${-angle * 0.5}deg) ${isCurrent ? "" : "scaleX(-1)"}` }}
+              style={{ transform: `rotateY(${-angle * 0.35}deg)` }}
             >
               <SloganItem text={s} isCurrent={isCurrent} />
               {!isCurrent && (
-                <div
-                  className="pointer-events-none absolute inset-x-0 top-full mt-0.5 origin-top"
-                  style={{
-                    transform: "scaleY(-1)",
-                    opacity: 0.18,
-                    maskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
-                    WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
-                  }}
-                >
-                  <SloganItem text={s} isCurrent={false} />
-                </div>
+                <>
+                  <div
+                    className="pointer-events-none absolute inset-x-0 top-full mt-0.5 origin-top"
+                    style={{
+                      transform: "scaleY(-1)",
+                      opacity: 0.16,
+                      maskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
+                      WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
+                    }}
+                  >
+                    <SloganItem text={s} isCurrent={false} />
+                  </div>
+                  <div
+                    className="pointer-events-none absolute inset-0"
+                    style={{
+                      transform: "scaleX(-1)",
+                      opacity: 0.12,
+                      maskImage: "linear-gradient(to left, black 0%, transparent 60%)",
+                      WebkitMaskImage: "linear-gradient(to left, black 0%, transparent 60%)",
+                    }}
+                  >
+                    <SloganItem text={s} isCurrent={false} />
+                  </div>
+                </>
               )}
             </div>
           </div>
