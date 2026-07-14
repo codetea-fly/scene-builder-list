@@ -91,7 +91,10 @@ function SloganItem({ text, isCurrent = false }: { text: string; isCurrent?: boo
   const prefix = text.slice(0, -4);
   const suffix = text.slice(-4);
   return (
-    <span className={`whitespace-nowrap ${isCurrent ? "text-lg text-slate-700 sm:text-xl" : "text-base text-slate-500 sm:text-lg"}`}>
+    <span
+      className={`whitespace-nowrap ${isCurrent ? "text-lg text-slate-800 sm:text-xl" : "text-base text-slate-500 sm:text-lg"}`}
+      style={isCurrent ? { textShadow: "0 1px 2px rgba(255,255,255,0.8), 0 0 1px rgba(14,165,233,0.2)" } : undefined}
+    >
       {prefix}
       <span className="mx-1 inline-flex items-baseline font-bold">
         <span className={`${isCurrent ? "text-sky-500" : "text-sky-300"}`}>“</span>
