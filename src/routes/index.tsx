@@ -1,9 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Building2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import {
   Search, ArrowRight, Newspaper, Flame, Boxes, Database,
   Layers, ClipboardList, Lightbulb, Target, Rocket, Award,
+  Building2,
 } from "lucide-react";
 import { Reveal, CountUp } from "@/components/Reveal";
 import newsImg1 from "@/assets/scenes/sc-01.jpg";
