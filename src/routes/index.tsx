@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Search, ArrowRight, Newspaper, Flame, Boxes, Database,
   Layers, ClipboardList, Lightbulb, Target, Rocket, Award,
+  Building2,
 } from "lucide-react";
 import { Reveal, CountUp } from "@/components/Reveal";
 import newsImg1 from "@/assets/scenes/sc-01.jpg";
@@ -154,6 +155,17 @@ function Hero() {
   return (
     <section className="relative isolate flex min-h-[calc(100vh-4rem)] flex-col overflow-hidden border-b border-sky-100">
       <HeroPointCloud />
+      <div className="absolute right-3 top-3 z-10 max-w-[15rem] animate-fade-in rounded-xl border border-sky-100/80 bg-white/70 px-3 py-2 shadow-sm backdrop-blur-sm sm:right-6 sm:top-6 sm:max-w-[18rem] sm:px-4 sm:py-2.5"
+        style={{ animationDelay: "320ms", animationFillMode: "backwards" }}>
+        <div className="flex items-center gap-1.5 text-[10px] font-medium text-sky-600 sm:text-xs">
+          <Building2 className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+          指导单位
+        </div>
+        <div className="mt-1 space-y-0.5 text-[10px] font-medium leading-tight text-slate-600 sm:text-xs sm:leading-snug">
+          <p>中国信息通信研究院</p>
+          <p>中国互联网协会数字孪生技术应用工作委员会</p>
+        </div>
+      </div>
       <div className="relative mx-auto flex w-full max-w-7xl flex-1 flex-col items-center justify-center px-6 py-24 text-center">
         <h1 className="animate-fade-in text-4xl font-bold leading-tight tracking-tight text-slate-900 sm:text-6xl"
           style={{ animationDelay: "80ms", animationFillMode: "backwards" }}>
