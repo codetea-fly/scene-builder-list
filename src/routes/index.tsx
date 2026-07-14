@@ -87,18 +87,18 @@ const SLOGANS = [
   "场景推广的产业载体",
 ];
 
-function SloganItem({ text }: { text: string }) {
+function SloganItem({ text, isCurrent = false }: { text: string; isCurrent?: boolean }) {
   const prefix = text.slice(0, -4);
   const suffix = text.slice(-4);
   return (
-    <span className="whitespace-nowrap text-base text-slate-500 sm:text-lg">
+    <span className={`whitespace-nowrap ${isCurrent ? "text-lg text-slate-700 sm:text-xl" : "text-base text-slate-500 sm:text-lg"}`}>
       {prefix}
       <span className="mx-1 inline-flex items-baseline font-bold">
-        <span className="text-sky-300">“</span>
+        <span className={`${isCurrent ? "text-sky-500" : "text-sky-300"}`}>“</span>
         <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
           {suffix}
         </span>
-        <span className="text-sky-300">”</span>
+        <span className={`${isCurrent ? "text-sky-500" : "text-sky-300"}`}>”</span>
       </span>
     </span>
   );
@@ -113,28 +113,41 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="relative mx-auto h-full w-full max-w-2xl [perspective:1000px] [transform-style:preserve-3d]">
+    <div className="relative mx-auto h-full w-full max-w-2xl [perspective:1200px] [transform-style:preserve-3d]">
       {SLOGANS.map((s, i) => {
         const diff = (index - i + SLOGANS.length) % SLOGANS.length;
         const step = diff > SLOGANS.length / 2 ? diff - SLOGANS.length : diff;
-        const angle = step * 52;
+        const angle = step * 68;
         const isCurrent = i === index;
         return (
           <div
             key={s}
-            className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-lg border border-sky-200/40 bg-white/70 px-3 py-0.5 shadow-lg shadow-sky-200/30 backdrop-blur-sm transition-all duration-700 ease-out [transform-style:preserve-3d]"
+            className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-xl border border-sky-200/50 bg-white/80 px-4 py-1 shadow-xl shadow-sky-200/30 backdrop-blur-md transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(220px) scale(${isCurrent ? 0.92 : 0.78})`,
-              opacity: isCurrent ? 1 : 0.38,
-              filter: isCurrent ? "blur(0px)" : "blur(1.5px)",
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(260px) scale(${isCurrent ? 1 : 0.76})`,
+              opacity: isCurrent ? 1 : 0.45,
+              filter: isCurrent ? "blur(0px)" : "blur(0.6px)",
               zIndex: isCurrent ? 20 : 10,
             }}
           >
             <div
-              className="transition-all duration-700 ease-out"
-              style={{ transform: `rotateY(${-angle}deg)` }}
+              className="relative transition-all duration-700 ease-out"
+              style={{ transform: `rotateY(${-angle * 0.5}deg) ${isCurrent ? "" : "scaleX(-1)"}` }}
             >
-              <SloganItem text={s} />
+              <SloganItem text={s} isCurrent={isCurrent} />
+              {!isCurrent && (
+                <div
+                  className="pointer-events-none absolute inset-x-0 top-full mt-0.5 origin-top"
+                  style={{
+                    transform: "scaleY(-1)",
+                    opacity: 0.18,
+                    maskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
+                    WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 65%)",
+                  }}
+                >
+                  <SloganItem text={s} isCurrent={false} />
+                </div>
+              )}
             </div>
           </div>
         );
