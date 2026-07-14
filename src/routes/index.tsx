@@ -116,57 +116,30 @@ function SloganCarousel() {
     return () => clearInterval(timer);
   }, []);
   return (
-    <div className="relative mx-auto h-full w-full max-w-2xl [perspective:1600px] [transform-style:preserve-3d]">
+    <div className="relative mx-auto h-full w-full max-w-4xl [perspective:1400px] [transform-style:preserve-3d]">
       {SLOGANS.map((s, i) => {
         const diff = (index - i + SLOGANS.length) % SLOGANS.length;
         const step = diff > SLOGANS.length / 2 ? diff - SLOGANS.length : diff;
-        const angle = step * 56;
+        const angle = step * 100;
         const isCurrent = i === index;
+        const radius = 280;
         return (
           <div
             key={s}
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-xl border border-sky-200/50 bg-white/80 px-4 py-1 shadow-xl shadow-sky-200/30 backdrop-blur-md transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(380px) scale(${isCurrent ? 1 : 0.76})`,
-              opacity: isCurrent ? 1 : 0.6,
-              filter: isCurrent ? "blur(0px)" : "blur(0.8px)",
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px) scale(${isCurrent ? 1 : 0.76})`,
+              opacity: isCurrent ? 1 : 0.65,
+              filter: isCurrent ? "blur(0px)" : "blur(0.7px)",
               zIndex: isCurrent ? 20 : 10,
               willChange: "transform, opacity",
             }}
           >
             <div
               className="relative transition-all duration-700 ease-out"
-              style={{ transform: `rotateY(${-angle}deg)` }}
+              style={{ transform: `rotateY(${-angle * 0.55}deg)` }}
             >
               <SloganItem text={s} isCurrent={isCurrent} />
-              {!isCurrent && (
-                <>
-                  <div
-                    className="pointer-events-none absolute inset-x-0 top-full mt-0.5 origin-top"
-                    style={{
-                      transform: "scaleY(-1)",
-                      opacity: 0.18,
-                      filter: "blur(1.5px)",
-                      maskImage: "linear-gradient(to bottom, black 0%, transparent 55%)",
-                      WebkitMaskImage: "linear-gradient(to bottom, black 0%, transparent 55%)",
-                    }}
-                  >
-                    <SloganItem text={s} isCurrent={false} />
-                  </div>
-                  <div
-                    className="pointer-events-none absolute inset-0"
-                    style={{
-                      transform: "scaleX(-1)",
-                      opacity: 0.14,
-                      filter: "blur(1.5px)",
-                      maskImage: "linear-gradient(to left, black 0%, transparent 50%)",
-                      WebkitMaskImage: "linear-gradient(to left, black 0%, transparent 50%)",
-                    }}
-                  >
-                    <SloganItem text={s} isCurrent={false} />
-                  </div>
-                </>
-              )}
             </div>
           </div>
         );
@@ -204,7 +177,7 @@ function Hero() {
           <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">“AI x 数字孪生”</span>
           场景创新公共服务平台
         </h1>
-        <div className="mt-5 h-7 w-full animate-fade-in overflow-hidden self-stretch sm:h-8"
+        <div className="mt-5 h-10 w-full animate-fade-in self-stretch sm:h-12"
           style={{ animationDelay: "160ms", animationFillMode: "backwards" }}>
           <SloganCarousel />
         </div>
