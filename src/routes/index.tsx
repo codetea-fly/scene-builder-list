@@ -122,15 +122,15 @@ function SloganCarousel() {
         const step = diff > SLOGANS.length / 2 ? diff - SLOGANS.length : diff;
         const angle = step * 100;
         const isCurrent = i === index;
-        const radius = 240;
+        const radius = 280;
         return (
           <div
             key={s}
             className="absolute left-1/2 top-1/2 w-auto whitespace-nowrap rounded-xl border border-sky-200/50 bg-white/80 px-4 py-1 shadow-xl shadow-sky-200/30 backdrop-blur-md transition-all duration-700 ease-out [transform-style:preserve-3d]"
             style={{
-              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px) scale(${isCurrent ? 1 : 0.74})`,
-              opacity: isCurrent ? 1 : 0.55,
-              filter: isCurrent ? "blur(0px)" : "blur(0.9px)",
+              transform: `translate(-50%, -50%) rotateY(${angle}deg) translateZ(${radius}px) scale(${isCurrent ? 1 : 0.76})`,
+              opacity: isCurrent ? 1 : 0.65,
+              filter: isCurrent ? "blur(0px)" : "blur(0.7px)",
               zIndex: isCurrent ? 20 : 10,
               willChange: "transform, opacity",
             }}
